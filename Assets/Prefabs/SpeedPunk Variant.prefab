@@ -161,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 166624, guid: 08bc22016f348a241b42c3ad494f1a8a, type: 3}
       propertyPath: m_Name
-      value: SpeedPunk
+      value: SpeedPunk Variant
       objectReference: {fileID: 0}
     - target: {fileID: 166624, guid: 08bc22016f348a241b42c3ad494f1a8a, type: 3}
       propertyPath: m_Layer
@@ -288,6 +288,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 457968, guid: 08bc22016f348a241b42c3ad494f1a8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 457968, guid: 08bc22016f348a241b42c3ad494f1a8a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 8
       objectReference: {fileID: 0}
@@ -306,6 +310,10 @@ PrefabInstance:
     - target: {fileID: 488220, guid: 08bc22016f348a241b42c3ad494f1a8a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 488750, guid: 08bc22016f348a241b42c3ad494f1a8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -55.00001
       objectReference: {fileID: 0}
     - target: {fileID: 488750, guid: 08bc22016f348a241b42c3ad494f1a8a, type: 3}
       propertyPath: m_LocalPosition.y

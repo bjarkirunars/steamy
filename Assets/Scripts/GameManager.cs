@@ -5,15 +5,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int carSpeed;
+    public int carSpeed = 1;
     public int maxCoalAmount;
-    private int maxCoals = 80;
     public int currentCoals = 50;
 
     // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        } else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void RefillCoal() {

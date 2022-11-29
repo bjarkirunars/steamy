@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartMenu.unity
+    path: Assets/Scenes/Upgrade.unity
     guid: 1d1dca23764b648a8844450302446c46
   - enabled: 1
     path: Assets/Scenes/Bjarki.unity

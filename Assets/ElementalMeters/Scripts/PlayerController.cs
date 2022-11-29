@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         timer += Time.deltaTime;
         healthMeter.SetHealth(GameManager.instance.currentCoals); //meter code
-        if (timer > waitTime)
+        if (timer > waitTime && GameManager.instance.currentCoals > 0)
         {
             GameManager.instance.currentCoals -= 5; //meter code
             timer = 0.0f;

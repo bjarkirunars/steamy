@@ -17,9 +17,13 @@ public class CarMovement : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * Time.deltaTime * speed);
-        if (Input.GetButton("Horizontal"))
+        if (Input.GetAxis("Horizontal") <0)
         {
             transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
+        }
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
         }
     }
 }

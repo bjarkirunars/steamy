@@ -661,8 +661,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 254768236}
-        m_TargetAssemblyTypeName: StartScreen, Assembly-CSharp
-        m_MethodName: LoadScene
+        m_TargetAssemblyTypeName: RestartGame, Assembly-CSharp
+        m_MethodName: RestartScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -719,7 +719,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 254768230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49d8b7c035354e45ba92bfee164e27d, type: 3}
+  m_Script: {fileID: 11500000, guid: c37aabb54c6754b179a8a9e81ccbdd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &265145961
@@ -2397,7 +2397,7 @@ MonoBehaviour:
   currencyLabel: {fileID: 1028975751}
   carSpeed: 3
   maxCoalAmount: 10
-  currentCoals: 5
+  currentCoals: 20
 --- !u!4 &1315789632
 Transform:
   m_ObjectHideFlags: 0

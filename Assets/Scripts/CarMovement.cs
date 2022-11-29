@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
-    
-    public int speed;
     public float rotationSpeed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int speed;
 
     // Update is called once per frame
     void Update()
@@ -25,5 +19,15 @@ public class CarMovement : MonoBehaviour
         {
             transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
         }
+    }
+    
+    // public void SetCoal(int newCoalAmount) {
+    //     // Update the max amount of coal that the car can use
+    //     maxCoalAmount = newCoalAmount;
+    // }
+
+    public void RefillCoal() {
+        // Refill the coal tank to full
+        GameManager.instance.currentCoals += 10;
     }
 }

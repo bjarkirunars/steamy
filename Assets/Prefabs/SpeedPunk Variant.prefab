@@ -342,7 +342,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.0000009536743, y: -0.0000047683716}
   serializedVersion: 2
-  m_Radius: 17.5
+  m_Radius: 16.3
 --- !u!1 &6480921438534372126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 157182, guid: 08bc22016f348a241b42c3ad494f1a8a,
@@ -364,7 +364,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.0000019073486, y: 4.3592424}
   serializedVersion: 2
-  m_Radius: 13
+  m_Radius: 11.7
 --- !u!1 &6480921438534427648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 166624, guid: 08bc22016f348a241b42c3ad494f1a8a,
@@ -404,7 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635df7af306380545a87addc241644a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   rotationSpeed: 0
 --- !u!1 &6480921438534431086 stripped
 GameObject:
@@ -427,7 +426,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.000002861023, y: 9.094947e-13}
   serializedVersion: 2
-  m_Radius: 17.5
+  m_Radius: 16.3
 --- !u!1 &6480921438534431560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 171432, guid: 08bc22016f348a241b42c3ad494f1a8a,
@@ -449,4 +448,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.0000019073486, y: -4.3592463}
   serializedVersion: 2
-  m_Radius: 13
+  m_Radius: 11.7

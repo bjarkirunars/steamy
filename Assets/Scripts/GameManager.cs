@@ -1,19 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameObject gameOverScreen;
+    public TextMeshProUGUI currencyLabel;
+    private bool gameRunning = true;
+    private int maxCarSpeed;
     public int carSpeed;
     public int maxCoalAmount;
     private int maxCoals = 80;
     public int currentCoals = 50;
+    private int currency;
+    private CarMovement car;
 
     // Start is called before the first frame update
     void Awake()
     {
-        instance = this;
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            currency = 0;
+            maxCarSpeed = carSpeed;
+        } 
+        else if (instance != this) {
+            Destroy(gameObject);
+        }
     }
 
     public void RefillCoal() {
@@ -24,9 +39,34 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (currentCoals > maxCoals) 
+        { // If Coal refill powerUp exceeds max coal capacity
+            currentCoals = maxCoals;
+        }
         if (currentCoals <= 0)
-        {
+        { // If car runs out of coal
             carSpeed = 0;
         }
+    }
+
+    public void GameOver(int currencyEarned) {
+        if (gameRunning) {
+            gameRunning = false;
+            currency += currencyEarned;
+            currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+            gameOverScreen.SetActive(true);
+            Debug.Log("Total currency: " + currency.ToString());
+        }
+    }
+
+    public void RestartGame() {
+        gameRunning = true;
+        gameOverScreen.SetActive(false);
+        carSpeed = maxCarSpeed;
+        car.RefillCoal();
+    }
+
+    public int GetCurrency() {
+        return currency;
     }
 }

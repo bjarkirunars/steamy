@@ -400,8 +400,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartScreen, Assembly-CSharp
+      - m_Target: {fileID: 340055411}
+        m_TargetAssemblyTypeName: UpgradeScreen, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -409,7 +409,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Bjarki
+          m_StringArgument: Eythor
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &456479784
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceLabel: {fileID: 1130012096}
-  obj: {fileID: 638550505}
+  toggleList: []
 --- !u!114 &638550508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1664,7 +1664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceLabel: {fileID: 1130012096}
-  obj: {fileID: 1335960540}
+  toggleList: []
 --- !u!1 &1409460668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,7 +1884,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271f176a03a2c88428bc23c671c5eccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverScreen: {fileID: 0}
+  currencyLabel: {fileID: 0}
   carSpeed: 1
+  maxCoals: 0
   maxCoalAmount: 0
   currentCoals: 50
 --- !u!4 &1742451382
@@ -2131,7 +2134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priceLabel: {fileID: 1130012096}
-  obj: {fileID: 2052194929}
+  toggleList: []
 --- !u!114 &2052194932
 MonoBehaviour:
   m_ObjectHideFlags: 0

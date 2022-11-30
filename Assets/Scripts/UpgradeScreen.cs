@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class UpgradeScreen : MonoBehaviour
 {
     public void LoadScene(string scenename)
-    { 
-        SceneManager.LoadScene(scenename);
+    {
+        GameManager.instance.RestartGame();
+        SceneManager.LoadScene("Bjarki");
     }
 
     public void IncreaseSpeed(GameObject obj)

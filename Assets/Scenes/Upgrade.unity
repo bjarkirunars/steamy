@@ -454,7 +454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bankLabel: {fileID: 1398805916}
-  priceLabel: {fileID: 1130012096}
 --- !u!1 &456479781
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 638550506}
   - component: {fileID: 638550508}
+  - component: {fileID: 638550509}
   m_Layer: 5
   m_Name: SpeedToggle010
   m_TagString: Untagged
@@ -1060,6 +1060,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &638550509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638550505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e431146f471854d5dbd93b592e2c36b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceLabel: {fileID: 1130012096}
 --- !u!1 &670559194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965279559}
   - component: {fileID: 965279561}
+  - component: {fileID: 965279562}
   m_Layer: 5
   m_Name: JumpToggle025
   m_TagString: Untagged
@@ -1311,6 +1325,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &965279562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965279558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e431146f471854d5dbd93b592e2c36b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceLabel: {fileID: 1130012096}
 --- !u!1 &1130012094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,6 +1842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1335960541}
   - component: {fileID: 1335960542}
+  - component: {fileID: 1335960543}
   m_Layer: 5
   m_Name: SpeedToggle005
   m_TagString: Untagged
@@ -1903,6 +1931,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &1335960543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335960540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e431146f471854d5dbd93b592e2c36b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceLabel: {fileID: 1130012096}
 --- !u!1 &1398805914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2466,6 +2507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052194930}
   - component: {fileID: 2052194932}
+  - component: {fileID: 2052194933}
   m_Layer: 5
   m_Name: SpeedToggle015
   m_TagString: Untagged
@@ -2554,6 +2596,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &2052194933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052194929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e431146f471854d5dbd93b592e2c36b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceLabel: {fileID: 1130012096}
 --- !u!1 &2069496744
 GameObject:
   m_ObjectHideFlags: 0

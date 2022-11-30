@@ -6,9 +6,16 @@ public class CarMovement : MonoBehaviour
 {
     public float rotationSpeed;
     private float startX;
+    public float jumpSpeed;
+    private Rigidbody2D player;
 
-    private void Start() {
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask groundLayer;
+    private bool isTouchingGround;
+    void Start() {
         startX = Mathf.Abs(transform.position.x);
+        player = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -16,6 +23,7 @@ public class CarMovement : MonoBehaviour
     {
         if (GameManager.instance.currentCoals > 0)
         {
+            isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
             transform.Translate(Vector2.right * Time.deltaTime * GameManager.instance.carSpeed);
             if (Input.GetAxis("Horizontal") <0)
             {
@@ -24,6 +32,12 @@ public class CarMovement : MonoBehaviour
             if (Input.GetAxis("Horizontal") > 0)
             {
                 transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
+            }
+
+            if(Input.GetButtonDown("Jump") && isTouchingGround)
+            {
+                //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+                player.velocity = new   Vector2(player.velocity.x, jumpSpeed);//*Time.deltaTime);
             }
         }
         else {

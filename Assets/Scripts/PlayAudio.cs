@@ -6,7 +6,7 @@ public class PlayAudio : MonoBehaviour
 {
     public AudioSource audioSource;
 
-    public void sfx() {
+    public void PlaySound() {
         audioSource.Play();
     }
 }

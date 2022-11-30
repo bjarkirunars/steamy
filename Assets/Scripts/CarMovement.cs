@@ -17,7 +17,8 @@ public class CarMovement : MonoBehaviour
     public ParticleSystem backSteam;
     private void Start() 
     {
-        startX = Mathf.Abs(transform.position.x);
+        startX = Mathf.Abs(transform.position.x); 
+        // Get starting position
         player = GetComponent<Rigidbody2D>();
     }
 

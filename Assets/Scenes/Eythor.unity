@@ -2508,6 +2508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCarSpeed: 1
   carSpeed: 7
+  jumpHeight: 0
   maxCoals: 80
   currentCoals: 20
 --- !u!4 &1315789632

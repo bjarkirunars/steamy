@@ -20,6 +20,19 @@ public class UpgradeScreen : MonoBehaviour
             )
         {
             GameManager.instance.maxCarSpeed = int.Parse(obj.name.Substring(obj.name.IndexOf("0")));
+            obj.GetComponent<Toggle>().interactable = false;
+        }
+    }
+
+    public void IncreaseJump(GameObject obj)
+    {
+        if (
+            obj.GetComponent<Toggle>().isOn &&
+            int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) > GameManager.instance.jumpHeight
+            )
+        {
+            GameManager.instance.jumpHeight = int.Parse(obj.name.Substring(obj.name.IndexOf("0")));
+            obj.GetComponent<Toggle>().interactable = false;
         }
     }
 }

@@ -6,7 +6,6 @@ public class CarMovement : MonoBehaviour
 {
     public float rotationSpeed;
     private float startX;
-    public float jumpSpeed;
     private Rigidbody2D player;
 
     public Transform groundCheck;
@@ -16,7 +15,8 @@ public class CarMovement : MonoBehaviour
     
     public ParticleSystem frontSteam;
     public ParticleSystem backSteam;
-    private void Start() {
+    private void Start() 
+    {
         startX = Mathf.Abs(transform.position.x);
         player = GetComponent<Rigidbody2D>();
     }
@@ -32,7 +32,7 @@ public class CarMovement : MonoBehaviour
             // seemed to keep moving forward even with negative speed
 
             isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
-            player.velocity = new   Vector2(carSpeed, player.velocity.y);
+            player.velocity = new Vector2(carSpeed, player.velocity.y);
             if (Input.GetAxis("Horizontal") <0)
             {
                 transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
@@ -47,7 +47,7 @@ public class CarMovement : MonoBehaviour
             if(Input.GetButtonDown("Jump") && isTouchingGround)
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
-                player.velocity = new   Vector2(player.velocity.x, jumpSpeed);//*Time.deltaTime);
+                player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
             }
         }
         else {

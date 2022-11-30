@@ -14,12 +14,12 @@ public class UpgradeScreen : MonoBehaviour
 
     public void IncreaseSpeed(GameObject obj)
     {
-        if (obj.GetComponent<Toggle>().isOn)
+        if (
+            obj.GetComponent<Toggle>().isOn &&
+            int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) > GameManager.instance.maxCarSpeed
+            )
         {
-            GameManager.instance.carSpeed += int.Parse(obj.name.Substring(6));
-        } else
-        {
-            GameManager.instance.carSpeed -= int.Parse(obj.name.Substring(6));
+            GameManager.instance.maxCarSpeed = int.Parse(obj.name.Substring(obj.name.IndexOf("0")));
         }
     }
 }

@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     // public GameObject gameOverScreen;
     // public TextMeshProUGUI currencyLabel;
     private bool gameRunning = true;
-    private int maxCarSpeed;
-    public int carSpeed = 5;
+    public int maxCarSpeed = 1;
+    public int carSpeed = 1;
     public int maxCoals = 80;
     public int currentCoals = 50;
     private int currency;

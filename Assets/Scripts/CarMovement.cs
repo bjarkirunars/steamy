@@ -6,10 +6,19 @@ public class CarMovement : MonoBehaviour
 {
     public float rotationSpeed;
     private float startX;
+    public float jumpSpeed;
+    private Rigidbody2D player;
+
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask groundLayer;
+    private bool isTouchingGround;
+    
     public ParticleSystem frontSteam;
     public ParticleSystem backSteam;
     private void Start() {
         startX = Mathf.Abs(transform.position.x);
+        player = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -22,7 +31,8 @@ public class CarMovement : MonoBehaviour
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
 
-            transform.Translate(Vector2.right * Time.deltaTime * carSpeed);
+            isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
+            player.velocity = new   Vector2(carSpeed, player.velocity.y);
             if (Input.GetAxis("Horizontal") <0)
             {
                 transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
@@ -32,6 +42,12 @@ public class CarMovement : MonoBehaviour
             {
                 transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
                 backSteam.Play();
+            }
+
+            if(Input.GetButtonDown("Jump") && isTouchingGround)
+            {
+                //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+                player.velocity = new   Vector2(player.velocity.x, jumpSpeed);//*Time.deltaTime);
             }
         }
         else {

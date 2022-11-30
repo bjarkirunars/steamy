@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 100392831}
   - component: {fileID: 100392830}
   - component: {fileID: 100392829}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: Track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 436654675}
   - component: {fileID: 436654677}
   - component: {fileID: 436654676}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: Track (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1102,7 +1102,7 @@ GameObject:
   - component: {fileID: 480309649}
   - component: {fileID: 480309651}
   - component: {fileID: 480309650}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: Track (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1320,7 +1320,7 @@ GameObject:
   - component: {fileID: 490047767}
   - component: {fileID: 490047769}
   - component: {fileID: 490047768}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: Track (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1695,7 +1695,7 @@ GameObject:
   - component: {fileID: 526398084}
   - component: {fileID: 526398086}
   - component: {fileID: 526398085}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: Track (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 815281173}
   - component: {fileID: 815281175}
   - component: {fileID: 815281174}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: Track (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2379,8 +2379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271f176a03a2c88428bc23c671c5eccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 0}
-  currencyLabel: {fileID: 0}
+  maxCarSpeed: 1
   carSpeed: 2
   maxCoals: 30
   currentCoals: 30
@@ -2625,8 +2624,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1187402105, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
+      propertyPath: jumpSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187402105, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 1811893884}
+    - target: {fileID: 1187402105, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
       propertyPath: rotationSpeed
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187402105, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
+      propertyPath: groundCheckRadius
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187402105, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6480921438534167182, guid: 50989e8bb7c724c3e873adf705716d42,
         type: 3}
@@ -2883,7 +2898,7 @@ GameObject:
   - component: {fileID: 1370097632}
   - component: {fileID: 1370097634}
   - component: {fileID: 1370097633}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: Track (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3351,7 +3366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1546375047}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3638,6 +3653,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1811893883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1811893884}
+  m_Layer: 13
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1811893884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811893883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1907177321}
+  m_RootOrder: 55
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1907177318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6480921438534427648, guid: 50989e8bb7c724c3e873adf705716d42,

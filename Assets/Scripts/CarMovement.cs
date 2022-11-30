@@ -13,7 +13,7 @@ public class CarMovement : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask groundLayer;
     private bool isTouchingGround;
-    void Start() {
+    
     public ParticleSystem frontSteam;
     public ParticleSystem backSteam;
     private void Start() {

@@ -7,16 +7,27 @@ using UnityEngine.UI;
 public class StoreHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public TMPro.TextMeshProUGUI priceLabel;
-    private Toggle[] toggleList;
+    private Toggle[] speedToggleList;
+    private Toggle[] jumpToggleList;
     private int priceToPay;
 
     void Start()
     {
-        toggleList = GameObject.Find("SpeedParent").GetComponentsInChildren<Toggle>();
-        foreach (Toggle toggler in toggleList)
+        speedToggleList = GameObject.Find("SpeedParent").GetComponentsInChildren<Toggle>();
+        foreach (Toggle toggler in speedToggleList)
         {
             var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
             if (GameManager.instance.maxCarSpeed >= togglerNumber)
+            {
+                toggler.isOn = true;
+                toggler.interactable = false;
+            }
+        }
+        jumpToggleList = GameObject.Find("JumpParent").GetComponentsInChildren<Toggle>();
+        foreach (Toggle toggler in jumpToggleList)
+        {
+            var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
+            if (GameManager.instance.jumpHeight >= togglerNumber)
             {
                 toggler.isOn = true;
                 toggler.interactable = false;

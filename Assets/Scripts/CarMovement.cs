@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CarMovement : MonoBehaviour
 {
@@ -15,10 +16,18 @@ public class CarMovement : MonoBehaviour
     
     public ParticleSystem frontSteam;
     public ParticleSystem backSteam;
+
+    public GameObject gameOverScreen;
+    public TextMeshProUGUI currencyLabel;
+
     private void Start() 
     {
         startX = Mathf.Abs(transform.position.x);
         player = GetComponent<Rigidbody2D>();
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -53,6 +62,8 @@ public class CarMovement : MonoBehaviour
         else {
             int currencyEarned = CalculateCurrency();
             GameManager.instance.GameOver(currencyEarned);
+            gameOverScreen.SetActive(true);
+            currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
         }
     }
 

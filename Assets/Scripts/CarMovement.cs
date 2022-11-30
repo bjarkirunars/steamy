@@ -24,7 +24,7 @@ public class CarMovement : MonoBehaviour
         if (GameManager.instance.currentCoals > 0)
         {
             isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
-            transform.Translate(Vector2.right * Time.deltaTime * GameManager.instance.carSpeed);
+            player.velocity = new   Vector2(GameManager.instance.carSpeed, player.velocity.y);
             if (Input.GetAxis("Horizontal") <0)
             {
                 transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);

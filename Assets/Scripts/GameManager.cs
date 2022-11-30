@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,9 +15,7 @@ public class GameManager : MonoBehaviour
     public int maxCoals = 80;
     public int currentCoals = 50;
     private int currency;
-    private CarMovement car;
 
-    // Start is called before the first frame update
     void Awake()
     {
         if (instance == null) {
@@ -33,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public void RefillCoal() {
         CarMovement car = GameObject.Find("Car").GetComponent<CarMovement>();
+        // Make sure to rename the Speedpunk GameObject to "Car"
         car.RefillCoal();
         Debug.Log("Car has been refilled!!!");
     }

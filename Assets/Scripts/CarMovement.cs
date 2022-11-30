@@ -16,7 +16,12 @@ public class CarMovement : MonoBehaviour
     {
         if (GameManager.instance.currentCoals > 0)
         {
-            transform.Translate(Vector2.right * Time.deltaTime * GameManager.instance.carSpeed);
+            int carSpeed = GameManager.instance.carSpeed;
+            if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
+            // Edge case for when speed is < 0 since car 
+            // seemed to keep moving forward even with negative speed
+
+            transform.Translate(Vector2.right * Time.deltaTime * carSpeed);
             if (Input.GetAxis("Horizontal") <0)
             {
                 transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);

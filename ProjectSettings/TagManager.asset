@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
+  - NonCollisionObstacle
+  - CarHitBox
+  - Tyre
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - EnemyWeapon
   - BossWeakPoint
   - Bullet
-  - 
+  - NonCollisionObstacle
   - 
   - 
   - 

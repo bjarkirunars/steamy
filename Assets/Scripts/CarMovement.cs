@@ -6,6 +6,11 @@ public class CarMovement : MonoBehaviour
 {
     public float rotationSpeed;
     private float startX;
+    public Rigidbody2D car;
+    public Vector2 direction;
+    public float impulse;
+    public ParticleSystem frontSteam;
+    public ParticleSystem backSteam;
 
     private void Start() {
         startX = Mathf.Abs(transform.position.x);
@@ -16,14 +21,17 @@ public class CarMovement : MonoBehaviour
     {
         if (GameManager.instance.currentCoals > 0)
         {
-            transform.Translate(Vector2.right * Time.deltaTime * GameManager.instance.carSpeed);
+            car.velocity = direction.normalized * impulse;
+            //transform.Translate(Vector2.right * Time.deltaTime * GameManager.instance.carSpeed);
             if (Input.GetAxis("Horizontal") <0)
             {
                 transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
+                frontSteam.Play();
             }
             if (Input.GetAxis("Horizontal") > 0)
             {
                 transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
+                backSteam.Play();
             }
         }
         else {
@@ -42,4 +50,5 @@ public class CarMovement : MonoBehaviour
         float totalDistance = startX + endX;
         return (int) totalDistance;
     }
+
 }

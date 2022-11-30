@@ -21,7 +21,7 @@ public class CarMovement : MonoBehaviour
     {
         if (GameManager.instance.currentCoals > 0)
         {
-            car.velocity = direction.normalized * impulse;
+            car.velocity = direction * impulse;
             //transform.Translate(Vector2.right * Time.deltaTime * GameManager.instance.carSpeed);
             if (Input.GetAxis("Horizontal") <0)
             {

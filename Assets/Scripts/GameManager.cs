@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private bool gameRunning = true;
     private int maxCarSpeed;
     public int carSpeed;
+    public int maxCoals;
     public int maxCoalAmount;
     public int currentCoals = 50;
     private int currency;

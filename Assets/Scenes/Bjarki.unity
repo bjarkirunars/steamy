@@ -2379,7 +2379,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271f176a03a2c88428bc23c671c5eccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverScreen: {fileID: 0}
+  currencyLabel: {fileID: 0}
   carSpeed: 2
+  maxCoals: 30
   currentCoals: 30
 --- !u!4 &849243192
 Transform:
@@ -2621,6 +2624,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1187402105, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
+      propertyPath: rotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6480921438534167182, guid: 50989e8bb7c724c3e873adf705716d42,
         type: 3}
       propertyPath: m_RootOrder
@@ -3656,8 +3663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthMeter: {fileID: 2116871783}
-  currentHealth: 50
-  maxHealth: 80
 --- !u!1 &2042822218
 GameObject:
   m_ObjectHideFlags: 0

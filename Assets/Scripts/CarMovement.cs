@@ -14,6 +14,9 @@ public class CarMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isTouchingGround;
     void Start() {
+    public ParticleSystem frontSteam;
+    public ParticleSystem backSteam;
+    private void Start() {
         startX = Mathf.Abs(transform.position.x);
         player = GetComponent<Rigidbody2D>();
     }
@@ -33,10 +36,12 @@ public class CarMovement : MonoBehaviour
             if (Input.GetAxis("Horizontal") <0)
             {
                 transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
+                frontSteam.Play();
             }
             if (Input.GetAxis("Horizontal") > 0)
             {
                 transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
+                backSteam.Play();
             }
 
             if(Input.GetButtonDown("Jump") && isTouchingGround)
@@ -61,4 +66,5 @@ public class CarMovement : MonoBehaviour
         float totalDistance = startX + endX;
         return (int) totalDistance;
     }
+
 }

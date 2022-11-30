@@ -9,7 +9,7 @@ public class UpgradeScreen : MonoBehaviour
     public void LoadScene(string scenename)
     {
         GameManager.instance.RestartGame();
-        SceneManager.LoadScene("Bjarki");
+        SceneManager.LoadScene(scenename);
     }
 
     public void IncreaseSpeed(GameObject obj)

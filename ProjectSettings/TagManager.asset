@@ -5,13 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-<<<<<<< HEAD
-  - Enemy
-=======
   - NonCollisionObstacle
   - CarHitBox
   - Tyre
->>>>>>> a596e66b781712370d2920f758591733f02d41e9
   layers:
   - Default
   - TransparentFX
@@ -33,11 +29,7 @@ TagManager:
   - EnemyWeapon
   - BossWeakPoint
   - Bullet
-<<<<<<< HEAD
-  - 
-=======
   - NonCollisionObstacle
->>>>>>> a596e66b781712370d2920f758591733f02d41e9
   - 
   - 
   - 

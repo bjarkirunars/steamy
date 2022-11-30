@@ -2399,6 +2399,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &990130926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1184848709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1024727787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6480921438534372126, guid: 50989e8bb7c724c3e873adf705716d42,
@@ -2412,7 +2418,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024727787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6b4567506390b0458eafabbd0d41543, type: 3}
   m_Name: 
@@ -2433,14 +2439,14 @@ WheelJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 31.475033, y: 1.9078082}
+  m_ConnectedAnchor: {x: 32.342796, y: -7.637605}
   m_Suspension:
     m_DampingRatio: 1
-    m_Frequency: 1000
+    m_Frequency: 10
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 0
+    m_MotorSpeed: 10
     m_MaximumMotorForce: 10000
 --- !u!50 &1024727795
 Rigidbody2D:
@@ -2669,9 +2675,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1187402105, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1187402106, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
       propertyPath: m_Mass
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187402106, guid: 50989e8bb7c724c3e873adf705716d42, type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6480921438534167182, guid: 50989e8bb7c724c3e873adf705716d42,
         type: 3}
@@ -2753,6 +2767,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedPunk Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6480921438534427648, guid: 50989e8bb7c724c3e873adf705716d42,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6480921438534431560, guid: 50989e8bb7c724c3e873adf705716d42,
         type: 3}
       propertyPath: m_IsActive
@@ -2782,7 +2801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1172346212
 Transform:
   m_ObjectHideFlags: 0
@@ -7577,6 +7596,75 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1001 &1184848709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1487011166091957066, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_Name
+      value: Car Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487011166092221892, guid: df5fd423fba1ab146945a28ecfd42be7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df5fd423fba1ab146945a28ecfd42be7, type: 3}
 --- !u!1 &1207977287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7662,7 +7750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1292436785
 Transform:
   m_ObjectHideFlags: 0
@@ -13084,8 +13172,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1907177321}
-  m_Follow: {fileID: 1907177321}
+  m_LookAt: {fileID: 990130926}
+  m_Follow: {fileID: 990130926}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -13217,7 +13305,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621172994}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6b4567506390b0458eafabbd0d41543, type: 3}
   m_Name: 
@@ -13238,14 +13326,14 @@ WheelJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -54.623592, y: 2.1427276}
+  m_ConnectedAnchor: {x: -54.1897, y: -5.6671576}
   m_Suspension:
     m_DampingRatio: 1
-    m_Frequency: 10000
+    m_Frequency: 10
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 0
+    m_MotorSpeed: 10
     m_MaximumMotorForce: 10000
 --- !u!50 &1621173002
 Rigidbody2D:

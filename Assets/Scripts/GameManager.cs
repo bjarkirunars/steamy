@@ -15,9 +15,7 @@ public class GameManager : MonoBehaviour
     private int maxCoals = 80;
     public int currentCoals = 50;
     private int currency;
-    private CarMovement car;
 
-    // Start is called before the first frame update
     void Awake()
     {
         if (instance == null) {

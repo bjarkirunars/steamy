@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public int jumpHeight = 0;
     public int maxCoals = 80;
     public int currentCoals = 50;
-    private int currency;
+    public int currency;
 
     void Awake()
     {

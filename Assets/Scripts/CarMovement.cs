@@ -42,6 +42,16 @@ public class CarMovement : MonoBehaviour
 
             isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
             player.velocity = new Vector2(carSpeed, player.velocity.y);
+            // if (Input.GetAxis("Horizontal") <0)
+            // {
+            //     transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
+            //     frontSteam.Play();
+            // }
+            // if (Input.GetAxis("Horizontal") > 0)
+            // {
+            //     transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
+            //     backSteam.Play();
+            // }
             if (Input.GetAxisRaw ("Horizontal") != 0) {
                 GetComponent<Rigidbody2D> ().AddTorque (rotationSpeed * Input.GetAxisRaw ("Horizontal") * -1);
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SteamObstacle : MonoBehaviour
 {
-    private int speedPenalty = 5;
+    private int speedPenalty = 4;
 
     private void OnTriggerEnter2D(Collider2D other) {
         // Decrease car speed when car enters the steam obstacle

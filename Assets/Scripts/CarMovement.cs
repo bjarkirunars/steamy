@@ -54,7 +54,7 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Play();
             }
 
-            if(Input.GetButtonDown("Jump") && isTouchingGround) {
+            if (Input.GetButtonDown("Jump") && isTouchingGround) {
                 player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
             }
         }

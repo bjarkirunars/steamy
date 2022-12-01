@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public MeterScript healthMeter; //meter code
     private float timer = 0.0f;
-    private float waitTime = 2.0f;
+    private float waitTime = 0.2f;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
         healthMeter.SetHealth(GameManager.instance.currentCoals); //meter code
         if (timer > waitTime && GameManager.instance.currentCoals > 0)
         {
-            GameManager.instance.currentCoals -= 5; //meter code
+            GameManager.instance.currentCoals -= 1; //meter code
             timer = 0.0f;
         }
     }

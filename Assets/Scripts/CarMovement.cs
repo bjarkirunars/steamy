@@ -56,7 +56,7 @@ public class CarMovement : MonoBehaviour
                 GetComponent<Rigidbody2D> ().AddTorque (rotationSpeed * Input.GetAxisRaw ("Horizontal") * -1);
             }
 
-            if(Input.GetButtonDown("Jump") && isTouchingGround)
+            if (Input.GetButtonDown("Jump") && isTouchingGround)
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);

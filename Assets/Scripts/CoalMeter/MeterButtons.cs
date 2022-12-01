@@ -13,7 +13,6 @@ public class MeterButtons : MonoBehaviour
     {
         currentHealth = maxHealth; //sets your variable to maximum from the start
         healthMeter.SetMaxHealth(maxHealth); //sets your meter's fill to maximum from the start
-
     }
 
 
@@ -26,12 +25,12 @@ public class MeterButtons : MonoBehaviour
     public void Increase()
     {
 
-            currentHealth += 10; //increases the variable's value by 10
+            currentHealth += 45; //increases the variable's value by 45
     }
 
     public void Decrease()
     {
 
-            currentHealth -= 10; //decreases the variable's value by 10
+            currentHealth -= 45; //decreases the variable's value by 45
     }
 }

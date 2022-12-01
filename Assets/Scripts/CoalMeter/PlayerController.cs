@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public MeterScript healthMeter; //meter code
     private float timer = 0.0f;
-    private float waitTime = 0.4f;
+    private float waitTime = 0.2f;
 
     void Start()
     {

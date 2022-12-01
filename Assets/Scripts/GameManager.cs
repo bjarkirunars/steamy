@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     public int maxCarSpeed = 1;
     public int carSpeed = 1;
     public int jumpHeight = 0;
-    public int maxCoals = 80;
-    public int currentCoals = 50;
+    public int maxCoals = 360;
+    public int currentCoals = 180;
     public int currency;
 
     void Awake()

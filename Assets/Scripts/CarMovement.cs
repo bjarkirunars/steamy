@@ -28,6 +28,8 @@ public class CarMovement : MonoBehaviour
     JointMotor2D motorBack;
     public WheelJoint2D frontwheel;
     public WheelJoint2D backwheel;
+    
+    public AudioClip jumpSound;
 
     private void Start() 
     {
@@ -80,6 +82,7 @@ public class CarMovement : MonoBehaviour
             if(Input.GetButtonDown("Jump") && isTouchingGround)
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+                GameManager.instance.PlayClip(jumpSound);
                 player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
                 jumpSteamParticle.Play();
             }

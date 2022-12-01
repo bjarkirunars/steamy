@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class CoalPickup : MonoBehaviour
 {
-    public AudioSource audioManager;
+    public AudioClip coalPickupSound;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        audioManager.Play(); 
-        // FIXME: Audio doesn't play since powerup is destroyed too quickly
+        GameManager.instance.PlayClip(coalPickupSound);
         GameManager.instance.RefillCoal();
         Destroy(gameObject);
     }

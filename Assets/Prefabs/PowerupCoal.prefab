@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7566f79a2b6ed1946a8b324df74dd05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coalPickupSound: {fileID: 8300000, guid: e793553c553320b4a9230eb03d569f4d, type: 3}

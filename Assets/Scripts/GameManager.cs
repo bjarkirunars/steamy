@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int coalLevel;
     public int currentCoals = 60;
     public int currency;
+    public AudioClip gameOverClip;
 
     void Awake()
     {
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(int currencyEarned) {
         if (gameRunning) {
+            PlayClip(gameOverClip);
             gameRunning = false;
             currency += currencyEarned;
         }
@@ -63,5 +65,10 @@ public class GameManager : MonoBehaviour
 
     public int GetCurrency() {
         return currency;
+    }
+    public void PlayClip(AudioClip clip) {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = clip;
+        audio.Play();
     }
 }

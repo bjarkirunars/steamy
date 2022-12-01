@@ -78,4 +78,36 @@ public class UpgradeScreen : MonoBehaviour
             }
         }
     }
+
+    void FixedUpdate()
+    {
+        speedToggleList = GameObject.Find("SpeedParent").GetComponentsInChildren<Toggle>();
+        foreach (Toggle toggler in speedToggleList)
+        {
+            var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
+            if (GameManager.instance.maxCarSpeed >= togglerNumber)
+            {
+                toggler.isOn = true;
+                toggler.interactable = false;
+            }
+            if (GameManager.instance.currency < togglerNumber*10)
+            {
+                toggler.interactable = false;
+            }
+        }
+        jumpToggleList = GameObject.Find("JumpParent").GetComponentsInChildren<Toggle>();
+        foreach (Toggle toggler in jumpToggleList)
+        {
+            var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
+            if (GameManager.instance.jumpHeight * 5 >= togglerNumber)
+            {
+                toggler.isOn = true;
+                toggler.interactable = false;
+            }
+            if (GameManager.instance.currency < togglerNumber*10)
+            {
+                toggler.interactable = false;
+            }
+        }
+    }
 }

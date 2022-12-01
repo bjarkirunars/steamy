@@ -42,15 +42,18 @@ public class CarMovement : MonoBehaviour
 
             isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
             player.velocity = new Vector2(carSpeed, player.velocity.y);
-            if (Input.GetAxis("Horizontal") <0)
-            {
-                transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
-                frontSteam.Play();
-            }
-            if (Input.GetAxis("Horizontal") > 0)
-            {
-                transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
-                backSteam.Play();
+            // if (Input.GetAxis("Horizontal") <0)
+            // {
+            //     transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
+            //     frontSteam.Play();
+            // }
+            // if (Input.GetAxis("Horizontal") > 0)
+            // {
+            //     transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
+            //     backSteam.Play();
+            // }
+            if (Input.GetAxisRaw ("Horizontal") != 0) {
+                GetComponent<Rigidbody2D> ().AddTorque (rotationSpeed * Input.GetAxisRaw ("Horizontal") * -1);
             }
 
             if(Input.GetButtonDown("Jump") && isTouchingGround)
@@ -59,7 +62,7 @@ public class CarMovement : MonoBehaviour
                 player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
             }
         }
-        else {
+        else if (player.velocity.x == 0 && player.velocity.y == 0) {
             int currencyEarned = CalculateCurrency();
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);

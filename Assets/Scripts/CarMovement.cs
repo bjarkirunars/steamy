@@ -51,7 +51,6 @@ public class CarMovement : MonoBehaviour
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
 
-            isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
             //player.velocity = new Vector2(carSpeed, player.velocity.y);
             //if (Input.GetAxis("Horizontal") <0)
             //{
@@ -64,16 +63,11 @@ public class CarMovement : MonoBehaviour
             //    backSteam.Play();
             //}
             motorFront.motorSpeed = carSpeed * -1;
-            motorFront.maxMotorTorque = 100;
+            motorFront.maxMotorTorque = 1000;
             frontwheel.motor = motorFront;
             motorBack.motorSpeed = carSpeed * -1;
-            motorBack.maxMotorTorque = 100;
+            motorBack.maxMotorTorque = 1000;
             backwheel.motor = motorBack;
-
-            if (Input.GetAxisRaw("Horizontal") != 0)
-            {
-
-                GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * Input.GetAxisRaw("Horizontal") * -1);
 
             if (axis != 0) {
                 steamAudio.Play();
@@ -91,6 +85,13 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);
             currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+        } else {
+            motorFront.motorSpeed = 0;
+            motorFront.maxMotorTorque = 0;
+            frontwheel.motor = motorFront;
+            motorBack.motorSpeed = 0;
+            motorBack.maxMotorTorque = 0;
+            backwheel.motor = motorBack;
         }
     }
 

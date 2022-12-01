@@ -16,6 +16,7 @@ public class CarMovement : MonoBehaviour
     
     public ParticleSystem frontSteamParticle;
     public ParticleSystem backSteamParticle;
+    public ParticleSystem jumpSteamParticle;
 
     public AudioSource steamAudio;
 
@@ -44,7 +45,7 @@ public class CarMovement : MonoBehaviour
     {
         if (GameManager.instance.currentCoals > 0)
         {
-            int carSpeed = GameManager.instance.carSpeed;
+            int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
             isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
             if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
@@ -76,11 +77,14 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Play();
             }
 
-            if (Input.GetButtonDown("Jump") && isTouchingGround) {
-                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
+            if(Input.GetButtonDown("Jump") && isTouchingGround)
+            {
+                //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+                player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+                jumpSteamParticle.Play();
             }
         }
-        else if (player.velocity.x == 0 && player.velocity.y == 0) {
+        else if (player.velocity.x <= 0 && player.velocity.y <= 0) {
             int currencyEarned = CalculateCurrency();
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);
@@ -97,7 +101,7 @@ public class CarMovement : MonoBehaviour
 
     public void RefillCoal() {
         // Refill the coal tank to full
-        GameManager.instance.currentCoals += 10;
+        GameManager.instance.currentCoals += 20;
     }
 
     public int CalculateCurrency() {

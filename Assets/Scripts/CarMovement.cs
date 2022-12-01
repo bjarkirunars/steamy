@@ -22,6 +22,11 @@ public class CarMovement : MonoBehaviour
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
+    JointMotor2D motorFront;
+
+    JointMotor2D motorBack;
+    public WheelJoint2D frontwheel;
+    public WheelJoint2D backwheel;
 
     private void Start() 
     {
@@ -45,7 +50,24 @@ public class CarMovement : MonoBehaviour
             if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
-            player.velocity = new Vector2(carSpeed, player.velocity.y);
+
+            //player.velocity = new Vector2(carSpeed, player.velocity.y);
+            //if (Input.GetAxis("Horizontal") <0)
+            //{
+            //    transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
+            //    frontSteam.Play();
+            //}
+            //if (Input.GetAxis("Horizontal") > 0)
+            //{
+            //    transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
+            //    backSteam.Play();
+            //}
+            motorFront.motorSpeed = carSpeed * -1;
+            motorFront.maxMotorTorque = 1000;
+            frontwheel.motor = motorFront;
+            motorBack.motorSpeed = carSpeed * -1;
+            motorBack.maxMotorTorque = 1000;
+            backwheel.motor = motorBack;
 
             if (axis != 0) {
                 steamAudio.Play();
@@ -63,6 +85,13 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);
             currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+        } else {
+            motorFront.motorSpeed = 0;
+            motorFront.maxMotorTorque = 0;
+            frontwheel.motor = motorFront;
+            motorBack.motorSpeed = 0;
+            motorBack.maxMotorTorque = 0;
+            backwheel.motor = motorBack;
         }
     }
 

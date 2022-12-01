@@ -19,6 +19,11 @@ public class CarMovement : MonoBehaviour
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
+    JointMotor2D motorFront;
+
+    JointMotor2D motorBack;
+    public WheelJoint2D frontwheel;
+    public WheelJoint2D backwheel;
 
     private void Start() 
     {
@@ -41,7 +46,7 @@ public class CarMovement : MonoBehaviour
             // seemed to keep moving forward even with negative speed
 
             isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
-            player.velocity = new Vector2(carSpeed, player.velocity.y);
+            //player.velocity = new Vector2(carSpeed, player.velocity.y);
             //if (Input.GetAxis("Horizontal") <0)
             //{
             //    transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
@@ -52,6 +57,13 @@ public class CarMovement : MonoBehaviour
             //    transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
             //    backSteam.Play();
             //}
+            motorFront.motorSpeed = carSpeed * -1;
+            motorFront.maxMotorTorque = 100;
+            frontwheel.motor = motorFront;
+            motorBack.motorSpeed = carSpeed * -1;
+            motorBack.maxMotorTorque = 100;
+            backwheel.motor = motorBack;
+
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
 

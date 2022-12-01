@@ -14,9 +14,9 @@ public class CarMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isTouchingGround;
     
-    public ParticleSystem jumpSteam;
     public ParticleSystem frontSteamParticle;
     public ParticleSystem backSteamParticle;
+    public ParticleSystem jumpSteamParticle;
 
     public AudioSource steamAudio;
 
@@ -81,7 +81,7 @@ public class CarMovement : MonoBehaviour
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
-                jumpSteam.Play();
+                jumpSteamParticle.Play();
             }
         }
         else if (player.velocity.x == 0 && player.velocity.y == 0) {

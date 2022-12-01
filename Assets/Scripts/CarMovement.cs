@@ -16,6 +16,7 @@ public class CarMovement : MonoBehaviour
     
     public ParticleSystem frontSteam;
     public ParticleSystem backSteam;
+    public ParticleSystem jumpSteam;
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
@@ -57,6 +58,7 @@ public class CarMovement : MonoBehaviour
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+                jumpSteam.Play();
             }
         }
         else {

@@ -663,9 +663,9 @@ MonoBehaviour:
   maxCarSpeed: 5000
   carSpeed: 1000
   jumpHeight: 0
-  maxCoals: 200
+  maxCoals: 60
   coalLevel: 60
-  currentCoals: 200
+  currentCoals: 60
   currency: 0
   gameOverClip: {fileID: 0}
 --- !u!4 &849243192

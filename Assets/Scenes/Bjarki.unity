@@ -1078,6 +1078,7 @@ MonoBehaviour:
   jumpHeight: 0
   maxCoals: 30
   currentCoals: 30
+  currency: 0
 --- !u!4 &849243192
 Transform:
   m_ObjectHideFlags: 0
@@ -2485,6 +2486,11 @@ PrefabInstance:
       propertyPath: currencyLabel
       value: 
       objectReference: {fileID: 8404187123449471764}
+    - target: {fileID: 6788790068280657972, guid: 24654aeb6787849f48f7c030415d170a,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6788790068280657972, guid: 24654aeb6787849f48f7c030415d170a,
         type: 3}
       propertyPath: gameOverScreen

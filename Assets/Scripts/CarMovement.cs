@@ -14,8 +14,12 @@ public class CarMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isTouchingGround;
     
-    public ParticleSystem frontSteam;
-    public ParticleSystem backSteam;
+    public ParticleSystem frontSteamParticle;
+    public ParticleSystem backSteamParticle;
+
+    public AudioSource frontSteamAudio;
+    public AudioSource backSteamAudio;
+
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
@@ -36,35 +40,48 @@ public class CarMovement : MonoBehaviour
     {
         if (GameManager.instance.currentCoals > 0)
         {
+            float rotationAngle;
             int carSpeed = GameManager.instance.carSpeed;
+            float axis = Input.GetAxis("Horizontal");
+            // Debug.Log("Axis: " + axis.ToString());
             if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
 
             isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
             player.velocity = new Vector2(carSpeed, player.velocity.y);
-            if (Input.GetAxis("Horizontal") <0)
-            {
-                transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
-                frontSteam.Play();
+            if (axis < 0) {
+            // Left arrow or A is being pressed/held
+                rotationAngle = rotationSpeed * Time.fixedDeltaTime; // * axis;
+                
+                Debug.Log("Left arrow is being held: " + rotationAngle.ToString()); 
+                transform.Rotate(0, 0, rotationAngle, Space.Self);
+                frontSteamParticle.Play();
+                frontSteamAudio.Play();
             }
-            if (Input.GetAxis("Horizontal") > 0)
-            {
-                transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
-                backSteam.Play();
+
+            if (axis > 0) {
+            // Right arrow or D is being pressed/held
+                rotationAngle = -rotationSpeed * Time.fixedDeltaTime; // * axis;
+                Debug.Log("Right arrow is being held: " + rotationAngle.ToString());
+                transform.Rotate(0, 0, rotationAngle, Space.Self);
+                backSteamParticle.Play();
+                backSteamAudio.Play();
             }
 
             if(Input.GetButtonDown("Jump") && isTouchingGround)
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
-                player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
             }
         }
         else {
-            int currencyEarned = CalculateCurrency();
-            GameManager.instance.GameOver(currencyEarned);
-            gameOverScreen.SetActive(true);
-            currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+            if (player.velocity.x == 0 && player.velocity.y == 0) {
+                int currencyEarned = CalculateCurrency();
+                GameManager.instance.GameOver(currencyEarned);
+                gameOverScreen.SetActive(true);
+                currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+            }
         }
     }
 

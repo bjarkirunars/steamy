@@ -1771,6 +1771,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8c462cbb769ce43bb9cd5a4c850dc8, type: 3}
+--- !u!198 &797678450 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3596185744605546636, guid: bd8c462cbb769ce43bb9cd5a4c850dc8,
+    type: 3}
+  m_PrefabInstance: {fileID: 797678449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &951283288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2501,6 +2507,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5462927303335058903, guid: fe392a75c9327974299775b180d18f58,
+        type: 3}
+      propertyPath: jumpSteam
+      value: 
+      objectReference: {fileID: 797678450}
     - target: {fileID: 5462927303335058903, guid: fe392a75c9327974299775b180d18f58,
         type: 3}
       propertyPath: steamAudio

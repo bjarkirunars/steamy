@@ -16,12 +16,18 @@ public class CarMovement : MonoBehaviour
     
     public ParticleSystem frontSteamParticle;
     public ParticleSystem backSteamParticle;
+    public ParticleSystem jumpSteamParticle;
 
     public AudioSource steamAudio;
 
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
+    JointMotor2D motorFront;
+
+    JointMotor2D motorBack;
+    public WheelJoint2D frontwheel;
+    public WheelJoint2D backwheel;
 
     private void Start() 
     {
@@ -39,13 +45,30 @@ public class CarMovement : MonoBehaviour
     {
         if (GameManager.instance.currentCoals > 0)
         {
-            int carSpeed = GameManager.instance.carSpeed;
+            int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
             isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
             if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
-            player.velocity = new Vector2(carSpeed, player.velocity.y);
+
+            //player.velocity = new Vector2(carSpeed, player.velocity.y);
+            //if (Input.GetAxis("Horizontal") <0)
+            //{
+            //    transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
+            //    frontSteam.Play();
+            //}
+            //if (Input.GetAxis("Horizontal") > 0)
+            //{
+            //    transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
+            //    backSteam.Play();
+            //}
+            motorFront.motorSpeed = carSpeed * -1;
+            motorFront.maxMotorTorque = 1000;
+            frontwheel.motor = motorFront;
+            motorBack.motorSpeed = carSpeed * -1;
+            motorBack.maxMotorTorque = 1000;
+            backwheel.motor = motorBack;
 
             if (axis != 0) {
                 steamAudio.Play();
@@ -54,21 +77,31 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Play();
             }
 
-            if (Input.GetButtonDown("Jump") && isTouchingGround) {
-                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
+            if(Input.GetButtonDown("Jump") && isTouchingGround)
+            {
+                //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+                player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+                jumpSteamParticle.Play();
             }
         }
-        else if (player.velocity.x == 0 && player.velocity.y == 0) {
+        else if (player.velocity.x <= 0 && player.velocity.y <= 0) {
             int currencyEarned = CalculateCurrency();
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);
             currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+        } else {
+            motorFront.motorSpeed = 0;
+            motorFront.maxMotorTorque = 0;
+            frontwheel.motor = motorFront;
+            motorBack.motorSpeed = 0;
+            motorBack.maxMotorTorque = 0;
+            backwheel.motor = motorBack;
         }
     }
 
     public void RefillCoal() {
         // Refill the coal tank to full
-        GameManager.instance.currentCoals += 10;
+        GameManager.instance.currentCoals += 20;
     }
 
     public int CalculateCurrency() {

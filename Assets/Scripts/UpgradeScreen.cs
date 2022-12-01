@@ -20,11 +20,11 @@ public class UpgradeScreen : MonoBehaviour
     {
         if (
             obj.GetComponent<Toggle>().isOn &&
-            int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) > GameManager.instance.maxCarSpeed &&
+            int.Parse(obj.name.Substring(obj.name.IndexOf("0")))*1000 > GameManager.instance.maxCarSpeed &&
             GameManager.instance.currency >= int.Parse(obj.name.Substring(obj.name.IndexOf("0")))*10
             )
         {
-            GameManager.instance.maxCarSpeed = int.Parse(obj.name.Substring(obj.name.IndexOf("0")));
+            GameManager.instance.maxCarSpeed = int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) * 1000;
             obj.GetComponent<Toggle>().interactable = false;
             GameManager.instance.currency -= int.Parse(obj.name.Substring(obj.name.IndexOf("0")))*10;
             bankLabel.text = "Total Screws: " + GameManager.instance.currency;
@@ -35,11 +35,11 @@ public class UpgradeScreen : MonoBehaviour
     {
         if (
             obj.GetComponent<Toggle>().isOn &&
-            int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) > GameManager.instance.jumpHeight * 5 &&
+            int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) > GameManager.instance.jumpHeight &&
             GameManager.instance.currency >= int.Parse(obj.name.Substring(obj.name.IndexOf("0")))*10
             )
         {
-            GameManager.instance.jumpHeight = int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) / 5;
+            GameManager.instance.jumpHeight = int.Parse(obj.name.Substring(obj.name.IndexOf("0")));
             obj.GetComponent<Toggle>().interactable = false;
             GameManager.instance.currency -= int.Parse(obj.name.Substring(obj.name.IndexOf("0")))*10;
             bankLabel.text = "Total Screws: " + GameManager.instance.currency;
@@ -53,12 +53,12 @@ public class UpgradeScreen : MonoBehaviour
         foreach (Toggle toggler in speedToggleList)
         {
             var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
-            if (GameManager.instance.maxCarSpeed >= togglerNumber)
+            if (GameManager.instance.maxCarSpeed >= togglerNumber * 1000)
             {
                 toggler.isOn = true;
                 toggler.interactable = false;
             }
-            if (GameManager.instance.currency < togglerNumber*10)
+            if (GameManager.instance.currency < togglerNumber*30)
             {
                 toggler.interactable = false;
             }
@@ -72,7 +72,7 @@ public class UpgradeScreen : MonoBehaviour
                 toggler.isOn = true;
                 toggler.interactable = false;
             }
-            if (GameManager.instance.currency < togglerNumber*10)
+            if (GameManager.instance.currency < togglerNumber*30)
             {
                 toggler.interactable = false;
             }
@@ -85,7 +85,7 @@ public class UpgradeScreen : MonoBehaviour
         foreach (Toggle toggler in speedToggleList)
         {
             var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
-            if (GameManager.instance.maxCarSpeed >= togglerNumber)
+            if (GameManager.instance.maxCarSpeed >= togglerNumber * 1000)
             {
                 toggler.isOn = true;
                 toggler.interactable = false;

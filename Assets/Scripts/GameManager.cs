@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
         CarMovement car = GameObject.Find("Car").GetComponent<CarMovement>();
         // Make sure to rename the Speedpunk GameObject to "Car"
         car.RefillCoal();
-        Debug.Log("Car has been refilled!!!");
     }
 
     private void FixedUpdate()

@@ -9,21 +9,30 @@ public class CarMovement : MonoBehaviour
     private float startX;
     private Rigidbody2D player;
 
-    public Transform groundCheck;
+    // public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask groundLayer;
     private bool isTouchingGround;
     
-    public ParticleSystem frontSteam;
-    public ParticleSystem backSteam;
     public ParticleSystem jumpSteam;
+    public ParticleSystem frontSteamParticle;
+    public ParticleSystem backSteamParticle;
+
+    public AudioSource steamAudio;
+
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
+    JointMotor2D motorFront;
+
+    JointMotor2D motorBack;
+    public WheelJoint2D frontwheel;
+    public WheelJoint2D backwheel;
 
     private void Start() 
     {
-        startX = Mathf.Abs(transform.position.x);
+        startX = Mathf.Abs(transform.position.x); 
+        // Get starting position
         player = GetComponent<Rigidbody2D>();
         if (gameOverScreen != null)
         {
@@ -37,21 +46,35 @@ public class CarMovement : MonoBehaviour
         if (GameManager.instance.currentCoals > 0)
         {
             int carSpeed = GameManager.instance.carSpeed;
+            float axis = Input.GetAxisRaw("Horizontal");
+            isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
             if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
 
-            isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
-            player.velocity = new Vector2(carSpeed, player.velocity.y);
-            if (Input.GetAxis("Horizontal") <0)
-            {
-                transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
-                frontSteam.Play();
-            }
-            if (Input.GetAxis("Horizontal") > 0)
-            {
-                transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
-                backSteam.Play();
+            //player.velocity = new Vector2(carSpeed, player.velocity.y);
+            //if (Input.GetAxis("Horizontal") <0)
+            //{
+            //    transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
+            //    frontSteam.Play();
+            //}
+            //if (Input.GetAxis("Horizontal") > 0)
+            //{
+            //    transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
+            //    backSteam.Play();
+            //}
+            motorFront.motorSpeed = carSpeed * -1;
+            motorFront.maxMotorTorque = 1000;
+            frontwheel.motor = motorFront;
+            motorBack.motorSpeed = carSpeed * -1;
+            motorBack.maxMotorTorque = 1000;
+            backwheel.motor = motorBack;
+
+            if (axis != 0) {
+                steamAudio.Play();
+                GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
+                if (axis < 0) backSteamParticle.Play();
+                else frontSteamParticle.Play();
             }
 
             if(Input.GetButtonDown("Jump") && isTouchingGround)
@@ -61,11 +84,18 @@ public class CarMovement : MonoBehaviour
                 jumpSteam.Play();
             }
         }
-        else {
+        else if (player.velocity.x == 0 && player.velocity.y == 0) {
             int currencyEarned = CalculateCurrency();
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);
             currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+        } else {
+            motorFront.motorSpeed = 0;
+            motorFront.maxMotorTorque = 0;
+            frontwheel.motor = motorFront;
+            motorBack.motorSpeed = 0;
+            motorBack.maxMotorTorque = 0;
+            backwheel.motor = motorBack;
         }
     }
 

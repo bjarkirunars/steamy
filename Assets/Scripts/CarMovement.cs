@@ -9,13 +9,16 @@ public class CarMovement : MonoBehaviour
     private float startX;
     private Rigidbody2D player;
 
-    public Transform groundCheck;
+    // public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask groundLayer;
     private bool isTouchingGround;
     
-    public ParticleSystem frontSteam;
-    public ParticleSystem backSteam;
+    public ParticleSystem frontSteamParticle;
+    public ParticleSystem backSteamParticle;
+
+    public AudioSource steamAudio;
+
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
@@ -27,7 +30,8 @@ public class CarMovement : MonoBehaviour
 
     private void Start() 
     {
-        startX = Mathf.Abs(transform.position.x);
+        startX = Mathf.Abs(transform.position.x); 
+        // Get starting position
         player = GetComponent<Rigidbody2D>();
         if (gameOverScreen != null)
         {
@@ -41,6 +45,8 @@ public class CarMovement : MonoBehaviour
         if (GameManager.instance.currentCoals > 0)
         {
             int carSpeed = GameManager.instance.carSpeed;
+            float axis = Input.GetAxisRaw("Horizontal");
+            isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
             if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
@@ -69,15 +75,18 @@ public class CarMovement : MonoBehaviour
 
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * Input.GetAxisRaw("Horizontal") * -1);
 
+            if (axis != 0) {
+                steamAudio.Play();
+                GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
+                if (axis < 0) backSteamParticle.Play();
+                else frontSteamParticle.Play();
             }
 
-            if (Input.GetButtonDown("Jump") && isTouchingGround)
-            {
-                //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
-                player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+            if (Input.GetButtonDown("Jump") && isTouchingGround) {
+                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
             }
         }
-        else {
+        else if (player.velocity.x == 0 && player.velocity.y == 0) {
             int currencyEarned = CalculateCurrency();
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);

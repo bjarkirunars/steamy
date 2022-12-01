@@ -62,4 +62,10 @@ public class GameManager : MonoBehaviour
     public int GetCurrency() {
         return currency;
     }
+    public void PlayClip(AudioClip clip) {
+        // AudioSource audio = GameObject.FindObjectOfType<AudioSource>();
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = clip;
+        audio.Play();
+    }
 }

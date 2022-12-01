@@ -8,9 +8,7 @@ public class SteamObstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         // Decrease car speed when car enters the steam obstacle
-        Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag == "CarHitBox") {
-            Debug.Log("Hello");
             GameManager.instance.carSpeed -= speedPenalty;
             // Debug.Log("Car detected" + GameManager.instance.carSpeed.ToString());
         }

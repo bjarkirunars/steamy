@@ -84,7 +84,7 @@ public class CarMovement : MonoBehaviour
                 jumpSteamParticle.Play();
             }
         }
-        else if (player.velocity.x == 0 && player.velocity.y == 0) {
+        else if (player.velocity.x <= 0 && player.velocity.y <= 0) {
             int currencyEarned = CalculateCurrency();
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);

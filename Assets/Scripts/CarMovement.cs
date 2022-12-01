@@ -9,7 +9,7 @@ public class CarMovement : MonoBehaviour
     private float startX;
     private Rigidbody2D player;
 
-    public Transform groundCheck;
+    // public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask groundLayer;
     private bool isTouchingGround;
@@ -41,18 +41,17 @@ public class CarMovement : MonoBehaviour
         {
             int carSpeed = GameManager.instance.carSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
-            // Debug.Log("Axis: " + axis.ToString());
+            isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
             if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
-            isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,groundLayer);
             player.velocity = new Vector2(carSpeed, player.velocity.y);
 
             if (axis != 0) {
+                steamAudio.Play();
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
                 if (axis < 0) backSteamParticle.Play();
                 else frontSteamParticle.Play();
-                steamAudio.Play();
             }
 
             if(Input.GetButtonDown("Jump") && isTouchingGround) {

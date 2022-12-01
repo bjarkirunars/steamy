@@ -3345,9 +3345,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6788790068280657972, guid: 24654aeb6787849f48f7c030415d170a,
         type: 3}
+      propertyPath: steamAudio
+      value: 
+      objectReference: {fileID: 1778401604}
+    - target: {fileID: 6788790068280657972, guid: 24654aeb6787849f48f7c030415d170a,
+        type: 3}
       propertyPath: currencyLabel
       value: 
       objectReference: {fileID: 1028975751}
+    - target: {fileID: 6788790068280657972, guid: 24654aeb6787849f48f7c030415d170a,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6788790068280657972, guid: 24654aeb6787849f48f7c030415d170a,
         type: 3}
       propertyPath: backSteamAudio

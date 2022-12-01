@@ -6,7 +6,7 @@ public class MeterButtons : MonoBehaviour
 {
     public MeterScript healthMeter; //this allows you to link this script to the meter's script via the inspector
     public int currentHealth; //defines the variable you'd like to keep track of
-    public int maxHealth = 80; //defines the maximum value of your variable (keep it at a multiple of 8 so that it matches the meter's sections)
+    public int maxHealth = 360; //defines the maximum value of your variable (keep it at a multiple of 8 so that it matches the meter's sections)
 
 
     void Start()

@@ -11,8 +11,9 @@ public class GameManager : MonoBehaviour
     public int maxCarSpeed = 1;
     public int carSpeed = 1;
     public int jumpHeight = 0;
-    public int maxCoals = 360;
-    public int currentCoals = 180;
+    public int maxCoals = 60;
+    public int coalLevel;
+    public int currentCoals = 60;
     public int currency;
 
     void Awake()
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             currency = 0;
+            coalLevel = 60;
             maxCarSpeed = carSpeed;
         } 
         else if (instance != this) {
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame() {
         gameRunning = true;
         carSpeed = maxCarSpeed;
-        currentCoals = maxCoals;
+        currentCoals = coalLevel;
     }
 
     public int GetCurrency() {

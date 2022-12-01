@@ -45,7 +45,7 @@ public class CarMovement : MonoBehaviour
     {
         if (GameManager.instance.currentCoals > 0)
         {
-            int carSpeed = GameManager.instance.carSpeed;
+            int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
             isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
             if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
@@ -101,7 +101,7 @@ public class CarMovement : MonoBehaviour
 
     public void RefillCoal() {
         // Refill the coal tank to full
-        GameManager.instance.currentCoals += 10;
+        GameManager.instance.currentCoals += 20;
     }
 
     public int CalculateCurrency() {

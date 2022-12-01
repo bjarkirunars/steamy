@@ -6,7 +6,7 @@ using static Unity.Mathematics.math;
 public class junkController : MonoBehaviour
 {
 
-    private int speedPenalty = 250;
+    private int speedPenalty = 500;
 
  
     private void OnCollisionEnter2D(Collision2D collision) {

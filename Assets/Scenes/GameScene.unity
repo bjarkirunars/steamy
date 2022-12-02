@@ -271,10 +271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
+  m_BindingMode: 2
   m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
   m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -1309,6 +1309,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LEVEL
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526336609348367687, guid: db245cc928b5f4397baf7150b8dff814,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410624063094884527, guid: db245cc928b5f4397baf7150b8dff814,
         type: 3}

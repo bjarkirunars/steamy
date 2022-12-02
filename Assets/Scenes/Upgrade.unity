@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bankLabel: {fileID: 1398805916}
+  priceMultiplier: 0
 --- !u!1 &456479781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1251,7 @@ GameObject:
   - component: {fileID: 965279561}
   - component: {fileID: 965279562}
   m_Layer: 5
-  m_Name: JumpToggle010
+  m_Name: JumpToggle004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2328,8 +2329,10 @@ MonoBehaviour:
   carSpeed: 3
   jumpHeight: 0
   maxCoals: 50
+  coalLevel: 0
   currentCoals: 50
   currency: 0
+  gameOverClip: {fileID: 0}
 --- !u!4 &1742451382
 Transform:
   m_ObjectHideFlags: 0

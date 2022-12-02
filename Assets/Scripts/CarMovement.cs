@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CarMovement : MonoBehaviour
 {
@@ -100,6 +101,15 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
+        if (player.position.x >= 460)
+        {
+            Invoke("GoToWin", 2.0f);
+        }
+    }
+
+    void GoToWin()
+    {
+        SceneManager.LoadScene("Winner");
     }
 
     public void RefillCoal() {

@@ -40,7 +40,7 @@ public class UpgradeScreen : MonoBehaviour
             GameManager.instance.currency >= int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) * priceMultiplier
             )
         {
-            GameManager.instance.jumpHeight = int.Parse(obj.name.Substring(obj.name.IndexOf("0")));
+            GameManager.instance.jumpHeight = int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) * 7;
             obj.GetComponent<Toggle>().interactable = false;
             GameManager.instance.currency -= int.Parse(obj.name.Substring(obj.name.IndexOf("0"))) * priceMultiplier;
             bankLabel.text = "Total Screws: " + GameManager.instance.currency;
@@ -49,7 +49,7 @@ public class UpgradeScreen : MonoBehaviour
 
     void Start()
     {
-        priceMultiplier = 30;
+        priceMultiplier = 75; // Needs to be changed in UpgradeHover as well
         bankLabel.text = "Total Screws: " + GameManager.instance.currency;
         speedToggleList = GameObject.Find("SpeedParent").GetComponentsInChildren<Toggle>();
         foreach (Toggle toggler in speedToggleList)
@@ -69,7 +69,7 @@ public class UpgradeScreen : MonoBehaviour
         foreach (Toggle toggler in jumpToggleList)
         {
             var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
-            if (GameManager.instance.jumpHeight >= togglerNumber)
+            if (GameManager.instance.jumpHeight >= togglerNumber * 7)
             {
                 toggler.isOn = true;
                 toggler.interactable = false;
@@ -101,7 +101,7 @@ public class UpgradeScreen : MonoBehaviour
         foreach (Toggle toggler in jumpToggleList)
         {
             var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
-            if (GameManager.instance.jumpHeight * 5 >= togglerNumber)
+            if (GameManager.instance.jumpHeight * 7 >= togglerNumber)
             {
                 toggler.isOn = true;
                 toggler.interactable = false;

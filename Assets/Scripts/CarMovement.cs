@@ -109,6 +109,7 @@ public class CarMovement : MonoBehaviour
 
     void GoToWin()
     {
+        GameManager.instance.ResetGame();
         SceneManager.LoadScene("Winner");
     }
 

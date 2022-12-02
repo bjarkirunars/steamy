@@ -63,6 +63,16 @@ public class GameManager : MonoBehaviour
         currentCoals = coalLevel;
     }
 
+    public void ResetGame() {
+            maxCarSpeed = 1000;
+            carSpeed = 1000;
+            jumpHeight = 0;
+            maxCoals = 60;
+            coalLevel = 60;
+            currentCoals = 60;
+            currency = 0;
+    }
+
     public int GetCurrency() {
         return currency;
     }

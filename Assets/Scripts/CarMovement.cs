@@ -79,7 +79,7 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Play();
             }
 
-            if(Input.GetButtonDown("Jump") && isTouchingGround)
+            if(Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 GameManager.instance.PlayClip(jumpSound);

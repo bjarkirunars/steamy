@@ -49,66 +49,72 @@ public class UpgradeScreen : MonoBehaviour
 
     void Start()
     {
-        priceMultiplier = 75; // Needs to be changed in UpgradeHover as well
-        bankLabel.text = "Total Screws: " + GameManager.instance.currency;
-        speedToggleList = GameObject.Find("SpeedParent").GetComponentsInChildren<Toggle>();
-        foreach (Toggle toggler in speedToggleList)
+        if (GameObject.Find("SpeedParent"))
         {
-            var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
-            if (GameManager.instance.maxCarSpeed >= togglerNumber * 1000)
+            priceMultiplier = 75; // Needs to be changed in UpgradeHover as well
+            bankLabel.text = "Total Screws: " + GameManager.instance.currency;
+            speedToggleList = GameObject.Find("SpeedParent").GetComponentsInChildren<Toggle>();
+            foreach (Toggle toggler in speedToggleList)
             {
-                toggler.isOn = true;
-                toggler.interactable = false;
+                var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
+                if (GameManager.instance.maxCarSpeed >= togglerNumber * 1000)
+                {
+                    toggler.isOn = true;
+                    toggler.interactable = false;
+                }
+                if (GameManager.instance.currency < togglerNumber * priceMultiplier)
+                {
+                    toggler.interactable = false;
+                }
             }
-            if (GameManager.instance.currency < togglerNumber * priceMultiplier)
+            jumpToggleList = GameObject.Find("JumpParent").GetComponentsInChildren<Toggle>();
+            foreach (Toggle toggler in jumpToggleList)
             {
-                toggler.interactable = false;
-            }
-        }
-        jumpToggleList = GameObject.Find("JumpParent").GetComponentsInChildren<Toggle>();
-        foreach (Toggle toggler in jumpToggleList)
-        {
-            var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
-            if (GameManager.instance.jumpHeight >= togglerNumber * 7)
-            {
-                toggler.isOn = true;
-                toggler.interactable = false;
-            }
-            if (GameManager.instance.currency < togglerNumber * priceMultiplier)
-            {
-                toggler.interactable = false;
+                var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
+                if (GameManager.instance.jumpHeight >= togglerNumber * 7)
+                {
+                    toggler.isOn = true;
+                    toggler.interactable = false;
+                }
+                if (GameManager.instance.currency < togglerNumber * priceMultiplier)
+                {
+                    toggler.interactable = false;
+                }
             }
         }
     }
 
     void FixedUpdate()
     {
-        speedToggleList = GameObject.Find("SpeedParent").GetComponentsInChildren<Toggle>();
-        foreach (Toggle toggler in speedToggleList)
+        if (GameObject.Find("SpeedParent"))
         {
-            var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
-            if (GameManager.instance.maxCarSpeed >= togglerNumber * 1000)
+            speedToggleList = GameObject.Find("SpeedParent").GetComponentsInChildren<Toggle>();
+            foreach (Toggle toggler in speedToggleList)
             {
-                toggler.isOn = true;
-                toggler.interactable = false;
+                var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
+                if (GameManager.instance.maxCarSpeed >= togglerNumber * 1000)
+                {
+                    toggler.isOn = true;
+                    toggler.interactable = false;
+                }
+                if (GameManager.instance.currency < togglerNumber * priceMultiplier)
+                {
+                    toggler.interactable = false;
+                }
             }
-            if (GameManager.instance.currency < togglerNumber * priceMultiplier)
+            jumpToggleList = GameObject.Find("JumpParent").GetComponentsInChildren<Toggle>();
+            foreach (Toggle toggler in jumpToggleList)
             {
-                toggler.interactable = false;
-            }
-        }
-        jumpToggleList = GameObject.Find("JumpParent").GetComponentsInChildren<Toggle>();
-        foreach (Toggle toggler in jumpToggleList)
-        {
-            var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
-            if (GameManager.instance.jumpHeight * 7 >= togglerNumber)
-            {
-                toggler.isOn = true;
-                toggler.interactable = false;
-            }
-            if (GameManager.instance.currency < togglerNumber * priceMultiplier)
-            {
-                toggler.interactable = false;
+                var togglerNumber = int.Parse(toggler.name.Substring(toggler.name.IndexOf("0")));
+                if (GameManager.instance.jumpHeight * 7 >= togglerNumber)
+                {
+                    toggler.isOn = true;
+                    toggler.interactable = false;
+                }
+                if (GameManager.instance.currency < togglerNumber * priceMultiplier)
+                {
+                    toggler.interactable = false;
+                }
             }
         }
     }

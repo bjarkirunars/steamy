@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CarMovement : MonoBehaviour
 {
@@ -79,7 +80,7 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Play();
             }
 
-            if(Input.GetButtonDown("Jump") && isTouchingGround)
+            if(Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 GameManager.instance.PlayClip(jumpSound);
@@ -100,6 +101,16 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
+        if (player.position.x >= 460)
+        {
+            Invoke("GoToWin", 2.0f);
+        }
+    }
+
+    void GoToWin()
+    {
+        GameManager.instance.ResetGame();
+        SceneManager.LoadScene("Winner");
     }
 
     public void RefillCoal() {

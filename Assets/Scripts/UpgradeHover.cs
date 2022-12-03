@@ -9,7 +9,7 @@ public class UpgradeHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private int priceToPay;
     public void OnPointerEnter(PointerEventData eventData)
      {
-        priceToPay = int.Parse(this.name.Substring(this.name.IndexOf("0"))) * 30;
+        priceToPay = int.Parse(this.name.Substring(this.name.IndexOf("0"))) * 75;
         priceLabel.text = "Price: " + priceToPay.ToString() + " Screws";
      }
  

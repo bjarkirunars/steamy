@@ -8,7 +8,8 @@ public class CoalPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         GameManager.instance.PlayClip(coalPickupSound);
-        GameManager.instance.RefillCoal();
+        if (GameManager.instance.gameRunning) GameManager.instance.RefillCoal();
+        // Prevents car from regaining fuel if Game Over has been achieved
         Destroy(gameObject);
     }
 }

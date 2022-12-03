@@ -9,7 +9,6 @@ public class CarMovement : MonoBehaviour
     public float rotationSpeed;
     private float startX;
     private Rigidbody2D player;
-
     // public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask groundLayer;
@@ -88,12 +87,13 @@ public class CarMovement : MonoBehaviour
                 jumpSteamParticle.Play();
             }
         }
-        else if (player.velocity.x <= 0 && player.velocity.y <= 0) {
+        else if (player.velocity.x <= 0 && player.velocity.y <= 0 && GameManager.instance.gameRunning) {
             int currencyEarned = CalculateCurrency();
             GameManager.instance.GameOver(currencyEarned);
             gameOverScreen.SetActive(true);
             currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
-        } else {
+        } 
+        else {
             motorFront.motorSpeed = 0;
             motorFront.maxMotorTorque = 0;
             frontwheel.motor = motorFront;

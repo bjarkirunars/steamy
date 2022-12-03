@@ -83,15 +83,12 @@ public class CarMovement : MonoBehaviour
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 GameManager.instance.PlayClip(jumpSound);
-                player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
                 jumpSteamParticle.Play();
             }
         }
         else if (player.velocity.x <= 0 && player.velocity.y <= 0 && GameManager.instance.gameRunning) {
-            int currencyEarned = CalculateCurrency();
-            GameManager.instance.GameOver(currencyEarned);
-            gameOverScreen.SetActive(true);
-            currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+            EndGame();
         } 
         else {
             motorFront.motorSpeed = 0;
@@ -124,4 +121,19 @@ public class CarMovement : MonoBehaviour
         return (int) totalDistance;
     }
 
+    void EndGame() {
+        int currencyEarned = CalculateCurrency();
+        GameManager.instance.GameOver(currencyEarned);
+        gameOverScreen.SetActive(true);
+        currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        int groundLayer = 6;
+        if (GameManager.instance.gameRunning && other.gameObject.layer == groundLayer) {
+        // If car lands upside down on the ground
+            GameManager.instance.currentCoals = 0;
+            EndGame();
+        }
+    }
 }

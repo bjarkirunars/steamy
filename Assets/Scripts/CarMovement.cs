@@ -9,7 +9,6 @@ public class CarMovement : MonoBehaviour
     public float rotationSpeed;
     private float startX;
     private Rigidbody2D player;
-
     // public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask groundLayer;
@@ -84,16 +83,14 @@ public class CarMovement : MonoBehaviour
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 GameManager.instance.PlayClip(jumpSound);
-                player.velocity = new   Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
                 jumpSteamParticle.Play();
             }
         }
-        else if (player.velocity.x <= 0 && player.velocity.y <= 0) {
-            int currencyEarned = CalculateCurrency();
-            GameManager.instance.GameOver(currencyEarned);
-            gameOverScreen.SetActive(true);
-            currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
-        } else {
+        else if (player.velocity.x <= 0 && player.velocity.y <= 0 && GameManager.instance.gameRunning) {
+            EndGame();
+        } 
+        else {
             motorFront.motorSpeed = 0;
             motorFront.maxMotorTorque = 0;
             frontwheel.motor = motorFront;
@@ -124,4 +121,19 @@ public class CarMovement : MonoBehaviour
         return (int) totalDistance;
     }
 
+    void EndGame() {
+        int currencyEarned = CalculateCurrency();
+        GameManager.instance.GameOver(currencyEarned);
+        gameOverScreen.SetActive(true);
+        currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        int groundLayer = 6;
+        if (GameManager.instance.gameRunning && other.gameObject.layer == groundLayer) {
+        // If car lands upside down on the ground
+            GameManager.instance.currentCoals = 0;
+            EndGame();
+        }
+    }
 }

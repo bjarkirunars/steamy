@@ -74,10 +74,11 @@ public class CarMovement : MonoBehaviour
             backwheel.motor = motorBack;
 
             if (axis != 0) {
+                Debug.Log("axis " + axis);
                 steamAudio.Play();
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
-                if (axis < 0) backSteamParticle.Play();
-                else frontSteamParticle.Play();
+                if (axis < 0) backSteamParticle.Emit(1);
+                else frontSteamParticle.Emit(1);
             }
 
             if(Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)

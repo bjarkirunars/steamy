@@ -17,6 +17,7 @@ public class CarMovement : MonoBehaviour
     public ParticleSystem frontSteamParticle;
     public ParticleSystem backSteamParticle;
     public ParticleSystem jumpSteamParticle;
+    public ParticleSystem explosionParticle;
 
     public AudioSource steamAudio;
 
@@ -30,6 +31,7 @@ public class CarMovement : MonoBehaviour
     public WheelJoint2D backwheel;
     
     public AudioClip jumpSound;
+    public AudioClip explosionSound;
 
     private void Start() 
     {
@@ -45,7 +47,7 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.currentCoals > 0)
+        if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
@@ -121,9 +123,11 @@ public class CarMovement : MonoBehaviour
         return (int) totalDistance;
     }
 
-    void EndGame() {
+    void EndGame(bool carExploded = false) {
+        // Car exploded boolean is to choose correct game over
+        // sound based on whether car ran out of fuel or exploded
         int currencyEarned = CalculateCurrency();
-        GameManager.instance.GameOver(currencyEarned);
+        GameManager.instance.GameOver(currencyEarned, carExploded);
         gameOverScreen.SetActive(true);
         currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
     }
@@ -132,8 +136,10 @@ public class CarMovement : MonoBehaviour
         int groundLayer = 6;
         if (GameManager.instance.gameRunning && other.gameObject.layer == groundLayer) {
         // If car lands upside down on the ground
-            GameManager.instance.currentCoals = 0;
-            EndGame();
+            GameManager.instance.PlayClip(explosionSound);
+            explosionParticle.Play();
+            // GameManager.instance.currentCoals = 0;
+            EndGame(true);
         }
     }
 }

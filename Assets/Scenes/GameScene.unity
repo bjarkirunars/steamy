@@ -701,9 +701,15 @@ MonoBehaviour:
   maxCarSpeed: 5000
   carSpeed: 1000
   jumpHeight: 0
+  nitroCharges: 0
   maxCoals: 60
+  speedLevel: 1
+  jumpLevel: 1
+  coalUpgradeLevel: 1
   coalLevel: 60
+  nitroLevel: 1
   currentCoals: 60
+  coalSpendTime: 0.2
   currency: 0
   gameOverClip: {fileID: 8300000, guid: bd89fab840c1a6e4789a96c57c10900d, type: 3}
 --- !u!4 &849243192
@@ -1389,6 +1395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CurrencyLabel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227748704988477162, guid: 21de25cc5f0484deeaa468060dc29454,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Upgrade
       objectReference: {fileID: 0}
     - target: {fileID: 7227748706396015664, guid: 21de25cc5f0484deeaa468060dc29454,
         type: 3}

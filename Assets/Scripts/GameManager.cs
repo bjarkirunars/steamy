@@ -11,9 +11,15 @@ public class GameManager : MonoBehaviour
     public int maxCarSpeed = 1;
     public int carSpeed = 1;
     public int jumpHeight = 0;
+    public int nitroCharges = 0;
     public int maxCoals = 60;
-    public int coalLevel;
+    public int speedLevel = 1;
+    public int jumpLevel = 1;
+    public int coalUpgradeLevel = 1;
+    public int coalLevel = 1;
+    public int nitroLevel = 1;
     public int currentCoals = 60;
+    public float coalSpendTime = 0.2f;
     public int currency;
     public AudioClip gameOverClip;
 
@@ -82,5 +88,18 @@ public class GameManager : MonoBehaviour
         AudioSource audio = GetComponent<AudioSource>();
         audio.clip = clip;
         audio.Play();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (AudioListener.volume == 0) {
+                AudioListener.volume = 1;
+            } else {
+                AudioListener.volume = 0;
+            }
+        }
+        
     }
 }

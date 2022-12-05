@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 770e67bed469e4324b8d001d4864c1c6
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/Eythor.unity
     guid: e096343b9473d45b2aa0ae01a803d203
   - enabled: 1
     path: Assets/Scenes/Upgrade.unity

@@ -55,9 +55,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver(int currencyEarned) {
+    public void GameOver(int currencyEarned, bool carExploded = false) {
         if (gameRunning) {
-            PlayClip(gameOverClip);
+            if (!carExploded) {
+                PlayClip(gameOverClip);
+            }
             gameRunning = false;
             currency += currencyEarned;
         }

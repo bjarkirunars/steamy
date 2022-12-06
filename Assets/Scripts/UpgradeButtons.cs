@@ -14,7 +14,7 @@ public class UpgradeButtons : MonoBehaviour
     public TMPro.TextMeshProUGUI coalLabel;
     public TMPro.TextMeshProUGUI explanationLabel;
     public TMPro.TextMeshProUGUI priceLabel;
-    public float speedMultiplier = 1.3f;
+    public float speedMultiplier = 1.1f;
     public float jumpMultiplier = 1.3f;
     public float coalMultiplier = 1.3f;
     private int priceToPay;
@@ -43,13 +43,13 @@ public class UpgradeButtons : MonoBehaviour
 
     public void upgradeSpeed()
     {
-        priceToPay = GameManager.instance.speedLevel * 100;
+        priceToPay = GameManager.instance.speedLevel * 50;
         if (GameManager.instance.currency >= priceToPay)
         {
             GameManager.instance.maxCarSpeed = (int)(GameManager.instance.maxCarSpeed * speedMultiplier);
             GameManager.instance.currency -= priceToPay;
             GameManager.instance.speedLevel += 1;
-            priceLabelPrice = GameManager.instance.speedLevel * 100;
+            priceLabelPrice = GameManager.instance.speedLevel * 50;
             UpdateValues();
         }
     }

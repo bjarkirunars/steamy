@@ -76,7 +76,6 @@ public class CarMovement : MonoBehaviour
             backwheel.motor = motorBack;
 
             if (axis != 0) {
-                Debug.Log("axis " + accumulativeCoal);
                 steamAudio.Play();
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
                 accumulativeCoal += 0.1;
@@ -109,7 +108,6 @@ public class CarMovement : MonoBehaviour
         }
         if (accumulativeCoal >1)
         {
-            Debug.Log("mammaín");
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }

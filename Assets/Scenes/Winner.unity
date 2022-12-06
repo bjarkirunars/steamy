@@ -235,11 +235,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 340055406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6f95d2f2355f422cb3d341ba1fa9550, type: 3}
+  m_Script: {fileID: 11500000, guid: 41283093e38c643e1b1458d6e77b5beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bankLabel: {fileID: 0}
-  priceMultiplier: 0
 --- !u!1 &456479781
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +323,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 340055411}
-        m_TargetAssemblyTypeName: UpgradeScreen, Assembly-CSharp
+        m_TargetAssemblyTypeName: SceneLoad, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -948,9 +946,15 @@ MonoBehaviour:
   maxCarSpeed: 1
   carSpeed: 3
   jumpHeight: 0
+  nitroCharges: 0
   maxCoals: 50
+  speedLevel: 1
+  jumpLevel: 1
+  coalUpgradeLevel: 1
   coalLevel: 0
+  nitroLevel: 1
   currentCoals: 50
+  coalSpendTime: 0.2
   currency: 0
   gameOverClip: {fileID: 0}
 --- !u!4 &1742451382

@@ -32,6 +32,7 @@ public class CarMovement : MonoBehaviour
     
     public AudioClip jumpSound;
     public AudioClip explosionSound;
+    private double accumulativeCoal = 0;
 
     private void Start() 
     {
@@ -77,8 +78,9 @@ public class CarMovement : MonoBehaviour
             if (axis != 0) {
                 steamAudio.Play();
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
-                if (axis < 0) backSteamParticle.Play();
-                else frontSteamParticle.Play();
+                accumulativeCoal += 0.1;
+                if (axis < 0) backSteamParticle.Emit(1);
+                else frontSteamParticle.Emit(1);
             }
 
             if(Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
@@ -103,6 +105,11 @@ public class CarMovement : MonoBehaviour
         if (player.position.x >= 460)
         {
             Invoke("GoToWin", 2.0f);
+        }
+        if (accumulativeCoal >1)
+        {
+            GameManager.instance.currentCoals--;
+            accumulativeCoal = 0;
         }
     }
 

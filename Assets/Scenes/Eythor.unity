@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.3
+  parallaxEffect: 0
 --- !u!1 &138657228
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.3
+  parallaxEffect: 0
 --- !u!1 &199078053
 GameObject:
   m_ObjectHideFlags: 3
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 0.3
+  parallaxEffect: 0
 --- !u!1 &290281889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,7 +1484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1470006448}
   - component: {fileID: 1470006449}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Parallax
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420028}
-  parallaxEffect: 1
+  parallaxEffect: 0.3
 --- !u!1 &1594746434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,6 +1828,11 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 8404187122948571424}
+    - target: {fileID: 3361482324340906475, guid: 07e14e508aec9604a84b2c901dbe7516,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4812931172400216980, guid: 07e14e508aec9604a84b2c901dbe7516,
         type: 3}
       propertyPath: healthMeter

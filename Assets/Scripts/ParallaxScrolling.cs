@@ -10,7 +10,7 @@ public class ParallaxScrolling : MonoBehaviour
 
     void Start() {
         startpos = transform.position.x;
-        length = GetComponentInChildren<SpriteRenderer>().bounds.size.x;
+        length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     void Update() {

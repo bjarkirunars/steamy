@@ -600,7 +600,7 @@ MonoBehaviour:
   coalLabel: {fileID: 1890453747}
   explanationLabel: {fileID: 695389394}
   priceLabel: {fileID: 1114477067}
-  speedMultiplier: 1.3
+  speedMultiplier: 1.1
   jumpMultiplier: 1.3
   coalMultiplier: 1.3
 --- !u!1 &346376412

@@ -76,7 +76,6 @@ public class CarMovement : MonoBehaviour
             backwheel.motor = motorBack;
 
             if (axis != 0) {
-                Debug.Log("axis " + accumulativeCoal);
                 steamAudio.Play();
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
                 accumulativeCoal += 0.1;
@@ -87,6 +86,7 @@ public class CarMovement : MonoBehaviour
             if(Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+                accumulativeCoal += 0.1;
                 GameManager.instance.PlayClip(jumpSound);
                 player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
                 jumpSteamParticle.Play();
@@ -109,7 +109,6 @@ public class CarMovement : MonoBehaviour
         }
         if (accumulativeCoal >1)
         {
-            Debug.Log("mammaín");
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }

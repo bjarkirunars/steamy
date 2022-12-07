@@ -9,15 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 770e67bed469e4324b8d001d4864c1c6
   - enabled: 1
-    path: Assets/Scenes/Eythor.unity
-    guid: e096343b9473d45b2aa0ae01a803d203
-  - enabled: 1
     path: Assets/Scenes/Winner.unity
     guid: 36e1e957183c44653b55fb3f92959152
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: fca5b2a77b549ae48a50f20584b3ca65
-  - enabled: 1
     path: Assets/Scenes/Upgrade.unity
     guid: 8f51b2cb8f61c47f38de82a92be0d6b2
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 9de1d5e2b11cd446a9a325d543f13b2b
   m_configObjects: {}

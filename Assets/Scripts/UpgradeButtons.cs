@@ -14,10 +14,11 @@ public class UpgradeButtons : MonoBehaviour
     public TMPro.TextMeshProUGUI coalLabel;
     public TMPro.TextMeshProUGUI explanationLabel;
     public TMPro.TextMeshProUGUI priceLabel;
-    public float speedMultiplier = 1.3f;
+    public float speedMultiplier = 1.1f;
     public float jumpMultiplier = 1.3f;
     public float coalMultiplier = 1.3f;
     private int priceToPay;
+    private int priceLabelPrice;
 
     void Awake()
     {
@@ -37,42 +38,66 @@ public class UpgradeButtons : MonoBehaviour
         jumpLabel.text = "Jumps: " + GameManager.instance.jumpHeight.ToString() + "Nm";
         nitroLabel.text = "Nitro: " + GameManager.instance.nitroCharges.ToString() + " Charges";
         coalLabel.text = "Efficiency: " + (Mathf.Round(1/GameManager.instance.coalSpendTime)).ToString() + "/sec";
+        priceLabel.text = "Price: " + priceLabelPrice.ToString() + " Screws";
     }
 
     public void upgradeSpeed()
     {
-        GameManager.instance.maxCarSpeed = (int)(GameManager.instance.maxCarSpeed * speedMultiplier);
-        GameManager.instance.currency -= GameManager.instance.speedLevel * 100;
-        GameManager.instance.speedLevel += 1;
-        UpdateValues();
+        priceToPay = GameManager.instance.speedLevel * 50;
+        if (GameManager.instance.currency >= priceToPay)
+        {
+            GameManager.instance.maxCarSpeed = (int)(GameManager.instance.maxCarSpeed * speedMultiplier);
+            GameManager.instance.currency -= priceToPay;
+            GameManager.instance.speedLevel += 1;
+            priceLabelPrice = GameManager.instance.speedLevel * 50;
+            UpdateValues();
+        }
     }
 
     public void upgradeJump()
     {
-        if (GameManager.instance.jumpHeight == 0)
+        priceToPay = GameManager.instance.jumpLevel * 300;
+        if (GameManager.instance.currency > priceToPay)
         {
-            GameManager.instance.jumpHeight = 15;
-        } else {
-            GameManager.instance.jumpHeight = (int)(GameManager.instance.jumpHeight * jumpMultiplier);
+            if (GameManager.instance.jumpHeight == 0)
+            {
+                GameManager.instance.jumpHeight = 15;
+            } else {
+                GameManager.instance.jumpHeight = (int)(GameManager.instance.jumpHeight * jumpMultiplier);
+            }
+            GameManager.instance.currency -= priceToPay;
+            GameManager.instance.jumpLevel += 1;
+            priceLabelPrice = GameManager.instance.jumpLevel * 300;
+            UpdateValues();
         }
-        GameManager.instance.currency -= GameManager.instance.jumpLevel * 300;
-        GameManager.instance.jumpLevel += 1;
-        UpdateValues();
+        
     }
 
     public void upgradeCoals()
     {
-        GameManager.instance.coalSpendTime = GameManager.instance.coalSpendTime + 0.05f;
-        GameManager.instance.currency -= GameManager.instance.coalUpgradeLevel * 100;
-        GameManager.instance.coalUpgradeLevel += 1;
-        UpdateValues();
+        priceToPay = GameManager.instance.coalUpgradeLevel * 100;
+        if (GameManager.instance.currency >= priceToPay)
+        {
+            GameManager.instance.coalSpendTime = GameManager.instance.coalSpendTime + 0.05f;
+            GameManager.instance.currency -= priceToPay;
+            GameManager.instance.coalUpgradeLevel += 1;
+            priceLabelPrice = GameManager.instance.coalUpgradeLevel * 100;
+            UpdateValues();
+        }
+        
     }
 
     public void upgradeNitro()
     {
-        GameManager.instance.nitroCharges += 1;
-        GameManager.instance.currency -= GameManager.instance.nitroLevel * 500;
-        GameManager.instance.nitroLevel += 1;
-        UpdateValues();
+        priceToPay = GameManager.instance.nitroLevel * 500;
+        if (GameManager.instance.currency >= priceToPay)
+        {
+            GameManager.instance.nitroCharges += 1;
+            GameManager.instance.currency -= priceToPay;
+            GameManager.instance.nitroLevel += 1;
+            priceLabelPrice = GameManager.instance.nitroLevel * 500;
+            UpdateValues();   
+        }
+        
     }
 }

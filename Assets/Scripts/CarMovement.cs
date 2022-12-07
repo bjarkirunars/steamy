@@ -108,7 +108,7 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
-        if (player.position.x >= 460)
+        if (player.position.x >= 1500)
         {
             Invoke("GoToWin", 2.0f);
         }

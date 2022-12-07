@@ -21,6 +21,8 @@ public class CarMovement : MonoBehaviour
 
     public AudioSource steamAudio;
 
+    private Vector2 m_NewForce;
+
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
@@ -48,6 +50,10 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(player.velocity.x + " x and y " + player.velocity.y);
+        if(Input.GetKeyDown(KeyCode.N)){
+            TriggerNitro();
+        }
         if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
@@ -148,5 +154,12 @@ public class CarMovement : MonoBehaviour
             // GameManager.instance.currentCoals = 0;
             EndGame(true);
         }
+    }
+
+    void TriggerNitro() {
+        // player.velocity = new Vector2(player.velocity.x*10, player.velocity.y*10);
+        m_NewForce = new Vector2(20.0f, 3.0f);
+        //Use Force mode as force on the RigidBody
+        player.AddForce(m_NewForce, ForceMode2D.Impulse);
     }
 }

@@ -15,7 +15,7 @@ public class UpgradeButtons : MonoBehaviour
     public TMPro.TextMeshProUGUI explanationLabel;
     public TMPro.TextMeshProUGUI priceLabel;
     public float speedMultiplier = 1.1f;
-    public float jumpMultiplier = 1.3f;
+    public float jumpMultiplier = 1.8f;
     public float coalMultiplier = 1.3f;
     private int priceToPay;
     private int priceLabelPrice;
@@ -37,7 +37,7 @@ public class UpgradeButtons : MonoBehaviour
         speedLabel.text = "Speed: " + GameManager.instance.maxCarSpeed.ToString();
         jumpLabel.text = "Jumps: " + GameManager.instance.jumpHeight.ToString() + "Nm";
         nitroLabel.text = "Nitro: " + GameManager.instance.nitroCharges.ToString() + " Charges";
-        coalLabel.text = "Efficiency: " + (Mathf.Round(1/GameManager.instance.coalSpendTime)).ToString() + "/sec";
+        coalLabel.text = "Efficiency: " + (Mathf.Round((1/GameManager.instance.coalSpendTime)*100)/100).ToString() + "/sec";
         priceLabel.text = "Price: " + priceLabelPrice.ToString() + " Screws";
     }
 

@@ -17,9 +17,11 @@ public class CarMovement : MonoBehaviour
     public ParticleSystem frontSteamParticle;
     public ParticleSystem backSteamParticle;
     public ParticleSystem jumpSteamParticle;
+    public ParticleSystem nitroSteamParticle;
     public ParticleSystem explosionParticle;
 
     public AudioSource steamAudio;
+    public AudioSource steamNitroAudio;
 
     private Vector2 m_NewForce;
 
@@ -50,7 +52,6 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player.velocity.x + " x and y " + player.velocity.y);
         if(Input.GetKeyDown(KeyCode.N)){
             TriggerNitro();
         }
@@ -158,9 +159,13 @@ public class CarMovement : MonoBehaviour
     }
 
     void TriggerNitro() {
-        // player.velocity = new Vector2(player.velocity.x*10, player.velocity.y*10);
-        m_NewForce = new Vector2(20.0f, 3.0f);
-        //Use Force mode as force on the RigidBody
-        player.AddForce(m_NewForce, ForceMode2D.Impulse);
+        GameManager.instance.maxCarSpeed += 4000;
+        steamNitroAudio.Play();
+        nitroSteamParticle.Play();
+        Invoke("ResetSpeed", 2.0f);
+    }
+
+    void ResetSpeed() {
+        GameManager.instance.maxCarSpeed -= 4000;
     }
 }

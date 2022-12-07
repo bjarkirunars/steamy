@@ -25,6 +25,10 @@ public class CarMovement : MonoBehaviour
 
 
     public GameObject gameOverScreen;
+    public GameObject nitroText;
+    public GameObject nitro1;
+    public GameObject nitro2;
+    public GameObject nitro3;
     public TextMeshProUGUI currencyLabel;
     JointMotor2D motorFront;
 
@@ -36,6 +40,8 @@ public class CarMovement : MonoBehaviour
     public AudioClip explosionSound;
     private double accumulativeCoal = 0;
 
+    private int charges;
+
     private void Start() 
     {
         startX = Mathf.Abs(transform.position.x); 
@@ -45,6 +51,7 @@ public class CarMovement : MonoBehaviour
         {
             gameOverScreen.SetActive(false);
         }
+        CheckNitros();
     }
 
     // Update is called once per frame
@@ -156,11 +163,45 @@ public class CarMovement : MonoBehaviour
         }
     }
 
+    void CheckNitros()
+    {
+        charges = GameManager.instance.nitroCharges;
+        if (nitroText != null && nitro1 != null && nitro2 != null && nitro3 != null)
+        {
+            if (charges > 2)
+            {
+                nitroText.SetActive(true);
+                nitro1.SetActive(true);
+                nitro2.SetActive(true);
+                nitro3.SetActive(true);
+            } else if (charges > 1)
+            {
+                nitroText.SetActive(true);
+                nitro1.SetActive(true);
+                nitro2.SetActive(true);
+                nitro3.SetActive(false);
+            } else if (charges > 0)
+            {
+                nitroText.SetActive(true);
+                nitro1.SetActive(true);
+                nitro2.SetActive(false);
+                nitro3.SetActive(false);
+            } else
+            {
+                nitroText.SetActive(false);
+                nitro1.SetActive(false);
+                nitro2.SetActive(false);
+                nitro3.SetActive(false);
+            }
+        }
+    }
+
     void TriggerNitro() {
         GameManager.instance.maxCarSpeed += 4000;
         GameManager.instance.nitroCharges -= 1;
         steamNitroAudio.Play();
         nitroSteamParticle.Play();
+        CheckNitros();
         Invoke("ResetSpeed", 2.0f);
     }
 

@@ -137,7 +137,7 @@ public class CarMovement : MonoBehaviour
         int currencyEarned = CalculateCurrency();
         GameManager.instance.GameOver(currencyEarned, carExploded);
         gameOverScreen.SetActive(true);
-        currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+        currencyLabel.text = "Distance:"+ currencyEarned.ToString() +"\nAchivements: 0"+ "\nYou earned: " + currencyEarned.ToString() + " Screws";
     }
 
     void OnTriggerEnter2D(Collider2D other) {

@@ -7653,6 +7653,11 @@ PrefabInstance:
       objectReference: {fileID: 1724344190}
     - target: {fileID: 7865031532148818540, guid: f30b4d59c9fd1424e98a4d173e48a2ad,
         type: 3}
+      propertyPath: explosionParticle
+      value: 
+      objectReference: {fileID: 4722821191767663738}
+    - target: {fileID: 7865031532148818540, guid: f30b4d59c9fd1424e98a4d173e48a2ad,
+        type: 3}
       propertyPath: frontSteamParticle
       value: 
       objectReference: {fileID: 333202849}
@@ -7673,6 +7678,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f30b4d59c9fd1424e98a4d173e48a2ad, type: 3}
+--- !u!198 &4722821191767663738 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 330183062710838964, guid: f30b4d59c9fd1424e98a4d173e48a2ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 4722821191767663737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8404187122948571424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7227748706396015664, guid: 21de25cc5f0484deeaa468060dc29454,

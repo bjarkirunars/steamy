@@ -17,9 +17,11 @@ public class CarMovement : MonoBehaviour
     public ParticleSystem frontSteamParticle;
     public ParticleSystem backSteamParticle;
     public ParticleSystem jumpSteamParticle;
+    public ParticleSystem nitroSteamParticle;
     public ParticleSystem explosionParticle;
 
     public AudioSource steamAudio;
+    public AudioSource steamNitroAudio;
 
 
     public GameObject gameOverScreen;
@@ -48,6 +50,9 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.N)){
+            TriggerNitro();
+        }
         if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
@@ -149,5 +154,16 @@ public class CarMovement : MonoBehaviour
             // GameManager.instance.currentCoals = 0;
             EndGame(true);
         }
+    }
+
+    void TriggerNitro() {
+        GameManager.instance.maxCarSpeed += 4000;
+        steamNitroAudio.Play();
+        nitroSteamParticle.Play();
+        Invoke("ResetSpeed", 2.0f);
+    }
+
+    void ResetSpeed() {
+        GameManager.instance.maxCarSpeed -= 4000;
     }
 }

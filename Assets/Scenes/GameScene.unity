@@ -6249,6 +6249,11 @@ PrefabInstance:
       objectReference: {fileID: 8404187122948571424}
     - target: {fileID: 1475386586079623258, guid: b39930186549dd54eaadb1aad8535309,
         type: 3}
+      propertyPath: steamNitroAudio
+      value: 
+      objectReference: {fileID: 4095249875600629328}
+    - target: {fileID: 1475386586079623258, guid: b39930186549dd54eaadb1aad8535309,
+        type: 3}
       propertyPath: nitroSteamParticle
       value: 
       objectReference: {fileID: 2522784}
@@ -6324,6 +6329,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b39930186549dd54eaadb1aad8535309, type: 3}
+--- !u!82 &4095249875600629328 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5587133144628872101, guid: b39930186549dd54eaadb1aad8535309,
+    type: 3}
+  m_PrefabInstance: {fileID: 4095249875600629327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8404187122948571424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7227748706396015664, guid: 21de25cc5f0484deeaa468060dc29454,

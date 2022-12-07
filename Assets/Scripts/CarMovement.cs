@@ -72,21 +72,11 @@ public class CarMovement : MonoBehaviour
             int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
             isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
-            if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
+            if (GameManager.instance.carSpeed < 0) 
+                carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
 
-            //player.velocity = new Vector2(carSpeed, player.velocity.y);
-            //if (Input.GetAxis("Horizontal") <0)
-            //{
-            //    transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
-            //    frontSteam.Play();
-            //}
-            //if (Input.GetAxis("Horizontal") > 0)
-            //{
-            //    transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
-            //    backSteam.Play();
-            //}
             if (motorOffTimer > 0.8)
             {
                 motorFront.motorSpeed = 0;
@@ -113,12 +103,11 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Emit(1);
             }
 
-            if(Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
+            if (Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
             {
-                //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 accumulativeCoal += 0.1;
                 GameManager.instance.PlayClip(jumpSound);
-                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
                 jumpSteamParticle.Play();
             }
         }

@@ -41,6 +41,7 @@ public class CarMovement : MonoBehaviour
     private double accumulativeCoal = 0;
 
     private int charges;
+    private float motorOffTimer = 0.0f;
 
     private void Start() 
     {
@@ -57,6 +58,12 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player.velocity.y < 0)
+        {
+            motorOffTimer += Time.deltaTime;
+        } else {
+            motorOffTimer = 0.0f;
+        }
         if(GameManager.instance.nitroCharges > 0 && Input.GetKeyDown(KeyCode.N)){
             TriggerNitro();
         }
@@ -80,12 +87,23 @@ public class CarMovement : MonoBehaviour
             //    transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
             //    backSteam.Play();
             //}
-            motorFront.motorSpeed = carSpeed * -1;
-            motorFront.maxMotorTorque = 1000;
-            frontwheel.motor = motorFront;
-            motorBack.motorSpeed = carSpeed * -1;
-            motorBack.maxMotorTorque = 1000;
-            backwheel.motor = motorBack;
+            if (motorOffTimer > 0.8)
+            {
+                motorFront.motorSpeed = 0;
+                motorFront.maxMotorTorque = 0;
+                frontwheel.motor = motorFront;
+                motorBack.motorSpeed = 0;
+                motorBack.maxMotorTorque = 0;
+                backwheel.motor = motorBack;
+            } else
+            {
+                motorFront.motorSpeed = carSpeed * -1;
+                motorFront.maxMotorTorque = 1000;
+                frontwheel.motor = motorFront;
+                motorBack.motorSpeed = carSpeed * -1;
+                motorBack.maxMotorTorque = 1000;
+                backwheel.motor = motorBack;
+            }
 
             if (axis != 0) {
                 steamAudio.Play();

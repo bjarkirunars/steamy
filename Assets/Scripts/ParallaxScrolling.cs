@@ -20,7 +20,6 @@ public class ParallaxScrolling : MonoBehaviour
         // Distance traveled on X-axis
 
         transform.position = new Vector3(startpos + distX, transform.position.y, transform.position.z);
-        Debug.Log("Temp: " + temp + " Startpos: " + startpos);
         if (temp > startpos + length) startpos += length;
         else if (temp < startpos - length) startpos -= length;
     }

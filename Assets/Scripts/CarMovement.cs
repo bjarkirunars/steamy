@@ -17,9 +17,11 @@ public class CarMovement : MonoBehaviour
     public ParticleSystem frontSteamParticle;
     public ParticleSystem backSteamParticle;
     public ParticleSystem jumpSteamParticle;
+    public ParticleSystem nitroSteamParticle;
     public ParticleSystem explosionParticle;
 
     public AudioSource steamAudio;
+    public AudioSource steamNitroAudio;
 
 
     public GameObject gameOverScreen;
@@ -48,6 +50,9 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.nitroCharges > 0 && Input.GetKeyDown(KeyCode.N)){
+            TriggerNitro();
+        }
         if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
@@ -137,7 +142,7 @@ public class CarMovement : MonoBehaviour
         int currencyEarned = CalculateCurrency();
         GameManager.instance.GameOver(currencyEarned, carExploded);
         gameOverScreen.SetActive(true);
-        currencyLabel.text = "You earned: " + currencyEarned.ToString() + " Screws";
+        currencyLabel.text = "Distance:"+ currencyEarned.ToString() +"\nAchivements: 0"+ "\nYou earned: " + currencyEarned.ToString() + " Screws";
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -149,5 +154,17 @@ public class CarMovement : MonoBehaviour
             // GameManager.instance.currentCoals = 0;
             EndGame(true);
         }
+    }
+
+    void TriggerNitro() {
+        GameManager.instance.maxCarSpeed += 4000;
+        GameManager.instance.nitroCharges -= 1;
+        steamNitroAudio.Play();
+        nitroSteamParticle.Play();
+        Invoke("ResetSpeed", 2.0f);
+    }
+
+    void ResetSpeed() {
+        GameManager.instance.maxCarSpeed -= 4000;
     }
 }

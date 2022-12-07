@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
             currency = 0;
             coalLevel = 60;
             maxCarSpeed = carSpeed;
+            nitroCharges = nitroLevel - 1;
         } 
         else if (instance != this) {
             Destroy(gameObject);
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
         gameRunning = true;
         carSpeed = maxCarSpeed;
         currentCoals = coalLevel;
+        nitroCharges = nitroLevel - 1;
     }
 
     public void ResetGame() {

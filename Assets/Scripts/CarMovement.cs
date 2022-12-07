@@ -50,7 +50,7 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.N)){
+        if(GameManager.instance.nitroCharges > 0 && Input.GetKeyDown(KeyCode.N)){
             TriggerNitro();
         }
         if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
@@ -158,6 +158,7 @@ public class CarMovement : MonoBehaviour
 
     void TriggerNitro() {
         GameManager.instance.maxCarSpeed += 4000;
+        GameManager.instance.nitroCharges -= 1;
         steamNitroAudio.Play();
         nitroSteamParticle.Play();
         Invoke("ResetSpeed", 2.0f);

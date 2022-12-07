@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6307258976152460241}
   - component: {fileID: 6307258976152460240}
   - component: {fileID: 6307258976152460242}
+  - component: {fileID: 9150066784076414381}
   m_Layer: 0
   m_Name: junkScrew
   m_TagString: Untagged
@@ -143,6 +144,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9150066784076414381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307258976152460246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831a0a7194666403fbf6037fb52eea07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pileOfJunkSound: {fileID: 0}
 --- !u!1 &6307258976228116414
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +169,7 @@ GameObject:
   - component: {fileID: 6307258976228116409}
   - component: {fileID: 6307258976228116408}
   - component: {fileID: 6307258976228116410}
+  - component: {fileID: 2310356423303426524}
   m_Layer: 0
   m_Name: junkScrew (1)
   m_TagString: Untagged
@@ -286,6 +301,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2310356423303426524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307258976228116414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831a0a7194666403fbf6037fb52eea07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pileOfJunkSound: {fileID: 0}
 --- !u!1 &6307258976628753885
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +362,7 @@ GameObject:
   - component: {fileID: 6307258976665606003}
   - component: {fileID: 6307258976665606002}
   - component: {fileID: 6307258976665605996}
+  - component: {fileID: 2933803554176523970}
   m_Layer: 0
   m_Name: junkScrew (2)
   m_TagString: Untagged
@@ -465,6 +494,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2933803554176523970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307258976665606000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831a0a7194666403fbf6037fb52eea07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pileOfJunkSound: {fileID: 0}
 --- !u!1 &6307258977439183217
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +519,7 @@ GameObject:
   - component: {fileID: 6307258977439183212}
   - component: {fileID: 6307258977439183219}
   - component: {fileID: 6307258977439183213}
+  - component: {fileID: 4524573516562132515}
   m_Layer: 0
   m_Name: junkScrew (4)
   m_TagString: Untagged
@@ -608,6 +651,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4524573516562132515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307258977439183217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831a0a7194666403fbf6037fb52eea07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pileOfJunkSound: {fileID: 0}
 --- !u!1 &6307258977530544805
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +676,7 @@ GameObject:
   - component: {fileID: 6307258977530544800}
   - component: {fileID: 6307258977530544807}
   - component: {fileID: 6307258977530544801}
+  - component: {fileID: 3199050949270842557}
   m_Layer: 0
   m_Name: junkScrew (3)
   m_TagString: Untagged
@@ -751,3 +808,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3199050949270842557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307258977530544805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831a0a7194666403fbf6037fb52eea07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pileOfJunkSound: {fileID: 0}

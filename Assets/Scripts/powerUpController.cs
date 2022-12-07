@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class powerUpController : MonoBehaviour
 {
-    public AudioClip screwPickupSound;
+    public AudioClip coinPickupSound;
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D other) {
         // Debug.Log("Car detected" + GameManager.instance.carSpeed.ToString());
 
-        if (collision.gameObject.layer == 13) {
-            GameManager.instance.PlayClip(screwPickupSound);
+        if (other.gameObject.tag == "CarHitBox") {
+            GameManager.instance.PlayClip(coinPickupSound);
             GameManager.instance.currency +=  10 ;
             Destroy(gameObject);
         }

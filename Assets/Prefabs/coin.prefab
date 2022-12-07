@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5216870065056426673}
   - component: {fileID: 1175127914154768958}
   m_Layer: 0
-  m_Name: screw
+  m_Name: coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5216870065056426635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.63, y: -6.56, z: -1.627265}
-  m_LocalScale: {x: 1.0711, y: 1, z: 1}
+  m_LocalScale: {x: 0.32775658, y: 0.361, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300c38cce749c5a4b856a6977c21fb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screwPickupSound: {fileID: 8300000, guid: c33a6dc13606d784d9e119d11baacf0b, type: 3}
+  coinPickupSound: {fileID: 8300000, guid: c33a6dc13606d784d9e119d11baacf0b, type: 3}
 --- !u!58 &1175127914154768958
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.09, y: -0.1}

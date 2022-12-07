@@ -23,8 +23,6 @@ public class CarMovement : MonoBehaviour
     public AudioSource steamAudio;
     public AudioSource steamNitroAudio;
 
-    private Vector2 m_NewForce;
-
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;

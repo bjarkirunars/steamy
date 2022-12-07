@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Upgrade.unity
-    guid: 1d1dca23764b648a8844450302446c46
-  - enabled: 1
-    path: Assets/Scenes/Bjarki.unity
-    guid: 5f741f91f85fc44aab3d62290505dc39
-  - enabled: 1
-    path: Assets/Scenes/Eythor.unity
-    guid: 64f7420f75c7805438508b6aa7515dd8
-  - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: 770e67bed469e4324b8d001d4864c1c6
+  - enabled: 1
+    path: Assets/Scenes/Winner.unity
+    guid: 36e1e957183c44653b55fb3f92959152
+  - enabled: 1
+    path: Assets/Scenes/Upgrade.unity
+    guid: 8f51b2cb8f61c47f38de82a92be0d6b2
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 9de1d5e2b11cd446a9a325d543f13b2b
   m_configObjects: {}

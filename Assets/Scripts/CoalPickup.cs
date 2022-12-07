@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class CoalPickup : MonoBehaviour
 {
-    public AudioSource audioManager;
+    public AudioClip coalPickupSound;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        audioManager.Play(); 
-        // FIXME: Audio doesn't play since powerup is destroyed too quickly
-        GameManager.instance.RefillCoal();
-        Destroy(gameObject);
+        if (other.gameObject.tag == "CarHitBox") {
+            GameManager.instance.PlayClip(coalPickupSound);
+            if (GameManager.instance.gameRunning) GameManager.instance.RefillCoal();
+            // Prevents car from regaining fuel if Game Over has been achieved
+            Destroy(gameObject);
+        }
     }
 }

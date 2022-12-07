@@ -11,9 +11,17 @@ public class GameManager : MonoBehaviour
     public int maxCarSpeed = 1;
     public int carSpeed = 1;
     public int jumpHeight = 0;
-    public int maxCoals = 80;
-    public int currentCoals = 50;
+    public int nitroCharges = 0;
+    public int maxCoals = 60;
+    public int speedLevel = 1;
+    public int jumpLevel = 1;
+    public int coalUpgradeLevel = 1;
+    public int coalLevel = 1;
+    public int nitroLevel = 1;
+    public int currentCoals = 60;
+    public float coalSpendTime = 0.2f;
     public int currency;
+    public AudioClip gameOverClip;
 
     void Awake()
     {
@@ -21,6 +29,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             currency = 0;
+            coalLevel = 60;
             maxCarSpeed = carSpeed;
         } 
         else if (instance != this) {
@@ -46,8 +55,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver(int currencyEarned) {
+    public void GameOver(int currencyEarned, bool carExploded = false) {
         if (gameRunning) {
+            if (!carExploded) {
+                PlayClip(gameOverClip);
+            }
             gameRunning = false;
             currency += currencyEarned;
         }
@@ -56,10 +68,38 @@ public class GameManager : MonoBehaviour
     public void RestartGame() {
         gameRunning = true;
         carSpeed = maxCarSpeed;
-        currentCoals = maxCoals;
+        currentCoals = coalLevel;
+    }
+
+    public void ResetGame() {
+            maxCarSpeed = 1000;
+            carSpeed = 1000;
+            jumpHeight = 0;
+            maxCoals = 60;
+            coalLevel = 60;
+            currentCoals = 60;
+            currency = 0;
     }
 
     public int GetCurrency() {
         return currency;
+    }
+    public void PlayClip(AudioClip clip) {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.clip = clip;
+        audio.Play();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (AudioListener.volume == 0) {
+                AudioListener.volume = 1;
+            } else {
+                AudioListener.volume = 0;
+            }
+        }
+        
     }
 }

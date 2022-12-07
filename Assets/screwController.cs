@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class screwController : MonoBehaviour
+public class srcewController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public int penalityWeight;
+    public AudioClip screwPickupSound;
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameManager.instance.carSpeed -= penalityWeight;
-        Destroy(collision.gameObject);
-    }
+    private void OnCollisionEnter2D(Collision2D collision) {
+        // Debug.Log("Car detected" + GameManager.instance.carSpeed.ToString());
+
+        if (collision.gameObject.name == "screw") {
+            GameManager.instance.PlayClip(screwPickupSound);
+            GameManager.instance.currency +=  10 ;
+            Destroy(gameObject);
+        }
+}
 }

@@ -15,11 +15,13 @@ public class ParallaxScrolling : MonoBehaviour
 
     void Update() {
         float temp = (cam.transform.position.x * (1 - parallaxEffect));
-        float dist = (cam.transform.position.x * parallaxEffect);
+        // Variable to track whether background has traveled its length on the X-axis
+        float distX = (cam.transform.position.x * parallaxEffect);
+        // Distance traveled on X-axis
 
-        transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
-
+        transform.position = new Vector3(startpos + distX, transform.position.y, transform.position.z);
+        Debug.Log("Temp: " + temp + " Startpos: " + startpos);
         if (temp > startpos + length) startpos += length;
-        else if (temp < startpos + length) startpos -= length;
+        else if (temp < startpos - length) startpos -= length;
     }
 }

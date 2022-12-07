@@ -86,6 +86,7 @@ public class CarMovement : MonoBehaviour
             if(Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
             {
                 //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+                accumulativeCoal += 0.1;
                 GameManager.instance.PlayClip(jumpSound);
                 player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
                 jumpSteamParticle.Play();

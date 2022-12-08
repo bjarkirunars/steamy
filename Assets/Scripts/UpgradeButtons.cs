@@ -45,7 +45,7 @@ public class UpgradeButtons : MonoBehaviour
     public void upgradeSpeed()
     {
         priceToPay = GameManager.instance.speedLevel * 50;
-        if (GameManager.instance.currency >= priceToPay)
+        if (GameManager.instance.currency >= priceToPay && GameManager.instance.speedLevel < 20)
         {
             GameManager.instance.maxCarSpeed = (int)(GameManager.instance.maxCarSpeed * speedMultiplier);
             GameManager.instance.currency -= priceToPay;
@@ -59,7 +59,7 @@ public class UpgradeButtons : MonoBehaviour
     public void upgradeJump()
     {
         priceToPay = GameManager.instance.jumpLevel * 300;
-        if (GameManager.instance.currency > priceToPay)
+        if (GameManager.instance.currency > priceToPay && GameManager.instance.jumpLevel < 7)
         {
             if (GameManager.instance.jumpHeight == 0)
             {
@@ -79,7 +79,7 @@ public class UpgradeButtons : MonoBehaviour
     public void upgradeCoals()
     {
         priceToPay = GameManager.instance.coalUpgradeLevel * 100;
-        if (GameManager.instance.currency >= priceToPay)
+        if (GameManager.instance.currency >= priceToPay && GameManager.instance.coalUpgradeLevel < 10)
         {
             GameManager.instance.coalSpendTime = GameManager.instance.coalSpendTime + 0.05f;
             GameManager.instance.currency -= priceToPay;
@@ -94,7 +94,7 @@ public class UpgradeButtons : MonoBehaviour
     public void upgradeNitro()
     {
         priceToPay = GameManager.instance.nitroLevel * 500;
-        if (GameManager.instance.currency >= priceToPay)
+        if (GameManager.instance.currency >= priceToPay && GameManager.instance.nitroLevel < 4)
         {
             GameManager.instance.nitroCharges += 1;
             GameManager.instance.currency -= priceToPay;

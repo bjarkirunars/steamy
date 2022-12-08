@@ -39,7 +39,7 @@ public class CarMovement : MonoBehaviour
     public TextMeshProUGUI coinLabel;
     public TextMeshProUGUI distanceLabel;
     // public GameObject awardScreen;
-    // public TextMeshProUGUI awardLabel;
+    public TextMeshProUGUI awardLabel;
     JointMotor2D motorFront;
 
     JointMotor2D motorBack;
@@ -52,6 +52,8 @@ public class CarMovement : MonoBehaviour
 
     private int charges;
     private float motorOffTimer = 0.0f;
+
+
 
     private void Start() 
     {
@@ -69,11 +71,11 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float endX = transform.position.x;
+        float totalDistance = endX + startX;
         if (distanceLabel != null)
         {
-            float endX = transform.position.x;
-            float totalDistance = endX + startX;
-            distanceLabel.text = (int)totalDistance + "KM / 1300KM";
+            distanceLabel.text = (int)totalDistance + "KM / 1330KM";
         }
         if (player.velocity.y < 0)
         {
@@ -119,14 +121,14 @@ public class CarMovement : MonoBehaviour
             if (axis != 0) {
                 steamAudio.Play();
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
-                accumulativeCoal += 0.1;
+                accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 if (axis < 0) backSteamParticle.Emit(1);
                 else frontSteamParticle.Emit(1);
             }
 
             if (Input.GetButtonDown("Jump") && (isTouchingGroundL||isTouchingGroundR) && GameManager.instance.jumpHeight > 0)
             {
-                accumulativeCoal += 0.1;
+                accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);
                 player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
                 jumpSteamParticle.Play();
@@ -143,7 +145,7 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
-        if (player.position.x >= 1300)
+        if (player.position.x >= 1330)
         {
             Invoke("GoToWin", 2.0f);
         }
@@ -152,13 +154,51 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }
-        // if (player.position.x > 10 )
-        // {
-        //     if(player.position.x < 15)
-        //     {
-        //     AwardScreen(10,50);
-        //     }
-        // }
+        if (totalDistance > 100)
+        {
+            if (!GameManager.instance.Acivement1)
+            {
+                AwardScreen(100, 100);
+                GameManager.instance.achievementCurrency += 100;
+                GameManager.instance.Acivement1 = true;
+            }
+        }
+        if (totalDistance > 350)
+        {
+            if (!GameManager.instance.Acivement2)
+            {
+                AwardScreen(350, 500);
+                GameManager.instance.achievementCurrency += 500;
+                GameManager.instance.Acivement2 = true;
+            }
+        }
+        if (totalDistance > 500)
+        {
+            if (!GameManager.instance.Acivement3)
+            {
+                AwardScreen(500, 750);
+                GameManager.instance.achievementCurrency += 750;
+                GameManager.instance.Acivement3 = true;
+            }
+        }
+        if (totalDistance > 750)
+        {
+            if (!GameManager.instance.Acivement4)
+            {
+                AwardScreen(750, 1000);
+                GameManager.instance.achievementCurrency += 1000;
+                GameManager.instance.Acivement4 = true;
+            }
+        }
+        if (totalDistance > 1000)
+        {
+            if (!GameManager.instance.Acivement5)
+            {
+                AwardScreen(1000, 10000);
+                GameManager.instance.achievementCurrency += 10000;
+                GameManager.instance.Acivement5 = true;
+            }
+        }
     }
 
     void GoToWin()
@@ -183,12 +223,13 @@ public class CarMovement : MonoBehaviour
         // sound based on whether car ran out of fuel or exploded
         int currencyEarned = CalculateCurrency();
         GameManager.instance.currency += GameManager.instance.coinCurrency;
+        GameManager.instance.currency += GameManager.instance.achievementCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
         Invoke("GameOverScreen", 1.5f);
         currencyLabel.text = "Distance:"+ currencyEarned.ToString() + " KMs" + 
-            "\n\nYou earned: " + currencyEarned.ToString() + " Screws" +
-            "\n\nAchievements: 0 Screws" +
-            "\n\n Coins picked up: " + GameManager.instance.coinCurrency + " Screws";
+            "\n\nAchievements: " + GameManager.instance.achievementCurrency + " Screws" +
+            "\n\n Coins picked up: " + GameManager.instance.coinCurrency + " Screws" +
+            "\n\nYou earned: " + (currencyEarned + GameManager.instance.coinCurrency + GameManager.instance.achievementCurrency).ToString() + " Screws";
     }
 
     void GameOverScreen()
@@ -207,12 +248,12 @@ public class CarMovement : MonoBehaviour
             EndGame(true);
         }
     }
-    // void AwardScreen(int distance, int screws)
-    // {
-    //     awardScreen.SetActive(true);
-    //     awardLabel.text = "You reached " + distance.ToString() +" meters." + "\n Screws earned: " + screws.ToString();
-    //     Invoke("RemoveAwardScreen", 2f);
-    // }
+    void AwardScreen(int distance, int screws)
+    {
+        //awardScreen.SetActive(true);
+        awardLabel.text = "You reached " + distance.ToString() + " meters." + " Screws earned: " + screws.ToString();
+        Invoke("RemoveAwardScreen", 2f);
+    }
 
     void CheckNitros()
     {
@@ -270,8 +311,8 @@ public class CarMovement : MonoBehaviour
     {
         coinLabel.text = "";
     }
-    // void RemoveAwardScreen()
-    // {
-    //     awardScreen.SetActive(false);
-    // }
+    void RemoveAwardScreen()
+    {
+        awardLabel.text = "";
+    }
 }

@@ -22,8 +22,14 @@ public class GameManager : MonoBehaviour
     public float coalSpendTime = 0.2f;
     public int currency;
     public int coinCurrency;
+    public int achievementCurrency;
     public AudioClip gameOverClip;
     public int maxDistance;
+    public bool Acivement1 = false;
+    public bool Acivement2 = false;
+    public bool Acivement3 = false;
+    public bool Acivement4 = false;
+    public bool Acivement5 = false;
 
     void Awake()
     {
@@ -32,6 +38,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             currency = 0;
             coinCurrency = 0;
+            achievementCurrency = 0;
             coalLevel = 60;
             maxCarSpeed = carSpeed;
             nitroCharges = nitroLevel - 1;
@@ -79,6 +86,7 @@ public class GameManager : MonoBehaviour
         currentCoals = coalLevel;
         nitroCharges = nitroLevel - 1;
         coinCurrency = 0;
+        achievementCurrency = 0;
     }
 
     public void ResetGame() {

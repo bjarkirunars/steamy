@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour
     public int currentCoals = 60;
     public float coalSpendTime = 0.2f;
     public int currency;
+    public int coinCurrency;
     public AudioClip gameOverClip;
+    public int maxDistance;
 
     void Awake()
     {
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             currency = 0;
+            coinCurrency = 0;
             coalLevel = 60;
             maxCarSpeed = carSpeed;
             nitroCharges = nitroLevel - 1;
@@ -63,6 +66,10 @@ public class GameManager : MonoBehaviour
             }
             gameRunning = false;
             currency += currencyEarned;
+            if (currencyEarned > maxDistance)
+            {
+                maxDistance = currencyEarned;
+            }
         }
     }
 
@@ -71,6 +78,7 @@ public class GameManager : MonoBehaviour
         carSpeed = maxCarSpeed;
         currentCoals = coalLevel;
         nitroCharges = nitroLevel - 1;
+        coinCurrency = 0;
     }
 
     public void ResetGame() {

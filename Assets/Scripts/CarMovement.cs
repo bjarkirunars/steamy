@@ -12,7 +12,13 @@ public class CarMovement : MonoBehaviour
     // public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask groundLayer;
+    private bool isTouchingGroundR;
     private bool isTouchingGround;
+    private bool isTouchingGroundL;
+    public GameObject bigTire;
+    public GameObject smallTire;
+    //public wheelToGroundCheckR WTGCR = wheelToGroundCheckR();
+    //public wheelToGroundCheckL WTGCL = wheelToGroundCheckL();
     
     public ParticleSystem frontSteamParticle;
     public ParticleSystem backSteamParticle;
@@ -31,6 +37,7 @@ public class CarMovement : MonoBehaviour
     public GameObject coalLabel;
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
+    public TextMeshProUGUI distanceLabel;
     // public GameObject awardScreen;
     public TextMeshProUGUI awardLabel;
     JointMotor2D motorFront;
@@ -64,6 +71,12 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (distanceLabel != null)
+        {
+            float endX = transform.position.x;
+            float totalDistance = endX + startX;
+            distanceLabel.text = (int)totalDistance + "KM / 1300KM";
+        }
         if (player.velocity.y < 0)
         {
             motorOffTimer += Time.deltaTime;
@@ -77,7 +90,11 @@ public class CarMovement : MonoBehaviour
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
-            isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
+            //isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
+            isTouchingGroundL = Physics2D.OverlapCircle(bigTire.transform.position,groundCheckRadius, groundLayer);
+            isTouchingGroundR = Physics2D.OverlapCircle(smallTire.transform.position,groundCheckRadius,groundLayer);
+            
+            
             if (GameManager.instance.carSpeed < 0) 
                 carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
@@ -109,7 +126,7 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Emit(1);
             }
 
-            if (Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
+            if (Input.GetButtonDown("Jump") && (isTouchingGroundL||isTouchingGroundR) && GameManager.instance.jumpHeight > 0)
             {
                 accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);
@@ -128,7 +145,7 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
-        if (player.position.x >= 1500)
+        if (player.position.x >= 1300)
         {
             Invoke("GoToWin", 2.0f);
         }
@@ -203,7 +220,7 @@ public class CarMovement : MonoBehaviour
         GameManager.instance.currency += GameManager.instance.coinCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
         Invoke("GameOverScreen", 1.5f);
-        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + " Meters" + 
+        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + " KMs" + 
             "\n\nYou earned: " + currencyEarned.ToString() + " Screws" +
             "\n\nAchievements: 0 Screws" +
             "\n\n Coins picked up: " + GameManager.instance.coinCurrency + " Screws";

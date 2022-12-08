@@ -31,8 +31,8 @@ public class CarMovement : MonoBehaviour
     public GameObject coalLabel;
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
-    public GameObject awardScreen;
-    public TextMeshProUGUI awardLabel;
+    // public GameObject awardScreen;
+    // public TextMeshProUGUI awardLabel;
     JointMotor2D motorFront;
 
     JointMotor2D motorBack;
@@ -135,13 +135,13 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }
-        if (player.position.x > 10 )
-        {
-            if(player.position.x < 15)
-            {
-            AwardScreen(10,50);
-            }
-        }
+        // if (player.position.x > 10 )
+        // {
+        //     if(player.position.x < 15)
+        //     {
+        //     AwardScreen(10,50);
+        //     }
+        // }
     }
 
     void GoToWin()
@@ -190,12 +190,12 @@ public class CarMovement : MonoBehaviour
             EndGame(true);
         }
     }
-    void AwardScreen(int distance, int screws)
-    {
-        awardScreen.SetActive(true);
-        awardLabel.text = "You reached " + distance.ToString() +" meters." + "\n Screws earned: " + screws.ToString();
-        Invoke("RemoveAwardScreen", 2f);
-    }
+    // void AwardScreen(int distance, int screws)
+    // {
+    //     awardScreen.SetActive(true);
+    //     awardLabel.text = "You reached " + distance.ToString() +" meters." + "\n Screws earned: " + screws.ToString();
+    //     Invoke("RemoveAwardScreen", 2f);
+    // }
 
     void CheckNitros()
     {
@@ -253,8 +253,8 @@ public class CarMovement : MonoBehaviour
     {
         coinLabel.text = "";
     }
-    void RemoveAwardScreen()
-    {
-        awardScreen.SetActive(false);
-    }
+    // void RemoveAwardScreen()
+    // {
+    //     awardScreen.SetActive(false);
+    // }
 }

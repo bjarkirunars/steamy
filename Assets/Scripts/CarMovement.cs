@@ -28,8 +28,11 @@ public class CarMovement : MonoBehaviour
     public GameObject nitro1;
     public GameObject nitro2;
     public GameObject nitro3;
+    public GameObject coalLabel;
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
+    public GameObject awardScreen;
+    public TextMeshProUGUI awardLabel;
     JointMotor2D motorFront;
 
     JointMotor2D motorBack;
@@ -51,6 +54,7 @@ public class CarMovement : MonoBehaviour
         if (gameOverScreen != null)
         {
             gameOverScreen.SetActive(false);
+            coalLabel.SetActive(true);
         }
         CheckNitros();
     }
@@ -131,6 +135,13 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }
+        if (player.position.x > 10 )
+        {
+            if(player.position.x < 15)
+            {
+            AwardScreen(10,50);
+            }
+        }
     }
 
     void GoToWin()
@@ -156,10 +167,17 @@ public class CarMovement : MonoBehaviour
         int currencyEarned = CalculateCurrency();
         GameManager.instance.currency += GameManager.instance.coinCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
+        Invoke("GameOverScreen", 1.5f);
+        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + " Meters" + 
+            "\n\nYou earned: " + currencyEarned.ToString() + " Screws" +
+            "\n\nAchievements: 0 Screws" +
+            "\n\n Coins picked up: " + GameManager.instance.coinCurrency + " Screws";
+    }
+
+    void GameOverScreen()
+    {
         gameOverScreen.SetActive(true);
-        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + 
-            "\nAchievements: 0"+ "\nYou earned: " + currencyEarned.ToString() + 
-            " Screws \n Coins picked up: " + GameManager.instance.coinCurrency;
+        coalLabel.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -171,6 +189,12 @@ public class CarMovement : MonoBehaviour
             // GameManager.instance.currentCoals = 0;
             EndGame(true);
         }
+    }
+    void AwardScreen(int distance, int screws)
+    {
+        awardScreen.SetActive(true);
+        awardLabel.text = "You reached " + distance.ToString() +" meters." + "\n Screws earned: " + screws.ToString();
+        Invoke("RemoveAwardScreen", 2f);
     }
 
     void CheckNitros()
@@ -228,5 +252,9 @@ public class CarMovement : MonoBehaviour
     void RemoveLabel()
     {
         coinLabel.text = "";
+    }
+    void RemoveAwardScreen()
+    {
+        awardScreen.SetActive(false);
     }
 }

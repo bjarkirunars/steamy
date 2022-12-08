@@ -4942,9 +4942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe799edc3727a0b48b50fa5d7771f02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8192
 --- !u!1001 &3794134645915399283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5016,6 +5013,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CFXR Smoke Source 3D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656522925583160108, guid: e509867be4f82f246a95eca1ee5a2d61,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656522925583160108, guid: e509867be4f82f246a95eca1ee5a2d61,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -888973317
       objectReference: {fileID: 0}
     - target: {fileID: 8656522925583160108, guid: e509867be4f82f246a95eca1ee5a2d61,
         type: 3}

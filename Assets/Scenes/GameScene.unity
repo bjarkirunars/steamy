@@ -320,6 +320,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &229302945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 456108444797463486, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4525284481022704009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &229302952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229302945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c29ffcfebf9343348881671e3f41eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &290281889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,6 +1303,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &992152678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 456108444797473230, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4525284481022704009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &992152685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992152678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdc4ea9e03a24f419fd957c2e4db215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1117832887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2059,11 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 8404187122948571424}
+    - target: {fileID: 6891835092331475417, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+        type: 3}
+      propertyPath: groundCheckRadius
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 959ae46f4b6a34a87b5407fc9eadf1e9, type: 3}
 --- !u!1001 &7601660065454858725

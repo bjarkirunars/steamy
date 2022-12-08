@@ -2516,6 +2516,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  bigTire: {fileID: 456108444797473230}
+  smallTire: {fileID: 456108444797463486}
   frontSteamParticle: {fileID: 1366421306034690505}
   backSteamParticle: {fileID: 1366421305893620124}
   jumpSteamParticle: {fileID: 544927791595047618}
@@ -2524,6 +2526,7 @@ MonoBehaviour:
   steamAudio: {fileID: 544927790658619009}
   steamNitroAudio: {fileID: 456108444797209126}
   gameOverScreen: {fileID: 0}
+  nitroText: {fileID: 0}
   nitro1: {fileID: 0}
   nitro2: {fileID: 0}
   nitro3: {fileID: 0}

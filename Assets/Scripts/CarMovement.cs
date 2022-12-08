@@ -23,13 +23,13 @@ public class CarMovement : MonoBehaviour
     public AudioSource steamAudio;
     public AudioSource steamNitroAudio;
 
-
     public GameObject gameOverScreen;
     public GameObject nitroText;
     public GameObject nitro1;
     public GameObject nitro2;
     public GameObject nitro3;
     public TextMeshProUGUI currencyLabel;
+    public TextMeshProUGUI coinLabel;
     JointMotor2D motorFront;
 
     JointMotor2D motorBack;
@@ -154,9 +154,12 @@ public class CarMovement : MonoBehaviour
         // Car exploded boolean is to choose correct game over
         // sound based on whether car ran out of fuel or exploded
         int currencyEarned = CalculateCurrency();
+        GameManager.instance.currency += GameManager.instance.coinCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
         gameOverScreen.SetActive(true);
-        currencyLabel.text = "Distance:"+ currencyEarned.ToString() +"\nAchivements: 0"+ "\nYou earned: " + currencyEarned.ToString() + " Screws";
+        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + 
+            "\nAchievements: 0"+ "\nYou earned: " + currencyEarned.ToString() + 
+            " Screws \n Coins picked up: " + GameManager.instance.coinCurrency;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -214,5 +217,16 @@ public class CarMovement : MonoBehaviour
 
     void ResetSpeed() {
         GameManager.instance.maxCarSpeed -= 4000;
+    }
+
+    public void GotCoins()
+    {
+        coinLabel.text = "You got a coin\n +10 Screws!";
+        Invoke("RemoveLabel", 2.0f);
+    }
+
+    void RemoveLabel()
+    {
+        coinLabel.text = "";
     }
 }

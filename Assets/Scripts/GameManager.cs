@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
     public int coinCurrency;
     public AudioClip gameOverClip;
     public int maxDistance;
+    public bool Acivement1 = false;
+    public bool Acivement2 = false;
+    public bool Acivement3 = false;
+    public bool Acivement4 = false;
+    public bool Acivement5 = false;
 
     void Awake()
     {

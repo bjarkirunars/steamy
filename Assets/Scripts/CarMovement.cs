@@ -32,7 +32,7 @@ public class CarMovement : MonoBehaviour
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
     // public GameObject awardScreen;
-    // public TextMeshProUGUI awardLabel;
+    public TextMeshProUGUI awardLabel;
     JointMotor2D motorFront;
 
     JointMotor2D motorBack;
@@ -45,6 +45,8 @@ public class CarMovement : MonoBehaviour
 
     private int charges;
     private float motorOffTimer = 0.0f;
+
+
 
     private void Start() 
     {
@@ -102,14 +104,14 @@ public class CarMovement : MonoBehaviour
             if (axis != 0) {
                 steamAudio.Play();
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
-                accumulativeCoal += 0.1;
+                accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 if (axis < 0) backSteamParticle.Emit(1);
                 else frontSteamParticle.Emit(1);
             }
 
             if (Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
             {
-                accumulativeCoal += 0.1;
+                accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);
                 player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
                 jumpSteamParticle.Play();
@@ -135,13 +137,46 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }
-        // if (player.position.x > 10 )
-        // {
-        //     if(player.position.x < 15)
-        //     {
-        //     AwardScreen(10,50);
-        //     }
-        // }
+        if (player.position.x > 10)
+        {
+            if (!GameManager.instance.Acivement1)
+            {
+                AwardScreen(100, 50);
+                GameManager.instance.Acivement1 = true;
+            }
+        }
+        if (player.position.x > 200)
+        {
+            if (!GameManager.instance.Acivement2)
+            {
+                AwardScreen(200, 50);
+                GameManager.instance.Acivement2 = true;
+            }
+        }
+        if (player.position.x > 500)
+        {
+            if (!GameManager.instance.Acivement3)
+            {
+                AwardScreen(500, 50);
+                GameManager.instance.Acivement3 = true;
+            }
+        }
+        if (player.position.x > 750)
+        {
+            if (!GameManager.instance.Acivement4)
+            {
+                AwardScreen(750, 50);
+                GameManager.instance.Acivement4 = true;
+            }
+        }
+        if (player.position.x > 1000)
+        {
+            if (!GameManager.instance.Acivement5)
+            {
+                AwardScreen(1000, 50);
+                GameManager.instance.Acivement5 = true;
+            }
+        }
     }
 
     void GoToWin()
@@ -190,12 +225,12 @@ public class CarMovement : MonoBehaviour
             EndGame(true);
         }
     }
-    // void AwardScreen(int distance, int screws)
-    // {
-    //     awardScreen.SetActive(true);
-    //     awardLabel.text = "You reached " + distance.ToString() +" meters." + "\n Screws earned: " + screws.ToString();
-    //     Invoke("RemoveAwardScreen", 2f);
-    // }
+    void AwardScreen(int distance, int screws)
+    {
+        //awardScreen.SetActive(true);
+        awardLabel.text = "You reached " + distance.ToString() + " meters." + " Screws earned: " + screws.ToString();
+        Invoke("RemoveAwardScreen", 2f);
+    }
 
     void CheckNitros()
     {
@@ -253,8 +288,8 @@ public class CarMovement : MonoBehaviour
     {
         coinLabel.text = "";
     }
-    // void RemoveAwardScreen()
-    // {
-    //     awardScreen.SetActive(false);
-    // }
+    void RemoveAwardScreen()
+    {
+        awardLabel.text = "";
+    }
 }

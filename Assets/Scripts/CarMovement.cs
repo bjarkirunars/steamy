@@ -145,9 +145,9 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
-        if (player.position.x >= 1330)
+        if (player.position.x >= 1340)
         {
-            Invoke("GoToWin", 2.0f);
+            Invoke("GoToWin", 1.0f);
         }
         if (accumulativeCoal >1)
         {

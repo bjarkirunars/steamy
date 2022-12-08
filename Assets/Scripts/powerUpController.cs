@@ -5,13 +5,17 @@ using UnityEngine;
 public class powerUpController : MonoBehaviour
 {
     public AudioClip coinPickupSound;
+    public CarMovement car;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        // Debug.Log("Car detected" + GameManager.instance.carSpeed.ToString());
-
-        if (other.gameObject.tag == "CarHitBox") {
+        if (other.gameObject.name == "Car") {
+            car = other.gameObject.GetComponent<CarMovement>();
             GameManager.instance.PlayClip(coinPickupSound);
-            GameManager.instance.currency +=  10 ;
+            GameManager.instance.coinCurrency +=  10;
+            if(car != null)
+            {
+                car.GotCoins();
+            }
             Destroy(gameObject);
         }
 }

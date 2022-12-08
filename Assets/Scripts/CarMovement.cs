@@ -26,6 +26,8 @@ public class CarMovement : MonoBehaviour
 
     public GameObject gameOverScreen;
     public TextMeshProUGUI currencyLabel;
+    public GameObject awardScreen;
+    public TextMeshProUGUI awardLabel;
     JointMotor2D motorFront;
 
     JointMotor2D motorBack;
@@ -117,6 +119,13 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }
+        if (player.position.x > 10 )
+        {
+            if(player.position.x < 15)
+            {
+            AwardScreen(10,50);
+            }
+        }
     }
 
     void GoToWin()
@@ -155,15 +164,25 @@ public class CarMovement : MonoBehaviour
             EndGame(true);
         }
     }
+    void AwardScreen(int distance, int screws)
+    {
+        awardScreen.SetActive(true);
+        awardLabel.text = "You reached " + distance.ToString() +" meters." + "\n Screws earned: " + screws.ToString();
+        Invoke("RemoveAwardScreen", 2f);
+    }
 
     void TriggerNitro() {
         GameManager.instance.maxCarSpeed += 4000;
+        Invoke("ResetSpeed", 2.0f);
         steamNitroAudio.Play();
         nitroSteamParticle.Play();
-        Invoke("ResetSpeed", 2.0f);
     }
 
     void ResetSpeed() {
         GameManager.instance.maxCarSpeed -= 4000;
+    }
+    void RemoveAwardScreen()
+    {
+        awardScreen.SetActive(false);
     }
 }

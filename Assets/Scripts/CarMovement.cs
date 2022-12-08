@@ -23,9 +23,13 @@ public class CarMovement : MonoBehaviour
     public AudioSource steamAudio;
     public AudioSource steamNitroAudio;
 
-
     public GameObject gameOverScreen;
+    public GameObject nitroText;
+    public GameObject nitro1;
+    public GameObject nitro2;
+    public GameObject nitro3;
     public TextMeshProUGUI currencyLabel;
+    public TextMeshProUGUI coinLabel;
     public GameObject awardScreen;
     public TextMeshProUGUI awardLabel;
     JointMotor2D motorFront;
@@ -38,6 +42,9 @@ public class CarMovement : MonoBehaviour
     public AudioClip explosionSound;
     private double accumulativeCoal = 0;
 
+    private int charges;
+    private float motorOffTimer = 0.0f;
+
     private void Start() 
     {
         startX = Mathf.Abs(transform.position.x); 
@@ -47,12 +54,19 @@ public class CarMovement : MonoBehaviour
         {
             gameOverScreen.SetActive(false);
         }
+        CheckNitros();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.N)){
+        if (player.velocity.y < 0)
+        {
+            motorOffTimer += Time.deltaTime;
+        } else {
+            motorOffTimer = 0.0f;
+        }
+        if(GameManager.instance.nitroCharges > 0 && Input.GetKeyDown(KeyCode.N)){
             TriggerNitro();
         }
         if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
@@ -60,27 +74,28 @@ public class CarMovement : MonoBehaviour
             int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
             isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
-            if (GameManager.instance.carSpeed < 0) carSpeed = 0; 
+            if (GameManager.instance.carSpeed < 0) 
+                carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
 
-            //player.velocity = new Vector2(carSpeed, player.velocity.y);
-            //if (Input.GetAxis("Horizontal") <0)
-            //{
-            //    transform.Rotate(0, 0, rotationSpeed * Time.fixedDeltaTime);
-            //    frontSteam.Play();
-            //}
-            //if (Input.GetAxis("Horizontal") > 0)
-            //{
-            //    transform.Rotate(0, 0, -rotationSpeed * Time.fixedDeltaTime);
-            //    backSteam.Play();
-            //}
-            motorFront.motorSpeed = carSpeed * -1;
-            motorFront.maxMotorTorque = 1000;
-            frontwheel.motor = motorFront;
-            motorBack.motorSpeed = carSpeed * -1;
-            motorBack.maxMotorTorque = 1000;
-            backwheel.motor = motorBack;
+            if (motorOffTimer > 0.8)
+            {
+                motorFront.motorSpeed = 0;
+                motorFront.maxMotorTorque = 0;
+                frontwheel.motor = motorFront;
+                motorBack.motorSpeed = 0;
+                motorBack.maxMotorTorque = 0;
+                backwheel.motor = motorBack;
+            } else
+            {
+                motorFront.motorSpeed = carSpeed * -1;
+                motorFront.maxMotorTorque = 1000;
+                frontwheel.motor = motorFront;
+                motorBack.motorSpeed = carSpeed * -1;
+                motorBack.maxMotorTorque = 1000;
+                backwheel.motor = motorBack;
+            }
 
             if (axis != 0) {
                 steamAudio.Play();
@@ -90,12 +105,11 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Emit(1);
             }
 
-            if(Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
+            if (Input.GetButtonDown("Jump") && isTouchingGround && GameManager.instance.jumpHeight > 0)
             {
-                //transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
                 accumulativeCoal += 0.1;
                 GameManager.instance.PlayClip(jumpSound);
-                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);//*Time.deltaTime);
+                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
                 jumpSteamParticle.Play();
             }
         }
@@ -110,7 +124,7 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
-        if (player.position.x >= 460)
+        if (player.position.x >= 1500)
         {
             Invoke("GoToWin", 2.0f);
         }
@@ -149,9 +163,12 @@ public class CarMovement : MonoBehaviour
         // Car exploded boolean is to choose correct game over
         // sound based on whether car ran out of fuel or exploded
         int currencyEarned = CalculateCurrency();
+        GameManager.instance.currency += GameManager.instance.coinCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
         gameOverScreen.SetActive(true);
-        currencyLabel.text = "Distance:"+ currencyEarned.ToString() +"\nAchivements: 0"+ "\nYou earned: " + currencyEarned.ToString() + " Screws";
+        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + 
+            "\nAchievements: 0"+ "\nYou earned: " + currencyEarned.ToString() + 
+            " Screws \n Coins picked up: " + GameManager.instance.coinCurrency;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -171,15 +188,61 @@ public class CarMovement : MonoBehaviour
         Invoke("RemoveAwardScreen", 2f);
     }
 
+    void CheckNitros()
+    {
+        charges = GameManager.instance.nitroCharges;
+        if (nitroText != null && nitro1 != null && nitro2 != null && nitro3 != null)
+        {
+            if (charges > 2)
+            {
+                nitroText.SetActive(true);
+                nitro1.SetActive(true);
+                nitro2.SetActive(true);
+                nitro3.SetActive(true);
+            } else if (charges > 1)
+            {
+                nitroText.SetActive(true);
+                nitro1.SetActive(true);
+                nitro2.SetActive(true);
+                nitro3.SetActive(false);
+            } else if (charges > 0)
+            {
+                nitroText.SetActive(true);
+                nitro1.SetActive(true);
+                nitro2.SetActive(false);
+                nitro3.SetActive(false);
+            } else
+            {
+                nitroText.SetActive(false);
+                nitro1.SetActive(false);
+                nitro2.SetActive(false);
+                nitro3.SetActive(false);
+            }
+        }
+    }
+
     void TriggerNitro() {
         GameManager.instance.maxCarSpeed += 4000;
-        Invoke("ResetSpeed", 2.0f);
+        GameManager.instance.nitroCharges -= 1;
         steamNitroAudio.Play();
         nitroSteamParticle.Play();
+        CheckNitros();
+        Invoke("ResetSpeed", 2.0f);
     }
 
     void ResetSpeed() {
         GameManager.instance.maxCarSpeed -= 4000;
+    }
+
+    public void GotCoins()
+    {
+        coinLabel.text = "You got a coin\n +10 Screws!";
+        Invoke("RemoveLabel", 2.0f);
+    }
+
+    void RemoveLabel()
+    {
+        coinLabel.text = "";
     }
     void RemoveAwardScreen()
     {

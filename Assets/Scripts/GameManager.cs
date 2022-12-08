@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int currentCoals = 60;
     public float coalSpendTime = 0.2f;
     public int currency;
+    public int coinCurrency;
     public AudioClip gameOverClip;
 
     void Awake()
@@ -29,8 +30,10 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             currency = 0;
+            coinCurrency = 0;
             coalLevel = 60;
             maxCarSpeed = carSpeed;
+            nitroCharges = nitroLevel - 1;
         } 
         else if (instance != this) {
             Destroy(gameObject);
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
         gameRunning = true;
         carSpeed = maxCarSpeed;
         currentCoals = coalLevel;
+        nitroCharges = nitroLevel - 1;
     }
 
     public void ResetGame() {
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour
             coalLevel = 60;
             currentCoals = 60;
             currency = 0;
+            coinCurrency = 0;
     }
 
     public int GetCurrency() {

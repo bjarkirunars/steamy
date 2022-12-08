@@ -77,6 +77,8 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             myButton.GetComponent<Image>().color = Color.red;
             myButton.interactable = false;
+        } else {
+            myButton.GetComponent<Image>().color = Color.green;
         }
 
      }

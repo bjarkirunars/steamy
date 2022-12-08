@@ -5,13 +5,11 @@ using UnityEngine;
 public class pileOfJunkController : MonoBehaviour
 {
     public AudioClip pileOfJunkSound;
+    private int playerLayer = 13;
 
     private void OnCollisionEnter2D(Collision2D collision) {
             // Decrease car speed when car is colliding with junk
-            
-
-            if (collision.gameObject.layer == 13) {
-                Debug.Log("Car detected");
+            if (collision.gameObject.layer == playerLayer) {
                 StartCoroutine(destroyer(collision));
             }
         }

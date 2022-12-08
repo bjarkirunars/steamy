@@ -1637,7 +1637,7 @@ PrefabInstance:
     - target: {fileID: 7227748704690318853, guid: 21de25cc5f0484deeaa468060dc29454,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7227748704690318854, guid: 21de25cc5f0484deeaa468060dc29454,
         type: 3}
@@ -1737,7 +1737,7 @@ PrefabInstance:
     - target: {fileID: 7227748706273387993, guid: 21de25cc5f0484deeaa468060dc29454,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.7019608
+      value: 0.7882353
       objectReference: {fileID: 0}
     - target: {fileID: 7227748706273387994, guid: 21de25cc5f0484deeaa468060dc29454,
         type: 3}
@@ -1757,7 +1757,7 @@ PrefabInstance:
     - target: {fileID: 7227748706396015664, guid: 21de25cc5f0484deeaa468060dc29454,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7227748706396015671, guid: 21de25cc5f0484deeaa468060dc29454,
         type: 3}

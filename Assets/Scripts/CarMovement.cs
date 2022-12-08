@@ -75,7 +75,7 @@ public class CarMovement : MonoBehaviour
         float totalDistance = endX + startX;
         if (distanceLabel != null)
         {
-            distanceLabel.text = (int)totalDistance + "KM / 1300KM";
+            distanceLabel.text = (int)totalDistance + "KM / 1330KM";
         }
         if (player.velocity.y < 0)
         {
@@ -145,7 +145,7 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
-        if (player.position.x >= 1300)
+        if (player.position.x >= 1330)
         {
             Invoke("GoToWin", 2.0f);
         }

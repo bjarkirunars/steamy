@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         currentCoals = coalLevel;
         nitroCharges = nitroLevel - 1;
         coinCurrency = 0;
+        achievementCurrency = 0;
     }
 
     public void ResetGame() {

@@ -618,6 +618,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1594746434}
+    - target: {fileID: 3654074821469234521, guid: e6f24932078b340e39cb98102e002bdd,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1594746434}
     - target: {fileID: 4149164033159912728, guid: e6f24932078b340e39cb98102e002bdd,
         type: 3}
       propertyPath: m_DynamicOccludee

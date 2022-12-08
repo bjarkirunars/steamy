@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public int currency;
     public int coinCurrency;
     public AudioClip gameOverClip;
+    public int maxDistance;
 
     void Awake()
     {
@@ -65,6 +66,10 @@ public class GameManager : MonoBehaviour
             }
             gameRunning = false;
             currency += currencyEarned;
+            if (currencyEarned > maxDistance)
+            {
+                maxDistance = currencyEarned;
+            }
         }
     }
 

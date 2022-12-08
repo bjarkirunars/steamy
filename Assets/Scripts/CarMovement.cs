@@ -168,10 +168,10 @@ public class CarMovement : MonoBehaviour
         GameManager.instance.currency += GameManager.instance.coinCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
         Invoke("GameOverScreen", 1.5f);
-        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + 
-            "\n\nYou earned: " + currencyEarned.ToString() + "Screws" +
+        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + " Meters" + 
+            "\n\nYou earned: " + currencyEarned.ToString() + " Screws" +
             "\n\nAchievements: 0 Screws" +
-            "\n\n Coins picked up: " + GameManager.instance.coinCurrency + "Screws";
+            "\n\n Coins picked up: " + GameManager.instance.coinCurrency + " Screws";
     }
 
     void GameOverScreen()

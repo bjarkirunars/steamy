@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         carSpeed = maxCarSpeed;
         currentCoals = coalLevel;
         nitroCharges = nitroLevel - 1;
+        coinCurrency = 0;
     }
 
     public void ResetGame() {
@@ -83,7 +84,6 @@ public class GameManager : MonoBehaviour
             coalLevel = 60;
             currentCoals = 60;
             currency = 0;
-            coinCurrency = 0;
     }
 
     public int GetCurrency() {

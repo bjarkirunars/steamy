@@ -28,6 +28,7 @@ public class CarMovement : MonoBehaviour
     public GameObject nitro1;
     public GameObject nitro2;
     public GameObject nitro3;
+    public GameObject coalLabel;
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
     JointMotor2D motorFront;
@@ -51,6 +52,7 @@ public class CarMovement : MonoBehaviour
         if (gameOverScreen != null)
         {
             gameOverScreen.SetActive(false);
+            coalLabel.SetActive(true);
         }
         CheckNitros();
     }
@@ -157,9 +159,10 @@ public class CarMovement : MonoBehaviour
         GameManager.instance.currency += GameManager.instance.coinCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
         gameOverScreen.SetActive(true);
+        coalLabel.SetActive(false);
         currencyLabel.text = "Distance:"+ currencyEarned.ToString() + 
             "\nAchievements: 0"+ "\nYou earned: " + currencyEarned.ToString() + 
-            " Screws \n Coins picked up: " + GameManager.instance.coinCurrency;
+            " Screws \n Coins picked up: " + GameManager.instance.coinCurrency + "Screws";
     }
 
     void OnTriggerEnter2D(Collider2D other) {

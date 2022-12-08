@@ -154,19 +154,19 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }
-        if (player.position.x > 10)
+        if (player.position.x > 100)
         {
             if (!GameManager.instance.Acivement1)
             {
-                AwardScreen(100, 50);
+                AwardScreen(100, 100);
                 GameManager.instance.Acivement1 = true;
             }
         }
-        if (player.position.x > 200)
+        if (player.position.x > 350)
         {
             if (!GameManager.instance.Acivement2)
             {
-                AwardScreen(200, 50);
+                AwardScreen(350, 500);
                 GameManager.instance.Acivement2 = true;
             }
         }
@@ -174,7 +174,7 @@ public class CarMovement : MonoBehaviour
         {
             if (!GameManager.instance.Acivement3)
             {
-                AwardScreen(500, 50);
+                AwardScreen(500, 750);
                 GameManager.instance.Acivement3 = true;
             }
         }
@@ -182,7 +182,7 @@ public class CarMovement : MonoBehaviour
         {
             if (!GameManager.instance.Acivement4)
             {
-                AwardScreen(750, 50);
+                AwardScreen(750, 1000);
                 GameManager.instance.Acivement4 = true;
             }
         }
@@ -190,7 +190,7 @@ public class CarMovement : MonoBehaviour
         {
             if (!GameManager.instance.Acivement5)
             {
-                AwardScreen(1000, 50);
+                AwardScreen(1000, 10000);
                 GameManager.instance.Acivement5 = true;
             }
         }

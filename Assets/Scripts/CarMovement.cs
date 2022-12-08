@@ -159,6 +159,7 @@ public class CarMovement : MonoBehaviour
             if (!GameManager.instance.Acivement1)
             {
                 AwardScreen(100, 100);
+                GameManager.instance.achievementCurrency += 100;
                 GameManager.instance.Acivement1 = true;
             }
         }
@@ -167,6 +168,7 @@ public class CarMovement : MonoBehaviour
             if (!GameManager.instance.Acivement2)
             {
                 AwardScreen(350, 500);
+                GameManager.instance.achievementCurrency += 500;
                 GameManager.instance.Acivement2 = true;
             }
         }
@@ -175,6 +177,7 @@ public class CarMovement : MonoBehaviour
             if (!GameManager.instance.Acivement3)
             {
                 AwardScreen(500, 750);
+                GameManager.instance.achievementCurrency += 750;
                 GameManager.instance.Acivement3 = true;
             }
         }
@@ -183,6 +186,7 @@ public class CarMovement : MonoBehaviour
             if (!GameManager.instance.Acivement4)
             {
                 AwardScreen(750, 1000);
+                GameManager.instance.achievementCurrency += 1000;
                 GameManager.instance.Acivement4 = true;
             }
         }
@@ -191,6 +195,7 @@ public class CarMovement : MonoBehaviour
             if (!GameManager.instance.Acivement5)
             {
                 AwardScreen(1000, 10000);
+                GameManager.instance.achievementCurrency += 10000;
                 GameManager.instance.Acivement5 = true;
             }
         }
@@ -218,11 +223,12 @@ public class CarMovement : MonoBehaviour
         // sound based on whether car ran out of fuel or exploded
         int currencyEarned = CalculateCurrency();
         GameManager.instance.currency += GameManager.instance.coinCurrency;
+        GameManager.instance.currency += GameManager.instance.achievementCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
         Invoke("GameOverScreen", 1.5f);
         currencyLabel.text = "Distance:"+ currencyEarned.ToString() + " KMs" + 
             "\n\nYou earned: " + currencyEarned.ToString() + " Screws" +
-            "\n\nAchievements: 0 Screws" +
+            "\n\nAchievements: " + GameManager.instance.achievementCurrency + " Screws" +
             "\n\n Coins picked up: " + GameManager.instance.coinCurrency + " Screws";
     }
 

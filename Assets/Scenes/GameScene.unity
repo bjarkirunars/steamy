@@ -602,7 +602,7 @@ PrefabInstance:
     - target: {fileID: 4149164033159912728, guid: e6f24932078b340e39cb98102e002bdd,
         type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6619070473136973975, guid: e6f24932078b340e39cb98102e002bdd,
         type: 3}
@@ -1291,6 +1291,7 @@ MonoBehaviour:
   coalSpendTime: 0.2
   currency: 0
   coinCurrency: 0
+  achievementCurrency: 0
   gameOverClip: {fileID: 8300000, guid: bd89fab840c1a6e4789a96c57c10900d, type: 3}
   maxDistance: 0
   Acivement1: 0
@@ -1555,6 +1556,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 27193079}
     m_Modifications:
+    - target: {fileID: 5804070485026493376, guid: fba381ed791973645b291bceca88f4df,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804070485026493376, guid: fba381ed791973645b291bceca88f4df,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5804070485026493377, guid: fba381ed791973645b291bceca88f4df,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1593,12 +1604,12 @@ PrefabInstance:
     - target: {fileID: 5804070485026493377, guid: fba381ed791973645b291bceca88f4df,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 750
+      value: 340
       objectReference: {fileID: 0}
     - target: {fileID: 5804070485026493377, guid: fba381ed791973645b291bceca88f4df,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5804070485026493377, guid: fba381ed791973645b291bceca88f4df,
         type: 3}
@@ -1638,12 +1649,12 @@ PrefabInstance:
     - target: {fileID: 5804070485026493377, guid: fba381ed791973645b291bceca88f4df,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 5804070485026493377, guid: fba381ed791973645b291bceca88f4df,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 163
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 5804070485026493377, guid: fba381ed791973645b291bceca88f4df,
         type: 3}

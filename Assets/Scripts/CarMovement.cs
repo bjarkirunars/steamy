@@ -37,6 +37,7 @@ public class CarMovement : MonoBehaviour
     public GameObject coalLabel;
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
+    public TextMeshProUGUI distanceLabel;
     // public GameObject awardScreen;
     // public TextMeshProUGUI awardLabel;
     JointMotor2D motorFront;
@@ -68,6 +69,12 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (distanceLabel != null)
+        {
+            float endX = transform.position.x;
+            float totalDistance = endX + startX;
+            distanceLabel.text = (int)totalDistance + "KM / 1300KM";
+        }
         if (player.velocity.y < 0)
         {
             motorOffTimer += Time.deltaTime;
@@ -136,7 +143,7 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
-        if (player.position.x >= 1500)
+        if (player.position.x >= 1300)
         {
             Invoke("GoToWin", 2.0f);
         }
@@ -178,7 +185,7 @@ public class CarMovement : MonoBehaviour
         GameManager.instance.currency += GameManager.instance.coinCurrency;
         GameManager.instance.GameOver(currencyEarned, carExploded);
         Invoke("GameOverScreen", 1.5f);
-        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + " Meters" + 
+        currencyLabel.text = "Distance:"+ currencyEarned.ToString() + " KMs" + 
             "\n\nYou earned: " + currencyEarned.ToString() + " Screws" +
             "\n\nAchievements: 0 Screws" +
             "\n\n Coins picked up: " + GameManager.instance.coinCurrency + " Screws";

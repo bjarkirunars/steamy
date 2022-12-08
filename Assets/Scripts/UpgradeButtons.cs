@@ -19,6 +19,7 @@ public class UpgradeButtons : MonoBehaviour
     public float coalMultiplier = 1.3f;
     private int priceToPay;
     private int priceLabelPrice;
+    public AudioClip buySound;
 
     void Awake()
     {
@@ -50,6 +51,7 @@ public class UpgradeButtons : MonoBehaviour
             GameManager.instance.currency -= priceToPay;
             GameManager.instance.speedLevel += 1;
             priceLabelPrice = GameManager.instance.speedLevel * 50;
+            GameManager.instance.PlayClip(buySound);
             UpdateValues();
         }
     }
@@ -68,6 +70,7 @@ public class UpgradeButtons : MonoBehaviour
             GameManager.instance.currency -= priceToPay;
             GameManager.instance.jumpLevel += 1;
             priceLabelPrice = GameManager.instance.jumpLevel * 300;
+            GameManager.instance.PlayClip(buySound);
             UpdateValues();
         }
         
@@ -82,6 +85,7 @@ public class UpgradeButtons : MonoBehaviour
             GameManager.instance.currency -= priceToPay;
             GameManager.instance.coalUpgradeLevel += 1;
             priceLabelPrice = GameManager.instance.coalUpgradeLevel * 100;
+            GameManager.instance.PlayClip(buySound);
             UpdateValues();
         }
         
@@ -96,6 +100,7 @@ public class UpgradeButtons : MonoBehaviour
             GameManager.instance.currency -= priceToPay;
             GameManager.instance.nitroLevel += 1;
             priceLabelPrice = GameManager.instance.nitroLevel * 500;
+            GameManager.instance.PlayClip(buySound);
             UpdateValues();   
         }
         

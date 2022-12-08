@@ -99,7 +99,6 @@ public class CarMovement : MonoBehaviour
                 carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
-
             if (motorOffTimer > 0.8)
             {
                 motorFront.motorSpeed = 0;

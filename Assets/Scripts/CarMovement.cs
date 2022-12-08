@@ -71,10 +71,10 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float endX = transform.position.x;
+        float totalDistance = endX + startX;
         if (distanceLabel != null)
         {
-            float endX = transform.position.x;
-            float totalDistance = endX + startX;
             distanceLabel.text = (int)totalDistance + "KM / 1300KM";
         }
         if (player.velocity.y < 0)
@@ -154,7 +154,7 @@ public class CarMovement : MonoBehaviour
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
         }
-        if (player.position.x > 100)
+        if (totalDistance > 100)
         {
             if (!GameManager.instance.Acivement1)
             {
@@ -162,7 +162,7 @@ public class CarMovement : MonoBehaviour
                 GameManager.instance.Acivement1 = true;
             }
         }
-        if (player.position.x > 350)
+        if (totalDistance > 350)
         {
             if (!GameManager.instance.Acivement2)
             {
@@ -170,7 +170,7 @@ public class CarMovement : MonoBehaviour
                 GameManager.instance.Acivement2 = true;
             }
         }
-        if (player.position.x > 500)
+        if (totalDistance > 500)
         {
             if (!GameManager.instance.Acivement3)
             {
@@ -178,7 +178,7 @@ public class CarMovement : MonoBehaviour
                 GameManager.instance.Acivement3 = true;
             }
         }
-        if (player.position.x > 750)
+        if (totalDistance > 750)
         {
             if (!GameManager.instance.Acivement4)
             {
@@ -186,7 +186,7 @@ public class CarMovement : MonoBehaviour
                 GameManager.instance.Acivement4 = true;
             }
         }
-        if (player.position.x > 1000)
+        if (totalDistance > 1000)
         {
             if (!GameManager.instance.Acivement5)
             {

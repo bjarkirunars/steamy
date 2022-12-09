@@ -183,54 +183,53 @@ public class CarMovement : MonoBehaviour
         }
         if (totalDistance > 100)
         {
-            if (!GameManager.instance.Acivement1)
+            if (!GameManager.instance.Achievement1)
             {
                 AwardScreen(100, 100);
                 GameManager.instance.achievementCurrency += 100;
-                GameManager.instance.Acivement1 = true;
+                GameManager.instance.Achievement1 = true;
             }
         }
         if (totalDistance > 350)
         {
-            if (!GameManager.instance.Acivement2)
+            if (!GameManager.instance.Achievement2)
             {
                 AwardScreen(350, 500);
                 GameManager.instance.achievementCurrency += 500;
-                GameManager.instance.Acivement2 = true;
+                GameManager.instance.Achievement2 = true;
             }
         }
         if (totalDistance > 500)
         {
-            if (!GameManager.instance.Acivement3)
+            if (!GameManager.instance.Achievement3)
             {
                 AwardScreen(500, 750);
                 GameManager.instance.achievementCurrency += 750;
-                GameManager.instance.Acivement3 = true;
+                GameManager.instance.Achievement3 = true;
             }
         }
         if (totalDistance > 750)
         {
-            if (!GameManager.instance.Acivement4)
+            if (!GameManager.instance.Achievement4)
             {
                 AwardScreen(750, 1000);
                 GameManager.instance.achievementCurrency += 1000;
-                GameManager.instance.Acivement4 = true;
+                GameManager.instance.Achievement4 = true;
             }
         }
         if (totalDistance > 1000)
         {
-            if (!GameManager.instance.Acivement5)
+            if (!GameManager.instance.Achievement5)
             {
                 AwardScreen(1000, 3000);
                 GameManager.instance.achievementCurrency += 3000;
-                GameManager.instance.Acivement5 = true;
+                GameManager.instance.Achievement5 = true;
             }
         }
     }
 
     void GoToWin()
     {
-        GameManager.instance.ResetGame();
         SceneManager.LoadScene("Winner");
     }
 

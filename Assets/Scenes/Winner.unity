@@ -458,8 +458,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 340055411}
         m_TargetAssemblyTypeName: SceneLoad, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: ResetGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1092,11 +1092,11 @@ MonoBehaviour:
   achievementCurrency: 0
   gameOverClip: {fileID: 0}
   maxDistance: 0
-  Acivement1: 0
-  Acivement2: 0
-  Acivement3: 0
-  Acivement4: 0
-  Acivement5: 0
+  Achievement1: 0
+  Achievement2: 0
+  Achievement3: 0
+  Achievement4: 0
+  Achievement5: 0
   Insturctions: 0
   isTouchingGround: 1
 --- !u!4 &1742451382

@@ -48,6 +48,7 @@ public class CarMovement : MonoBehaviour
     
     public AudioClip jumpSound;
     public AudioClip explosionSound;
+    public AudioClip coinPickupSound;
     private double accumulativeCoal = 0;
 
     private int charges;
@@ -188,6 +189,7 @@ public class CarMovement : MonoBehaviour
                 AwardScreen(100, 100);
                 GameManager.instance.achievementCurrency += 100;
                 GameManager.instance.Achievement1 = true;
+                GameManager.instance.PlayClip(coinPickupSound);
             }
         }
         if (totalDistance > 350)
@@ -197,6 +199,7 @@ public class CarMovement : MonoBehaviour
                 AwardScreen(350, 500);
                 GameManager.instance.achievementCurrency += 500;
                 GameManager.instance.Achievement2 = true;
+                GameManager.instance.PlayClip(coinPickupSound);
             }
         }
         if (totalDistance > 500)
@@ -206,6 +209,7 @@ public class CarMovement : MonoBehaviour
                 AwardScreen(500, 750);
                 GameManager.instance.achievementCurrency += 750;
                 GameManager.instance.Achievement3 = true;
+                GameManager.instance.PlayClip(coinPickupSound);
             }
         }
         if (totalDistance > 750)
@@ -215,6 +219,7 @@ public class CarMovement : MonoBehaviour
                 AwardScreen(750, 1000);
                 GameManager.instance.achievementCurrency += 1000;
                 GameManager.instance.Achievement4 = true;
+                GameManager.instance.PlayClip(coinPickupSound);
             }
         }
         if (totalDistance > 1000)
@@ -224,6 +229,7 @@ public class CarMovement : MonoBehaviour
                 AwardScreen(1000, 3000);
                 GameManager.instance.achievementCurrency += 3000;
                 GameManager.instance.Achievement5 = true;
+                GameManager.instance.PlayClip(coinPickupSound);
             }
         }
     }

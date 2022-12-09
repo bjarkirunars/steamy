@@ -719,6 +719,7 @@ MonoBehaviour:
   Acivement3: 0
   Acivement4: 0
   Acivement5: 0
+  Insturctions: 0
   isTouchingGround: 1
 --- !u!4 &849243192
 Transform:
@@ -1807,6 +1808,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1594746434}
     - target: {fileID: 966880009998021984, guid: ba37e97dc862d47a7a463e5b8c9cec86,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1594746434}
+    - target: {fileID: 975962510336085154, guid: ba37e97dc862d47a7a463e5b8c9cec86,
         type: 3}
       propertyPath: cam
       value: 
@@ -4406,6 +4412,11 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -888973317
       objectReference: {fileID: 0}
+    - target: {fileID: 4110339371742309475, guid: ba37e97dc862d47a7a463e5b8c9cec86,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1594746434}
     - target: {fileID: 5071838711229284043, guid: ba37e97dc862d47a7a463e5b8c9cec86,
         type: 3}
       propertyPath: m_SortingLayer

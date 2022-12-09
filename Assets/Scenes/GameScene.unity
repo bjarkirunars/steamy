@@ -714,11 +714,11 @@ MonoBehaviour:
   achievementCurrency: 0
   gameOverClip: {fileID: 8300000, guid: bd89fab840c1a6e4789a96c57c10900d, type: 3}
   maxDistance: 0
-  Acivement1: 0
-  Acivement2: 0
-  Acivement3: 0
-  Acivement4: 0
-  Acivement5: 0
+  Achievement1: 0
+  Achievement2: 0
+  Achievement3: 0
+  Achievement4: 0
+  Achievement5: 0
   Insturctions: 0
   isTouchingGround: 1
 --- !u!4 &849243192
@@ -1788,6 +1788,11 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 8404187122948571424}
+    - target: {fileID: 6891835092331475417, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+        type: 3}
+      propertyPath: coinPickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c33a6dc13606d784d9e119d11baacf0b, type: 3}
     - target: {fileID: 6891835092331475417, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
         type: 3}
       propertyPath: groundCheckRadius
@@ -4444,8 +4449,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5109484919667982824, guid: ba37e97dc862d47a7a463e5b8c9cec86,
         type: 3}
+      propertyPath: m_LocalAABB.m_Center.y
+      value: -6.9996624
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109484919667982824, guid: ba37e97dc862d47a7a463e5b8c9cec86,
+        type: 3}
       propertyPath: m_LocalAABB.m_Extent.x
       value: 27.154257
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109484919667982824, guid: ba37e97dc862d47a7a463e5b8c9cec86,
+        type: 3}
+      propertyPath: m_LocalAABB.m_Extent.y
+      value: 17.977955
       objectReference: {fileID: 0}
     - target: {fileID: 5244319537467000866, guid: ba37e97dc862d47a7a463e5b8c9cec86,
         type: 3}

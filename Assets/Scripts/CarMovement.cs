@@ -52,6 +52,9 @@ public class CarMovement : MonoBehaviour
 
     private int charges;
     private CinemachineVirtualCamera camObj;
+    private float cameraTarget;
+    private float cameraCurrent = 6f;
+    private float cameraMaxDelta = 0.01f;
     private Vector2 velo;
 
 
@@ -100,15 +103,12 @@ public class CarMovement : MonoBehaviour
                 carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
-
-            if (player.velocity.x > 6 && player.velocity.x < 11)
-            {
-                camObj.m_Lens.OrthographicSize = player.velocity.x;
-            } else if (player.velocity.x < 6)
-            {
-                camObj.m_Lens.OrthographicSize = 6;
-            }
-
+            if (player.velocity.x < 6) 
+            {cameraTarget = 6;} else if (player.velocity.x > 10)
+            {cameraTarget = 10;} else {cameraTarget = player.velocity.x;}
+            int negOrPos = (cameraTarget - cameraCurrent) < 0 ? -1 : 1;
+            cameraCurrent = cameraCurrent + cameraMaxDelta * negOrPos;
+            camObj.m_Lens.OrthographicSize = cameraCurrent;
             if (player.velocity.x > carSpeed/200)
             {
                 motorFront.motorSpeed = 0;
@@ -143,12 +143,12 @@ public class CarMovement : MonoBehaviour
 
                 if (player.rotation < 0)
                 {
-                player.velocity = new Vector2(-velo.y * GameManager.instance.jumpHeight, velo.x * GameManager.instance.jumpHeight) ;
+                player.velocity = new Vector2(player.velocity.x + -velo.y * GameManager.instance.jumpHeight, player.velocity.y + velo.x * GameManager.instance.jumpHeight) ;
                     //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight * -1, player.velocity.x * GameManager.instance.jumpHeight);
                 }
                 else
                 {
-                player.velocity = new Vector2(velo.y * GameManager.instance.jumpHeight, velo.x * GameManager.instance.jumpHeight) ;
+                player.velocity = new Vector2(player.velocity.x + velo.y * GameManager.instance.jumpHeight, player.velocity.y + velo.x * GameManager.instance.jumpHeight) ;
                     //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight, player.velocity.x * GameManager.instance.jumpHeight);
 
                 }
@@ -176,7 +176,7 @@ public class CarMovement : MonoBehaviour
             accumulativeCoal = 0;
             if (!GameManager.instance.Insturctions)
             {
-                awardLabel.text = "Whatch Out tilting and jumping spend coals";
+                awardLabel.text = "Watch Out! Tilting and jumping spends coals";
                 Invoke("RemoveAwardScreen" , 5f);
                 GameManager.instance.Insturctions = true;
             }
@@ -222,7 +222,7 @@ public class CarMovement : MonoBehaviour
             if (!GameManager.instance.Acivement5)
             {
                 AwardScreen(1000, 3000);
-                GameManager.instance.achievementCurrency += 10000;
+                GameManager.instance.achievementCurrency += 3000;
                 GameManager.instance.Acivement5 = true;
             }
         }

@@ -176,7 +176,7 @@ public class CarMovement : MonoBehaviour
             accumulativeCoal = 0;
             if (!GameManager.instance.Insturctions)
             {
-                awardLabel.text = "Whatch Out! tilting and jumping spends coal";
+                awardLabel.text = "Watch Out! Tilting and jumping spends coals";
                 Invoke("RemoveAwardScreen" , 5f);
                 GameManager.instance.Insturctions = true;
             }

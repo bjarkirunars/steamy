@@ -15,8 +15,8 @@ public class CarMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isTouchingGroundR;
     private bool isTouchingGroundL;
-    public GameObject bigTire;
-    public GameObject smallTire;
+    private GameObject bigTire;
+    private GameObject smallTire;
     //public wheelToGroundCheckR WTGCR = wheelToGroundCheckR();
     //public wheelToGroundCheckL WTGCL = wheelToGroundCheckL();
     
@@ -29,12 +29,12 @@ public class CarMovement : MonoBehaviour
     public AudioSource steamAudio;
     public AudioSource steamNitroAudio;
 
-    public GameObject gameOverScreen;
-    public GameObject nitroText;
-    public GameObject nitro1;
-    public GameObject nitro2;
-    public GameObject nitro3;
-    public GameObject overlayCanvas;
+    private GameObject gameOverScreen;
+    private GameObject nitroText;
+    private GameObject nitro1;
+    private GameObject nitro2;
+    private GameObject nitro3;
+    private GameObject overlayCanvas;
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
     public TextMeshProUGUI distanceLabel;
@@ -57,6 +57,14 @@ public class CarMovement : MonoBehaviour
     private void Start() 
     {
         camObj = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        nitroText = GameObject.Find("NitroText");
+        nitro1 = GameObject.Find("Nitro1");
+        nitro2 = GameObject.Find("Nitro2");
+        nitro3 = GameObject.Find("Nitro3");
+        gameOverScreen = GameObject.Find("GameOverScreen");
+        overlayCanvas = GameObject.Find("CanvasOverlay");
+        bigTire = GameObject.Find("TyreBigB_copy");
+        smallTire = GameObject.Find("TyreSmallF_copy");
         startX = Mathf.Abs(transform.position.x); 
         // Get starting position
         player = GetComponent<Rigidbody2D>();

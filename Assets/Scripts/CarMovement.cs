@@ -222,7 +222,7 @@ public class CarMovement : MonoBehaviour
             if (!GameManager.instance.Acivement5)
             {
                 AwardScreen(1000, 3000);
-                GameManager.instance.achievementCurrency += 10000;
+                GameManager.instance.achievementCurrency += 3000;
                 GameManager.instance.Acivement5 = true;
             }
         }

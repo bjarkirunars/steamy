@@ -21,17 +21,6 @@ public class MeterScript : MonoBehaviour
     {
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue);
-        // Debug.Log(slider.normalizedValue);
-        // if (slider.value < 0.25 * GameManager.instance.maxCoals)
-        // {
-        //     fill.color = gradient.Evaluate(0f);
-        // } else if (slider.value < 0.5 * GameManager.instance.maxCoals)
-        // {
-        //     fill.color = gradient.Evaluate(1f);
-        // } else
-        // {
-        //     fill.color = gradient.Evaluate(2f);
-        // }
     }
 
 }

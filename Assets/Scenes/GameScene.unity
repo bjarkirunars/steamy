@@ -1607,6 +1607,16 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 8404187122948571424}
+    - target: {fileID: 456108444797209128, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+        type: 3}
+      propertyPath: m_EnableCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 456108444797209129, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+        type: 3}
+      propertyPath: m_EnableCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 456108444797209134, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
         type: 3}
       propertyPath: m_RootOrder
@@ -1808,6 +1818,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1594746434}
     - target: {fileID: 966880009998021984, guid: ba37e97dc862d47a7a463e5b8c9cec86,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1594746434}
+    - target: {fileID: 975962510336085154, guid: ba37e97dc862d47a7a463e5b8c9cec86,
         type: 3}
       propertyPath: cam
       value: 
@@ -4407,6 +4422,11 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -888973317
       objectReference: {fileID: 0}
+    - target: {fileID: 4110339371742309475, guid: ba37e97dc862d47a7a463e5b8c9cec86,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1594746434}
     - target: {fileID: 5071838711229284043, guid: ba37e97dc862d47a7a463e5b8c9cec86,
         type: 3}
       propertyPath: m_SortingLayer
@@ -4505,6 +4525,11 @@ PrefabInstance:
     - target: {fileID: 5713322331861912150, guid: ba37e97dc862d47a7a463e5b8c9cec86,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713322331899903081, guid: ba37e97dc862d47a7a463e5b8c9cec86,
+        type: 3}
+      propertyPath: m_AutoTiling
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5869099158470014911, guid: ba37e97dc862d47a7a463e5b8c9cec86,

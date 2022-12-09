@@ -24,17 +24,17 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     {priceToPay = GameManager.instance.speedLevel * 200;}
                     priceLabel.text = "Level " + GameManager.instance.speedLevel + "/10\nPrice: " + priceToPay.ToString() + " Screws";
                     buttons.explanationLabel.text = "Increase the speed of the car!";
-                    if (GameManager.instance.currency < priceToPay)
-                    {
-                        myButton.GetComponent<Image>().color = Color.red;
-                        myButton.interactable = false;
-                    } else {
-                        myButton.GetComponent<Image>().color = Color.green;
-                    }
+                    // if (GameManager.instance.currency < priceToPay)
+                    // {
+                    //     myButton.GetComponent<Image>().color = Color.red;
+                    //     myButton.interactable = false;
+                    // } else {
+                    //     myButton.GetComponent<Image>().color = Color.green;
+                    // }
                 } else {
                     priceLabel.text = "This has reached max level";
-                    myButton.GetComponent<Image>().color = Color.red;
-                    myButton.interactable = false;
+                    // myButton.GetComponent<Image>().color = Color.red;
+                    // myButton.interactable = false;
                 }
                 break;
             case "Jump":
@@ -114,9 +114,9 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
      public void OnPointerExit(PointerEventData eventData)
      {
-        Button myButton = this.GetComponent<Button>();
-        myButton.GetComponent<Image>().color = Color.white;
-        myButton.interactable = true;
+        // Button myButton = this.GetComponent<Button>();
+        // myButton.GetComponent<Image>().color = Color.white;
+        // myButton.interactable = true;
         priceLabel.text = "";
         buttons.explanationLabel.text = "";
      }

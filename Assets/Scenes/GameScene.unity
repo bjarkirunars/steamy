@@ -719,11 +719,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 5821567892514743719, guid: e6f24932078b340e39cb98102e002bdd,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6439785937776579874, guid: e6f24932078b340e39cb98102e002bdd,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -3734,40 +3729,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8587510759421908628, guid: e6f24932078b340e39cb98102e002bdd,
+    - target: {fileID: 8112990552871883142, guid: e6f24932078b340e39cb98102e002bdd,
         type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[5].mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587510759421908628, guid: e6f24932078b340e39cb98102e002bdd,
-        type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[5].position.x
-      value: -8.539369
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587510759421908628, guid: e6f24932078b340e39cb98102e002bdd,
-        type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[5].position.y
-      value: -17.166187
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587510759421908628, guid: e6f24932078b340e39cb98102e002bdd,
-        type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[5].leftTangent.x
-      value: 2.1447568
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587510759421908628, guid: e6f24932078b340e39cb98102e002bdd,
-        type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[5].leftTangent.y
-      value: -1.3501854
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587510759421908628, guid: e6f24932078b340e39cb98102e002bdd,
-        type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[5].rightTangent.x
-      value: -0.23799896
-      objectReference: {fileID: 0}
-    - target: {fileID: 8587510759421908628, guid: e6f24932078b340e39cb98102e002bdd,
-        type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[5].rightTangent.y
-      value: 0.15010834
+      propertyPath: m_LocalPosition.z
+      value: -1.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6f24932078b340e39cb98102e002bdd, type: 3}
@@ -5501,6 +5466,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456108444797209142, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
         type: 3}
+      propertyPath: m_ImpulseDefinition.m_RawSignal
+      value: 
+      objectReference: {fileID: 11400000, guid: eb0f88b0be8ab495b9316e2da97ceb5d,
+        type: 2}
+    - target: {fileID: 456108444797209142, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+        type: 3}
       propertyPath: m_ImpulseDefinition.m_ImpactRadius
       value: 10
       objectReference: {fileID: 0}
@@ -5658,6 +5629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: groundCheckRadius
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891835092331475418, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 959ae46f4b6a34a87b5407fc9eadf1e9, type: 3}

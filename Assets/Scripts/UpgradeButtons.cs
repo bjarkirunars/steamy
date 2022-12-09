@@ -39,7 +39,9 @@ public class UpgradeButtons : MonoBehaviour
         jumpLabel.text = "Jumps: " + GameManager.instance.jumpHeight.ToString() + "Nm";
         nitroLabel.text = "Nitro: " + GameManager.instance.nitroCharges.ToString() + " Charges";
         coalLabel.text = "Efficiency: " + (Mathf.Round((1/GameManager.instance.coalSpendTime)*100)/100).ToString() + "/sec";
-        priceLabel.text = "Price: " + priceLabelPrice.ToString() + " Screws";
+        if (priceLabelPrice > 0){
+            priceLabel.text = "Price: " + priceLabelPrice.ToString() + " Screws";
+        }
     }
 
     public void upgradeSpeed()

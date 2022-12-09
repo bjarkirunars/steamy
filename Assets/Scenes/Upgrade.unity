@@ -1756,8 +1756,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 100, y: 140}
-  m_SizeDelta: {x: 180, y: 80}
+  m_AnchoredPosition: {x: 150, y: 140}
+  m_SizeDelta: {x: 280, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1114477067
 MonoBehaviour:
@@ -1779,7 +1779,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Price: 0 Screws'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5838ffd2180417f4ca0c149a6067e2e6, type: 2}
   m_sharedMaterial: {fileID: 6772000378264743241, guid: 5838ffd2180417f4ca0c149a6067e2e6,
@@ -2372,7 +2372,15 @@ MonoBehaviour:
   currentCoals: 50
   coalSpendTime: 0.2
   currency: 0
+  coinCurrency: 0
+  achievementCurrency: 0
   gameOverClip: {fileID: 0}
+  maxDistance: 0
+  Acivement1: 0
+  Acivement2: 0
+  Acivement3: 0
+  Acivement4: 0
+  Acivement5: 0
 --- !u!4 &1742451382
 Transform:
   m_ObjectHideFlags: 0

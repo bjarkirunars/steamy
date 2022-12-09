@@ -25,11 +25,11 @@ public class GameManager : MonoBehaviour
     public int achievementCurrency;
     public AudioClip gameOverClip;
     public int maxDistance;
-    public bool Acivement1 = false;
-    public bool Acivement2 = false;
-    public bool Acivement3 = false;
-    public bool Acivement4 = false;
-    public bool Acivement5 = false;
+    public bool Achievement1 = false;
+    public bool Achievement2 = false;
+    public bool Achievement3 = false;
+    public bool Achievement4 = false;
+    public bool Achievement5 = false;
     public bool Insturctions = false;
     public bool isTouchingGround = true;
 
@@ -90,28 +90,28 @@ public class GameManager : MonoBehaviour
     }
 
     public void ResetGame() {
-            maxCarSpeed = 1000;
-            carSpeed = 1000;
-            jumpHeight = 0;
-            maxCoals = 60;
-            coalLevel = 60;
-            currentCoals = 60;
-            currency = 0;
-            coinCurrency = 0;
-            achievementCurrency = 0;
-            nitroCharges = 0;
-            speedLevel = 1;
-            jumpLevel = 1;
-            coalUpgradeLevel = 1;
-            nitroLevel = 1;
-            coalSpendTime = 0.2f;
-            currency = 0;
-            maxDistance = 0;
-            Acivement1 = false;
-            Acivement2 = false;
-            Acivement3 = false;
-            Acivement4 = false;
-            Acivement5 = false;
+        maxCarSpeed = 1000;
+        carSpeed = 1000;
+        jumpHeight = 0;
+        maxCoals = 60;
+        coalLevel = 60;
+        currentCoals = 60;
+        currency = 0;
+        coinCurrency = 0;
+        achievementCurrency = 0;
+        nitroCharges = 0;
+        speedLevel = 1;
+        jumpLevel = 1;
+        coalUpgradeLevel = 1;
+        nitroLevel = 1;
+        coalSpendTime = 0.2f;
+        currency = 0;
+        maxDistance = 0;
+        Achievement1 = false;
+        Achievement2 = false;
+        Achievement3 = false;
+        Achievement4 = false;
+        Achievement5 = false;
     }
 
     public int GetCurrency() {

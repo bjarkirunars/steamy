@@ -10,4 +10,10 @@ public class SceneLoad : MonoBehaviour
         GameManager.instance.RestartGame();
         SceneManager.LoadScene(scenename);
     }
+
+    public void ResetGame()
+    {
+        GameManager.instance.ResetGame();
+        SceneManager.LoadScene("StartMenu");
+    }
 }

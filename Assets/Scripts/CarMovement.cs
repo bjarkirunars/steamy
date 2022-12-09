@@ -333,6 +333,7 @@ public class CarMovement : MonoBehaviour
     }
 
     void TriggerNitro() {
+        player.AddForce((transform.right * 50), (ForceMode2D.Impulse));
         GameManager.instance.maxCarSpeed += 4000;
         GameManager.instance.nitroCharges -= 1;
         steamNitroAudio.Play();

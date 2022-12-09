@@ -719,6 +719,7 @@ MonoBehaviour:
   Acivement3: 0
   Acivement4: 0
   Acivement5: 0
+  Insturctions: 0
   isTouchingGround: 1
 --- !u!4 &849243192
 Transform:
@@ -4581,6 +4582,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 7397833862094588325, guid: ba37e97dc862d47a7a463e5b8c9cec86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8787760685952032878, guid: ba37e97dc862d47a7a463e5b8c9cec86,
         type: 3}
       propertyPath: m_SortingOrder

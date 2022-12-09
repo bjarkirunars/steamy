@@ -24,17 +24,8 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     {priceToPay = GameManager.instance.speedLevel * 200;}
                     priceLabel.text = "Level " + GameManager.instance.speedLevel + "/10\nPrice: " + priceToPay.ToString() + " Screws";
                     buttons.explanationLabel.text = "Increase the speed of the car!";
-                    // if (GameManager.instance.currency < priceToPay)
-                    // {
-                    //     myButton.GetComponent<Image>().color = Color.red;
-                    //     myButton.interactable = false;
-                    // } else {
-                    //     myButton.GetComponent<Image>().color = Color.green;
-                    // }
                 } else {
-                    priceLabel.text = "This has reached max level";
-                    // myButton.GetComponent<Image>().color = Color.red;
-                    // myButton.interactable = false;
+                    priceLabel.text = "Level 10/10\nThis has reached max level";
                 }
                 break;
             case "Jump":
@@ -43,29 +34,13 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     priceToPay = GameManager.instance.jumpLevel * 300;
                     priceLabel.text = "Level " + GameManager.instance.jumpLevel + "/7\nPrice: " + priceToPay.ToString() + " Screws";
                     buttons.explanationLabel.text = "Jump over the obstacles!";
-                    if (GameManager.instance.currency < priceToPay)
-                    {
-                        myButton.GetComponent<Image>().color = Color.red;
-                        myButton.interactable = false;
-                    } else {
-                        myButton.GetComponent<Image>().color = Color.green;
-                    }
                 } else if (GameManager.instance.jumpLevel < 7)
                 {
                     priceToPay = GameManager.instance.jumpLevel * 300;
                     priceLabel.text = "Level " + GameManager.instance.jumpLevel + "/7\nPrice: " + priceToPay.ToString() + " Screws";
                     buttons.explanationLabel.text = "Jump even higher!";
-                    if (GameManager.instance.currency < priceToPay)
-                    {
-                        myButton.GetComponent<Image>().color = Color.red;
-                        myButton.interactable = false;
-                    } else {
-                        myButton.GetComponent<Image>().color = Color.green;
-                    }
                 } else {
-                    priceLabel.text = "This has reached max level";
-                    myButton.GetComponent<Image>().color = Color.red;
-                    myButton.interactable = false;
+                    priceLabel.text = "Level 7/7\nThis has reached max level";
                 }
                 break;
             case "Coals":
@@ -74,36 +49,18 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     priceToPay = GameManager.instance.coalUpgradeLevel * 100;
                     priceLabel.text = "Level " + GameManager.instance.coalUpgradeLevel + "/10\nPrice: " + priceToPay.ToString() + " Screws";
                     buttons.explanationLabel.text = "Increase efficiency so coals last longer!";
-                    if (GameManager.instance.currency < priceToPay)
-                    {
-                        myButton.GetComponent<Image>().color = Color.red;
-                        myButton.interactable = false;
-                    } else {
-                        myButton.GetComponent<Image>().color = Color.green;
-                    }
                 } else {
-                    priceLabel.text = "This has reached max level";
-                    myButton.GetComponent<Image>().color = Color.red;
-                    myButton.interactable = false;
+                    priceLabel.text = "Level 10/10\nThis has reached max level";
                 }
                 break;
             case "Nitro":
-                if (GameManager.instance.nitroLevel < 3)
+                if (GameManager.instance.nitroLevel < 4)
                 {
                     priceToPay = GameManager.instance.nitroLevel * 500;
                     priceLabel.text = "Level " + GameManager.instance.nitroLevel + "/3\nPrice: " + priceToPay.ToString() + " Screws";
                     buttons.explanationLabel.text = "Blast on forward with nitro!!";
-                    if (GameManager.instance.currency < priceToPay)
-                    {
-                        myButton.GetComponent<Image>().color = Color.red;
-                        myButton.interactable = false;
-                    } else {
-                        myButton.GetComponent<Image>().color = Color.green;
-                    }
                 } else {
-                    priceLabel.text = "Level " + GameManager.instance.nitroLevel + "/3\nThis has reached max level";
-                    myButton.GetComponent<Image>().color = Color.red;
-                    myButton.interactable = false;
+                    priceLabel.text = "Level 3/3\nThis has reached max level";
                 }
                 break;
             default:
@@ -114,9 +71,6 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
      public void OnPointerExit(PointerEventData eventData)
      {
-        // Button myButton = this.GetComponent<Button>();
-        // myButton.GetComponent<Image>().color = Color.white;
-        // myButton.interactable = true;
         priceLabel.text = "";
         buttons.explanationLabel.text = "";
      }

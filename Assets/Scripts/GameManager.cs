@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public bool Acivement3 = false;
     public bool Acivement4 = false;
     public bool Acivement5 = false;
+    public bool isTouchingGround = true;
 
     void Awake()
     {

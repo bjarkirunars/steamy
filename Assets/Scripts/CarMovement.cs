@@ -14,7 +14,6 @@ public class CarMovement : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask groundLayer;
     private bool isTouchingGroundR;
-    private bool isTouchingGround;
     private bool isTouchingGroundL;
     public GameObject bigTire;
     public GameObject smallTire;
@@ -84,10 +83,9 @@ public class CarMovement : MonoBehaviour
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
-            //isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
             isTouchingGroundL = Physics2D.OverlapCircle(bigTire.transform.position,groundCheckRadius, groundLayer);
             isTouchingGroundR = Physics2D.OverlapCircle(smallTire.transform.position,groundCheckRadius,groundLayer);
-            
+            GameManager.instance.isTouchingGround = isTouchingGroundL || isTouchingGroundR;
             
             if (GameManager.instance.carSpeed < 0) 
                 carSpeed = 0; 
@@ -128,7 +126,7 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Emit(1);
             }
 
-            if (Input.GetButtonDown("Jump") && (isTouchingGroundL||isTouchingGroundR) && GameManager.instance.jumpHeight > 0)
+            if (Input.GetButtonDown("Jump") && (GameManager.instance.isTouchingGround) && GameManager.instance.jumpHeight > 0)
             {
                 accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);

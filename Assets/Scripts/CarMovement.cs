@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class CarMovement : MonoBehaviour
 {
@@ -51,12 +52,12 @@ public class CarMovement : MonoBehaviour
     private double accumulativeCoal = 0;
 
     private int charges;
-    private float motorOffTimer = 0.0f;
-
+    private CinemachineVirtualCamera camObj;
 
 
     private void Start() 
     {
+        camObj = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         startX = Mathf.Abs(transform.position.x); 
         // Get starting position
         player = GetComponent<Rigidbody2D>();
@@ -73,19 +74,12 @@ public class CarMovement : MonoBehaviour
     {
         float endX = transform.position.x;
         float totalDistance = endX + startX;
-        if (distanceLabel != null)
-        {
-            distanceLabel.text = (int)totalDistance + "KM / 1360KM";
-        }
-        if (player.velocity.y < 0)
-        {
-            motorOffTimer += Time.deltaTime;
-        } else {
-            motorOffTimer = 0.0f;
-        }
+        if (distanceLabel != null) {distanceLabel.text = (int)totalDistance + "KM / 1360KM";}
+        
         if(GameManager.instance.nitroCharges > 0 && Input.GetKeyDown(KeyCode.N)){
             TriggerNitro();
         }
+
         if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
@@ -99,7 +93,16 @@ public class CarMovement : MonoBehaviour
                 carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
-            if (motorOffTimer > 0.8)
+
+            if (player.velocity.x > 6 && player.velocity.x < 11)
+            {
+                camObj.m_Lens.OrthographicSize = player.velocity.x;
+            } else if (player.velocity.x < 6)
+            {
+                camObj.m_Lens.OrthographicSize = 6;
+            }
+
+            if (player.velocity.x > carSpeed/200)
             {
                 motorFront.motorSpeed = 0;
                 motorFront.maxMotorTorque = 0;
@@ -110,10 +113,10 @@ public class CarMovement : MonoBehaviour
             } else
             {
                 motorFront.motorSpeed = carSpeed * -1;
-                motorFront.maxMotorTorque = 1000;
+                motorFront.maxMotorTorque = 10000;
                 frontwheel.motor = motorFront;
                 motorBack.motorSpeed = carSpeed * -1;
-                motorBack.maxMotorTorque = 1000;
+                motorBack.maxMotorTorque = 10000;
                 backwheel.motor = motorBack;
             }
 

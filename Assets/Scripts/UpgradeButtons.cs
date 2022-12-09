@@ -124,7 +124,7 @@ public class UpgradeButtons : MonoBehaviour
             {
                 GameManager.instance.jumpHeight = 15;
             } else {
-                GameManager.instance.jumpHeight = (int)(GameManager.instance.jumpHeight * 1.8f);
+                GameManager.instance.jumpHeight = (int)(GameManager.instance.jumpHeight * 1.3f);
             }
             GameManager.instance.currency -= jumpPriceToPay;
             GameManager.instance.jumpLevel += 1;

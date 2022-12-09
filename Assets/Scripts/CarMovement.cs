@@ -58,6 +58,8 @@ public class CarMovement : MonoBehaviour
     private float cameraMaxDelta = 0.01f;
     private Vector2 velo;
 
+    private bool jumpOffCooldown;
+
 
     private void Start() 
     {
@@ -136,7 +138,12 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Emit(1);
             }
 
-            if (Input.GetButtonDown("Jump") && (GameManager.instance.isTouchingGround) && GameManager.instance.jumpHeight > 0)
+            if (
+                Input.GetButtonDown("Jump") && 
+                (GameManager.instance.isTouchingGround) && 
+                GameManager.instance.jumpHeight > 0 &&
+                jumpOffCooldown
+                )
             {
                 accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);
@@ -153,6 +160,7 @@ public class CarMovement : MonoBehaviour
                     //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight, player.velocity.x * GameManager.instance.jumpHeight);
 
                 }
+                jumpOffCooldown = false;
                 jumpSteamParticle.Play();
             }
         }
@@ -346,5 +354,10 @@ public class CarMovement : MonoBehaviour
     void RemoveAwardScreen()
     {
         awardLabel.text = "";
+    }
+
+    IEnumerator jumpCoolDown() {
+        yield return new WaitForSeconds(2);
+        jumpOffCooldown = true;
     }
 }

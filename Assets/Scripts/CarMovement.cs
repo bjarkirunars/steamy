@@ -34,7 +34,7 @@ public class CarMovement : MonoBehaviour
     public GameObject nitro1;
     public GameObject nitro2;
     public GameObject nitro3;
-    public GameObject coalLabel;
+    public GameObject overlayCanvas;
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
     public TextMeshProUGUI distanceLabel;
@@ -63,7 +63,7 @@ public class CarMovement : MonoBehaviour
         if (gameOverScreen != null)
         {
             gameOverScreen.SetActive(false);
-            coalLabel.SetActive(true);
+            overlayCanvas.SetActive(true);
         }
         CheckNitros();
     }
@@ -235,7 +235,7 @@ public class CarMovement : MonoBehaviour
     void GameOverScreen()
     {
         gameOverScreen.SetActive(true);
-        coalLabel.SetActive(false);
+        overlayCanvas.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

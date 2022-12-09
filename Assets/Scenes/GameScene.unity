@@ -719,6 +719,7 @@ MonoBehaviour:
   Acivement3: 0
   Acivement4: 0
   Acivement5: 0
+  isTouchingGround: 1
 --- !u!4 &849243192
 Transform:
   m_ObjectHideFlags: 0
@@ -1576,6 +1577,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21de25cc5f0484deeaa468060dc29454, type: 3}
+--- !u!1 &1506410008412999759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5936687089713546645, guid: 02fd37b0b46964140b6f55115c778907,
+    type: 3}
+  m_PrefabInstance: {fileID: 5081343095690941914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2549171774340196959 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7342262288880320389, guid: 02fd37b0b46964140b6f55115c778907,
@@ -1724,7 +1731,7 @@ PrefabInstance:
         type: 3}
       propertyPath: coalLabel
       value: 
-      objectReference: {fileID: 7867524180660284647}
+      objectReference: {fileID: 1506410008412999759}
     - target: {fileID: 6891835092331475417, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
         type: 3}
       propertyPath: coinLabel
@@ -1755,6 +1762,11 @@ PrefabInstance:
       propertyPath: distanceLabel
       value: 
       objectReference: {fileID: 1232040625}
+    - target: {fileID: 6891835092331475417, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
+        type: 3}
+      propertyPath: overlayCanvas
+      value: 
+      objectReference: {fileID: 1506410008412999759}
     - target: {fileID: 6891835092331475417, guid: 959ae46f4b6a34a87b5407fc9eadf1e9,
         type: 3}
       propertyPath: achievingLabel
@@ -2055,18 +2067,12 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5081343095690941914}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7867524180660284647}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0a8ecb4f6a05b544908744896c7dab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7867524180660284647 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3146750676450130237, guid: 02fd37b0b46964140b6f55115c778907,
-    type: 3}
-  m_PrefabInstance: {fileID: 5081343095690941914}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8404187122948571424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7227748706396015664, guid: 21de25cc5f0484deeaa468060dc29454,

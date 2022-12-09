@@ -58,6 +58,8 @@ public class CarMovement : MonoBehaviour
     private float cameraMaxDelta = 0.01f;
     private Vector2 velo;
 
+    private bool jumpOffCooldown = true;
+
 
     private void Start() 
     {
@@ -136,7 +138,12 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Emit(1);
             }
 
-            if (Input.GetButtonDown("Jump") && (GameManager.instance.isTouchingGround) && GameManager.instance.jumpHeight > 0)
+            if (
+                Input.GetButtonDown("Jump") && 
+                (GameManager.instance.isTouchingGround) && 
+                GameManager.instance.jumpHeight > 0 &&
+                jumpOffCooldown
+                )
             {
                 accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);
@@ -153,6 +160,8 @@ public class CarMovement : MonoBehaviour
                     //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight, player.velocity.x * GameManager.instance.jumpHeight);
 
                 }
+                jumpOffCooldown = false;
+                StartCoroutine("JumpCoolDown");
                 jumpSteamParticle.Play();
             }
         }
@@ -212,16 +221,16 @@ public class CarMovement : MonoBehaviour
                 GameManager.instance.PlayClip(coinPickupSound);
             }
         }
-        if (totalDistance > 750)
-        {
-            if (!GameManager.instance.Achievement4)
-            {
-                AwardScreen(750, 1000);
-                GameManager.instance.achievementCurrency += 1000;
-                GameManager.instance.Achievement4 = true;
-                GameManager.instance.PlayClip(coinPickupSound);
-            }
-        }
+        // if (totalDistance > 750)
+        // {
+        //     if (!GameManager.instance.Achievement4)
+        //     {
+        //         AwardScreen(750, 1000);
+        //         GameManager.instance.achievementCurrency += 1000;
+        //         GameManager.instance.Achievement4 = true;
+        //         GameManager.instance.PlayClip(coinPickupSound);
+        //     }
+        // }
         if (totalDistance > 1000)
         {
             if (!GameManager.instance.Achievement5)
@@ -236,6 +245,9 @@ public class CarMovement : MonoBehaviour
 
     void GoToWin()
     {
+        GameManager.instance.currency += GameManager.instance.coinCurrency;
+        GameManager.instance.currency += GameManager.instance.achievementCurrency;
+        GameManager.instance.currency += 1360;
         SceneManager.LoadScene("Winner");
     }
 
@@ -346,5 +358,10 @@ public class CarMovement : MonoBehaviour
     void RemoveAwardScreen()
     {
         awardLabel.text = "";
+    }
+
+    IEnumerator JumpCoolDown() {
+        yield return new WaitForSeconds(1);
+        jumpOffCooldown = true;
     }
 }

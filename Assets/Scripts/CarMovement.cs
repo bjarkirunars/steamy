@@ -52,6 +52,9 @@ public class CarMovement : MonoBehaviour
 
     private int charges;
     private CinemachineVirtualCamera camObj;
+    private float cameraTarget;
+    private float cameraCurrent = 6f;
+    private float cameraMaxDelta = 0.01f;
 
 
     private void Start() 
@@ -99,15 +102,12 @@ public class CarMovement : MonoBehaviour
                 carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
-
-            if (player.velocity.x > 6 && player.velocity.x < 11)
-            {
-                camObj.m_Lens.OrthographicSize = player.velocity.x;
-            } else if (player.velocity.x < 6)
-            {
-                camObj.m_Lens.OrthographicSize = 6;
-            }
-
+            if (player.velocity.x < 6) 
+            {cameraTarget = 6;} else if (player.velocity.x > 10)
+            {cameraTarget = 10;} else {cameraTarget = player.velocity.x;}
+            int negOrPos = (cameraTarget - cameraCurrent) < 0 ? -1 : 1;
+            cameraCurrent = cameraCurrent + cameraMaxDelta * negOrPos;
+            camObj.m_Lens.OrthographicSize = cameraCurrent;
             if (player.velocity.x > carSpeed/200)
             {
                 motorFront.motorSpeed = 0;

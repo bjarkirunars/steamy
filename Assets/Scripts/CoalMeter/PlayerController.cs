@@ -23,6 +23,14 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.instance.currentCoals -= 1; //meter code
             timer = 0.0f;
+        } else if (
+            timer > GameManager.instance.coalSpendTime*2 && 
+            GameManager.instance.currentCoals > 0 &&
+            !GameManager.instance.isTouchingGround
+        )
+        {
+            GameManager.instance.currentCoals -= 1; //meter code
+            timer = 0.0f;
         }
     }
 }

@@ -143,12 +143,12 @@ public class CarMovement : MonoBehaviour
 
                 if (player.rotation < 0)
                 {
-                player.velocity = new Vector2(-velo.y * GameManager.instance.jumpHeight, velo.x * GameManager.instance.jumpHeight) ;
+                player.velocity = new Vector2(player.velocity.x + -velo.y * GameManager.instance.jumpHeight, player.velocity.y + velo.x * GameManager.instance.jumpHeight) ;
                     //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight * -1, player.velocity.x * GameManager.instance.jumpHeight);
                 }
                 else
                 {
-                player.velocity = new Vector2(velo.y * GameManager.instance.jumpHeight, velo.x * GameManager.instance.jumpHeight) ;
+                player.velocity = new Vector2(player.velocity.x + velo.y * GameManager.instance.jumpHeight, player.velocity.y + velo.x * GameManager.instance.jumpHeight) ;
                     //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight, player.velocity.x * GameManager.instance.jumpHeight);
 
                 }
@@ -176,7 +176,7 @@ public class CarMovement : MonoBehaviour
             accumulativeCoal = 0;
             if (!GameManager.instance.Insturctions)
             {
-                awardLabel.text = "Whatch Out tilting and jumping spend coals";
+                awardLabel.text = "Whatch Out! tilting and jumping spends coal";
                 Invoke("RemoveAwardScreen" , 5f);
                 GameManager.instance.Insturctions = true;
             }

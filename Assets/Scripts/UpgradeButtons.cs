@@ -54,7 +54,7 @@ public class UpgradeButtons : MonoBehaviour
         speedPriceToPay = GameManager.instance.speedLevel * 100;
         if (GameManager.instance.speedLevel > 5) 
         {speedPriceToPay = GameManager.instance.speedLevel * 200;}
-        if (GameManager.instance.currency < speedPriceToPay)
+        if (GameManager.instance.currency < speedPriceToPay || GameManager.instance.speedLevel >= 10)
         {
             speedButton.GetComponent<Image>().color = Color.red;
             speedButton.interactable = false;
@@ -65,7 +65,7 @@ public class UpgradeButtons : MonoBehaviour
         
         // Update buttons for coals
         coalPriceToPay = GameManager.instance.coalUpgradeLevel * 100;
-        if (GameManager.instance.currency < coalPriceToPay)
+        if (GameManager.instance.currency < coalPriceToPay || GameManager.instance.coalUpgradeLevel >= 10)
         {
             coalsButton.GetComponent<Image>().color = Color.red;
             coalsButton.interactable = false;
@@ -75,8 +75,8 @@ public class UpgradeButtons : MonoBehaviour
         }
 
         // Update buttons for jump
-        jumpPriceToPay = GameManager.instance.coalLevel * 300;
-        if (GameManager.instance.currency < jumpPriceToPay)
+        jumpPriceToPay = GameManager.instance.jumpLevel * 300;
+        if (GameManager.instance.currency < jumpPriceToPay || GameManager.instance.jumpLevel >= 7)
         {
             jumpButton.GetComponent<Image>().color = Color.red;
             jumpButton.interactable = false;
@@ -86,8 +86,8 @@ public class UpgradeButtons : MonoBehaviour
         }
 
         // Update buttons for nitro
-        nitroPriceToPay = GameManager.instance.coalLevel * 500;
-        if (GameManager.instance.currency < nitroPriceToPay)
+        nitroPriceToPay = GameManager.instance.nitroLevel * 500;
+        if (GameManager.instance.currency < nitroPriceToPay || GameManager.instance.nitroLevel >= 4)
         {
             nitroButton.GetComponent<Image>().color = Color.red;
             nitroButton.interactable = false;

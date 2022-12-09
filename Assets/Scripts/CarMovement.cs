@@ -58,7 +58,7 @@ public class CarMovement : MonoBehaviour
     private float cameraMaxDelta = 0.01f;
     private Vector2 velo;
 
-    private bool jumpOffCooldown;
+    private bool jumpOffCooldown = true;
 
 
     private void Start() 
@@ -161,6 +161,7 @@ public class CarMovement : MonoBehaviour
 
                 }
                 jumpOffCooldown = false;
+                StartCoroutine("JumpCoolDown");
                 jumpSteamParticle.Play();
             }
         }
@@ -359,8 +360,8 @@ public class CarMovement : MonoBehaviour
         awardLabel.text = "";
     }
 
-    IEnumerator jumpCoolDown() {
-        yield return new WaitForSeconds(2);
+    IEnumerator JumpCoolDown() {
+        yield return new WaitForSeconds(1);
         jumpOffCooldown = true;
     }
 }

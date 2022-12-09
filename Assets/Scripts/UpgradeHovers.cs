@@ -17,10 +17,12 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         switch (this.transform.parent.name)
         {
             case "Speed":
-                if (GameManager.instance.speedLevel < 20)
+                if (GameManager.instance.speedLevel < 10)
                 {
-                    priceToPay = GameManager.instance.speedLevel * 50;
-                    priceLabel.text = "Level " + GameManager.instance.speedLevel + "/20\nPrice: " + priceToPay.ToString() + " Screws";
+                    priceToPay = GameManager.instance.speedLevel * 100;
+                    if (GameManager.instance.speedLevel > 5) 
+                    {priceToPay = GameManager.instance.speedLevel * 200;}
+                    priceLabel.text = "Level " + GameManager.instance.speedLevel + "/10\nPrice: " + priceToPay.ToString() + " Screws";
                     buttons.explanationLabel.text = "Increase the speed of the car!";
                     if (GameManager.instance.currency < priceToPay)
                     {
@@ -99,7 +101,7 @@ public class UpgradeHovers : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                         myButton.GetComponent<Image>().color = Color.green;
                     }
                 } else {
-                    priceLabel.text = "This has reached max level";
+                    priceLabel.text = "Level " + GameManager.instance.nitroLevel + "/3\nThis has reached max level";
                     myButton.GetComponent<Image>().color = Color.red;
                     myButton.interactable = false;
                 }

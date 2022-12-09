@@ -52,6 +52,7 @@ public class CarMovement : MonoBehaviour
 
     private int charges;
     private CinemachineVirtualCamera camObj;
+    private Vector2 velo;
 
 
     private void Start() 
@@ -138,7 +139,19 @@ public class CarMovement : MonoBehaviour
             {
                 accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);
-                player.velocity = new Vector2(player.velocity.x, GameManager.instance.jumpHeight);
+                velo = new Vector2(player.velocity.x,player.velocity.y).normalized;
+
+                if (player.rotation < 0)
+                {
+                player.velocity = new Vector2(-velo.y * GameManager.instance.jumpHeight, velo.x * GameManager.instance.jumpHeight) ;
+                    //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight * -1, player.velocity.x * GameManager.instance.jumpHeight);
+                }
+                else
+                {
+                player.velocity = new Vector2(velo.y * GameManager.instance.jumpHeight, velo.x * GameManager.instance.jumpHeight) ;
+                    //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight, player.velocity.x * GameManager.instance.jumpHeight);
+
+                }
                 jumpSteamParticle.Play();
             }
         }
@@ -161,6 +174,12 @@ public class CarMovement : MonoBehaviour
         {
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
+            if (!GameManager.instance.Insturctions)
+            {
+                awardLabel.text = "Whatch Out tilting and jumping spend coals";
+                Invoke("RemoveAwardScreen" , 5f);
+                GameManager.instance.Insturctions = true;
+            }
         }
         if (totalDistance > 100)
         {
@@ -202,7 +221,7 @@ public class CarMovement : MonoBehaviour
         {
             if (!GameManager.instance.Acivement5)
             {
-                AwardScreen(1000, 10000);
+                AwardScreen(1000, 3000);
                 GameManager.instance.achievementCurrency += 10000;
                 GameManager.instance.Acivement5 = true;
             }

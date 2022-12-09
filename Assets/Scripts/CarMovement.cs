@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class CarMovement : MonoBehaviour
 {
@@ -13,10 +14,9 @@ public class CarMovement : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask groundLayer;
     private bool isTouchingGroundR;
-    private bool isTouchingGround;
     private bool isTouchingGroundL;
-    public GameObject bigTire;
-    public GameObject smallTire;
+    private GameObject bigTire;
+    private GameObject smallTire;
     //public wheelToGroundCheckR WTGCR = wheelToGroundCheckR();
     //public wheelToGroundCheckL WTGCL = wheelToGroundCheckL();
     
@@ -29,12 +29,12 @@ public class CarMovement : MonoBehaviour
     public AudioSource steamAudio;
     public AudioSource steamNitroAudio;
 
-    public GameObject gameOverScreen;
-    public GameObject nitroText;
-    public GameObject nitro1;
-    public GameObject nitro2;
-    public GameObject nitro3;
-    public GameObject coalLabel;
+    private GameObject gameOverScreen;
+    private GameObject nitroText;
+    private GameObject nitro1;
+    private GameObject nitro2;
+    private GameObject nitro3;
+    private GameObject overlayCanvas;
     public TextMeshProUGUI currencyLabel;
     public TextMeshProUGUI coinLabel;
     public TextMeshProUGUI distanceLabel;
@@ -51,19 +51,28 @@ public class CarMovement : MonoBehaviour
     private double accumulativeCoal = 0;
 
     private int charges;
-    private float motorOffTimer = 0.0f;
+    private CinemachineVirtualCamera camObj;
     private Vector2 velo;
 
 
     private void Start() 
     {
+        camObj = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        nitroText = GameObject.Find("NitroText");
+        nitro1 = GameObject.Find("Nitro1");
+        nitro2 = GameObject.Find("Nitro2");
+        nitro3 = GameObject.Find("Nitro3");
+        gameOverScreen = GameObject.Find("GameOverScreen");
+        overlayCanvas = GameObject.Find("CanvasOverlay");
+        bigTire = GameObject.Find("TyreBigB_copy");
+        smallTire = GameObject.Find("TyreSmallF_copy");
         startX = Mathf.Abs(transform.position.x); 
         // Get starting position
         player = GetComponent<Rigidbody2D>();
         if (gameOverScreen != null)
         {
             gameOverScreen.SetActive(false);
-            coalLabel.SetActive(true);
+            overlayCanvas.SetActive(true);
         }
         CheckNitros();
     }
@@ -73,33 +82,34 @@ public class CarMovement : MonoBehaviour
     {
         float endX = transform.position.x;
         float totalDistance = endX + startX;
-        if (distanceLabel != null)
-        {
-            distanceLabel.text = (int)totalDistance + "KM / 1330KM";
-        }
-        if (player.velocity.y < 0)
-        {
-            motorOffTimer += Time.deltaTime;
-        } else {
-            motorOffTimer = 0.0f;
-        }
+        if (distanceLabel != null) {distanceLabel.text = (int)totalDistance + "KM / 1360KM";}
+        
         if(GameManager.instance.nitroCharges > 0 && Input.GetKeyDown(KeyCode.N)){
             TriggerNitro();
         }
+
         if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
-            //isTouchingGround = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
             isTouchingGroundL = Physics2D.OverlapCircle(bigTire.transform.position,groundCheckRadius, groundLayer);
             isTouchingGroundR = Physics2D.OverlapCircle(smallTire.transform.position,groundCheckRadius,groundLayer);
-            
+            GameManager.instance.isTouchingGround = isTouchingGroundL || isTouchingGroundR;
             
             if (GameManager.instance.carSpeed < 0) 
                 carSpeed = 0; 
             // Edge case for when speed is < 0 since car 
             // seemed to keep moving forward even with negative speed
-            if (motorOffTimer > 0.8)
+
+            if (player.velocity.x > 6 && player.velocity.x < 11)
+            {
+                camObj.m_Lens.OrthographicSize = player.velocity.x;
+            } else if (player.velocity.x < 6)
+            {
+                camObj.m_Lens.OrthographicSize = 6;
+            }
+
+            if (player.velocity.x > carSpeed/200)
             {
                 motorFront.motorSpeed = 0;
                 motorFront.maxMotorTorque = 0;
@@ -110,10 +120,10 @@ public class CarMovement : MonoBehaviour
             } else
             {
                 motorFront.motorSpeed = carSpeed * -1;
-                motorFront.maxMotorTorque = 1000;
+                motorFront.maxMotorTorque = 10000;
                 frontwheel.motor = motorFront;
                 motorBack.motorSpeed = carSpeed * -1;
-                motorBack.maxMotorTorque = 1000;
+                motorBack.maxMotorTorque = 10000;
                 backwheel.motor = motorBack;
             }
 
@@ -125,13 +135,12 @@ public class CarMovement : MonoBehaviour
                 else frontSteamParticle.Emit(1);
             }
 
-            if (Input.GetButtonDown("Jump") && (isTouchingGroundL||isTouchingGroundR) && GameManager.instance.jumpHeight > 0)
+            if (Input.GetButtonDown("Jump") && (GameManager.instance.isTouchingGround) && GameManager.instance.jumpHeight > 0)
             {
                 accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);
                 velo = new Vector2(player.velocity.x,player.velocity.y).normalized;
 
-                Debug.Log("velo 1:  " + velo.x + "Velo 2 " + velo.y);
                 if (player.rotation < 0)
                 {
                 player.velocity = new Vector2(-velo.y * GameManager.instance.jumpHeight, velo.x * GameManager.instance.jumpHeight) ;
@@ -157,9 +166,9 @@ public class CarMovement : MonoBehaviour
             motorBack.maxMotorTorque = 0;
             backwheel.motor = motorBack;
         }
-        if (player.position.x >= 1330)
+        if (player.position.x >= 1360)
         {
-            Invoke("GoToWin", 2.0f);
+            Invoke("GoToWin", 1.0f);
         }
         if (accumulativeCoal >1)
         {
@@ -253,7 +262,7 @@ public class CarMovement : MonoBehaviour
     void GameOverScreen()
     {
         gameOverScreen.SetActive(true);
-        coalLabel.SetActive(false);
+        overlayCanvas.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

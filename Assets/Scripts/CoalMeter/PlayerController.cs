@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour
     {
         timer += Time.deltaTime;
         healthMeter.SetHealth(GameManager.instance.currentCoals); //meter code
-        if (timer > GameManager.instance.coalSpendTime && GameManager.instance.currentCoals > 0)
+        if (
+            timer > GameManager.instance.coalSpendTime && 
+            GameManager.instance.currentCoals > 0 &&
+            GameManager.instance.isTouchingGround)
         {
             GameManager.instance.currentCoals -= 1; //meter code
             timer = 0.0f;

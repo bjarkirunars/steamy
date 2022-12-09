@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public bool Acivement4 = false;
     public bool Acivement5 = false;
     public bool Insturctions = false;
+    public bool isTouchingGround = true;
 
     void Awake()
     {

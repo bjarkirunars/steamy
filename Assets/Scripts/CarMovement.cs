@@ -155,7 +155,7 @@ public class CarMovement : MonoBehaviour
         }
         if (player.position.x >= 1360)
         {
-            Invoke("GoToWin", 2.0f);
+            Invoke("GoToWin", 1.0f);
         }
         if (accumulativeCoal >1)
         {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1175127914154768958}
   - component: {fileID: 4702919152005895183}
   m_Layer: 0
-  m_Name: coin
+  m_Name: rusty coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9c436396c1af0274e876e3dfad29bb3c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f52d91f949519e4495dc6c6612c9d34, type: 3}
   m_Color: {r: 1, g: 1, b: 0.1764706, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,9 +114,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09000111, y: -0.08198495}
+  m_Offset: {x: 0.10591828, y: -0.078313574}
   serializedVersion: 2
-  m_Radius: 1.6542666
+  m_Radius: 1.5829983
 --- !u!114 &4702919152005895183
 MonoBehaviour:
   m_ObjectHideFlags: 0

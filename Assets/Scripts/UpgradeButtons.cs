@@ -48,12 +48,11 @@ public class UpgradeButtons : MonoBehaviour
             GameManager.instance.maxCarSpeed = (int)(GameManager.instance.maxCarSpeed * 1.2f);
             GameManager.instance.currency -= priceToPay;
             GameManager.instance.speedLevel += 1;
-            priceLabelPrice = GameManager.instance.speedLevel * 100;
-            if (GameManager.instance.speedLevel > 5) 
-            {priceLabelPrice = GameManager.instance.speedLevel * 200;}
             GameManager.instance.PlayClip(buySound);
             UpdateValues();
             priceToPay = GameManager.instance.speedLevel * 100;
+            if (GameManager.instance.speedLevel > 5) 
+            {priceToPay = GameManager.instance.speedLevel * 200;}
             if (GameManager.instance.speedLevel < 10)
             {
                 priceLabel.text = "Level " + GameManager.instance.speedLevel + "/10\nPrice: " + priceToPay.ToString() + " Screws";

@@ -88,19 +88,22 @@ public class CarMovement : MonoBehaviour
     {
         float endX = transform.position.x;
         float totalDistance = endX + startX;
-        if (distanceLabel != null) {distanceLabel.text = (int)totalDistance + "KM / 1360KM";}
+        if (distanceLabel != null) 
+            distanceLabel.text = (int)totalDistance + "KM / 1360KM";
         
-        if(GameManager.instance.nitroCharges > 0 && Input.GetKeyDown(KeyCode.N)){
-            TriggerNitro();
-        }
+        if  (
+            GameManager.instance.nitroCharges > 0 && 
+            (Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.LeftShift))
+            )
+                TriggerNitro();
 
         if (GameManager.instance.currentCoals > 0 && GameManager.instance.gameRunning)
         {
             int carSpeed = GameManager.instance.maxCarSpeed;
             float axis = Input.GetAxisRaw("Horizontal");
-            isTouchingGroundL = Physics2D.OverlapCircle(bigTire.transform.position,groundCheckRadius, groundLayer);
-            isTouchingGroundR = Physics2D.OverlapCircle(smallTire.transform.position,groundCheckRadius,groundLayer);
-            GameManager.instance.isTouchingGround = isTouchingGroundL || isTouchingGroundR;
+            isTouchingGroundL = Physics2D.OverlapCircle(bigTire.transform.position, groundCheckRadius, groundLayer);
+            isTouchingGroundR = Physics2D.OverlapCircle(smallTire.transform.position, groundCheckRadius, groundLayer);
+            GameManager.instance.isTouchingGround = (isTouchingGroundL || isTouchingGroundR);
             
             if (GameManager.instance.carSpeed < 0) 
                 carSpeed = 0; 
@@ -134,8 +137,10 @@ public class CarMovement : MonoBehaviour
                 steamAudio.Play();
                 GetComponent<Rigidbody2D>().AddTorque(rotationSpeed * axis * -1);
                 accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
-                if (axis < 0) backSteamParticle.Emit(1);
-                else frontSteamParticle.Emit(1);
+                if (axis < 0) 
+                    backSteamParticle.Emit(1);
+                else 
+                    frontSteamParticle.Emit(1);
             }
 
             if (
@@ -221,16 +226,6 @@ public class CarMovement : MonoBehaviour
                 GameManager.instance.PlayClip(coinPickupSound);
             }
         }
-        // if (totalDistance > 750)
-        // {
-        //     if (!GameManager.instance.Achievement4)
-        //     {
-        //         AwardScreen(750, 1000);
-        //         GameManager.instance.achievementCurrency += 1000;
-        //         GameManager.instance.Achievement4 = true;
-        //         GameManager.instance.PlayClip(coinPickupSound);
-        //     }
-        // }
         if (totalDistance > 1000)
         {
             if (!GameManager.instance.Achievement5)

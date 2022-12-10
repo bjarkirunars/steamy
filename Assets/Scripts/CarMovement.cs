@@ -152,16 +152,16 @@ public class CarMovement : MonoBehaviour
             {
                 accumulativeCoal += (0.1 - (GameManager.instance.coalUpgradeLevel - 1) / 150);
                 GameManager.instance.PlayClip(jumpSound);
-                velo = new Vector2(player.velocity.x,player.velocity.y).normalized;
+                velo = new Vector2(player.velocity.x, player.velocity.y).normalized;
 
                 if (player.rotation < 0)
                 {
-                player.velocity = new Vector2(player.velocity.x + -velo.y * GameManager.instance.jumpHeight, player.velocity.y + velo.x * GameManager.instance.jumpHeight) ;
+                    player.velocity = new Vector2((player.velocity.x + -velo.y * GameManager.instance.jumpHeight), (player.velocity.y + velo.x * GameManager.instance.jumpHeight));
                     //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight * -1, player.velocity.x * GameManager.instance.jumpHeight);
                 }
                 else
                 {
-                player.velocity = new Vector2(player.velocity.x + velo.y * GameManager.instance.jumpHeight, player.velocity.y + velo.x * GameManager.instance.jumpHeight) ;
+                    player.velocity = new Vector2((player.velocity.x + velo.y * GameManager.instance.jumpHeight), (player.velocity.y + velo.x * GameManager.instance.jumpHeight));
                     //player.velocity = new Vector2(player.velocity.y * GameManager.instance.jumpHeight, player.velocity.x * GameManager.instance.jumpHeight);
 
                 }
@@ -185,7 +185,7 @@ public class CarMovement : MonoBehaviour
         {
             Invoke("GoToWin", 1.0f);
         }
-        if (accumulativeCoal >1)
+        if (accumulativeCoal > 1.5)
         {
             GameManager.instance.currentCoals--;
             accumulativeCoal = 0;
